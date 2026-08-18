@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
@@ -162,11 +163,11 @@ export default function Home() {
             </Reveal>
           </div>
 
-          {/* Hero visual */}
+          {/* Hero visual — real product photo */}
           <Reveal delay={0.2} className="relative">
             <div className="relative mx-auto max-w-md">
-              <div className="rounded-3xl border border-white/70 bg-white/70 p-8 shadow-float backdrop-blur">
-                <div className="flex items-center justify-between">
+              <div className="rounded-3xl border border-white/70 bg-white/70 p-6 shadow-float backdrop-blur">
+                <div className="flex items-center justify-between mb-4">
                   <span className="rounded-full bg-primary-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-primary-700 ring-1 ring-primary-100">
                     Featured
                   </span>
@@ -174,25 +175,37 @@ export default function Home() {
                     Cosmeceuticals
                   </span>
                 </div>
-                <ProductVisual
-                  form="Serum"
-                  name="Averiq Glow Serum"
-                  from="#f59e0b"
-                  to="#0b5cab"
-                  className="mx-auto h-56 w-56"
-                />
+                <div className="relative overflow-hidden rounded-2xl aspect-square">
+                  <Image
+                    src="/products/averq-fashwash.jpg"
+                    alt="Averiq FASHWASH Foaming Face Wash"
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 448px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="font-display text-sm font-bold text-white drop-shadow-lg">
+                      Averiq FASHWASH
+                    </p>
+                    <p className="mt-0.5 text-xs font-medium text-white/80">
+                      Foaming Face Wash • Advanced Cleansing Formula
+                    </p>
+                  </div>
+                </div>
                 <div className="mt-4 rounded-2xl border border-slate-100 bg-white p-4">
                   <p className="font-display text-sm font-bold text-primary-900">
-                    Averiq Glow Serum
+                    Hair Serum & Sunscreen Range
                   </p>
                   <p className="mt-0.5 text-xs font-medium text-slate-500">
-                    Vitamin C 15% + Ferulic Acid 0.5% + Hyaluronic Acid 1%
+                    SPF 50+ Broad Spectrum • Advanced Hair Growth Complex
                   </p>
                   <Link
-                    href="/products/averiq-glow-serum"
+                    href="/products"
                     className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-accent-600 hover:text-accent-700"
                   >
-                    View monograph <ArrowRight className="h-3 w-3" />
+                    View full catalog <ArrowRight className="h-3 w-3" />
                   </Link>
                 </div>
               </div>
@@ -315,6 +328,132 @@ export default function Home() {
               className="inline-flex items-center gap-2 rounded-lg border-2 border-primary-600 px-6 py-3 text-sm font-bold text-primary-700 transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:text-white"
             >
               Browse the full catalog
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ PRODUCT PHOTO SHOWCASE ============ */}
+      <section className="py-20 sm:py-24 bg-muted">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Real Product Photography"
+            title="The Averiq Range — Up Close"
+            subtitle="Studio-quality product photography across our cosmeceutical, trichology and nutraceutical verticals."
+          />
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+            {/* FASHWASH — Foaming Face Wash (bottle) */}
+            <Reveal delay={0.04}>
+              <Link href="/products/averq-fashwash" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-square bg-slate-50">
+                  <Image src="/products/averq-fashwash.jpg" alt="Averiq FASHWASH Foaming Face Wash" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-xs font-bold">FASHWASH</p>
+                    <p className="text-white/70 text-[10px]">Foaming Face Wash</p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+            {/* FASHWASH — Tube in water splash */}
+            <Reveal delay={0.08}>
+              <Link href="/products/averq-fashwash" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-square bg-slate-50">
+                  <Image src="/products/averq-fashwash-side.jpg" alt="Averiq FASHWASH tube in water splash" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-xs font-bold">FASHWASH</p>
+                    <p className="text-white/70 text-[10px]">Water-Fresh Formula</p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+            {/* FASHWASH — Tube on surface */}
+            <Reveal delay={0.12}>
+              <Link href="/products/averq-fashwash" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-square bg-slate-50">
+                  <Image src="/products/averq-fashwash-back.jpg" alt="Averiq FASHWASH tube on marble surface" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-xs font-bold">FASHWASH</p>
+                    <p className="text-white/70 text-[10px]">Facial Cleanser</p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+            {/* Hair Serum */}
+            <Reveal delay={0.16}>
+              <Link href="/products/averfol-hair-serum" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-square bg-slate-50">
+                  <Image src="/products/averfol-hair-serum.jpg" alt="Averiq Hair Serum bottle on silk" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-amber-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-xs font-bold">Hair Serum</p>
+                    <p className="text-white/70 text-[10px]">Trichology Care</p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+            {/* Sunscreen Golden Tube */}
+            <Reveal delay={0.2}>
+              <Link href="/products/averq-sunscreen-gel" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-square bg-slate-50">
+                  <Image src="/products/averq-sunscreen-gel.jpg" alt="Averiq Sunscreen SPF 50+ golden tube" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-amber-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-xs font-bold">Sunscreen SPF 50+</p>
+                    <p className="text-white/70 text-[10px]">Broad Spectrum UVA/UVB</p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+            {/* Sunscreen Beach */}
+            <Reveal delay={0.24}>
+              <Link href="/products/averq-sunscreen-gel" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-square bg-slate-50">
+                  <Image src="/products/averq-sunscreen-gel-side.jpg" alt="Averiq Sunscreen SPF 50+ on beach sand" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-orange-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-xs font-bold">Sunscreen SPF 50+</p>
+                    <p className="text-white/70 text-[10px]">Beach Protection</p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+            {/* Sunscreen Stone */}
+            <Reveal delay={0.28}>
+              <Link href="/products/averq-sunscreen-gel" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-square bg-slate-50">
+                  <Image src="/products/averq-sunscreen-gel-back.jpg" alt="Averiq Sunscreen container on stone" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-green-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-xs font-bold">Sunscreen Cream</p>
+                    <p className="text-white/70 text-[10px]">Natural Mineral Protection</p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+            {/* Supplement — Hair Growth Complex */}
+            <Reveal delay={0.32}>
+              <Link href="/products/averfol-tablets" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-square bg-slate-50">
+                  <Image src="/products/averfol-tablets.jpg" alt="Averiq Advanced Hair Growth Complex supplement" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-white text-xs font-bold">Hair Growth Complex</p>
+                    <p className="text-white/70 text-[10px]">Biotin + Zinc + Folic Acid</p>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+          </div>
+          <Reveal className="mt-10 text-center">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-primary-600 px-6 py-3 text-sm font-bold text-primary-700 transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:text-white"
+            >
+              Explore Full Product Range
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
