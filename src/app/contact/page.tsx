@@ -32,7 +32,7 @@ const departments = [
   },
   {
     icon: Building2,
-    title: "Corporate & Franchise",
+    title: "Corporate",
     email: "partner@averiqlifesciences.com",
   },
 ];
@@ -71,7 +71,7 @@ export default function ContactPage() {
               Let&apos;s Talk Healthcare
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
-              Doctors, distributors, franchisees and patients — our desk
+              Doctors, distributors and patients — our desk
               responds within one business day.
             </p>
           </Reveal>
@@ -227,8 +227,6 @@ function ContactForm() {
         >
           <option>General Enquiry</option>
           <option>Product Information</option>
-          <option>PCD Franchise</option>
-          <option>Third-Party Manufacturing</option>
           <option>Exports</option>
           <option>Careers</option>
         </select>

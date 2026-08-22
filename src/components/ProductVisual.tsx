@@ -49,8 +49,6 @@ export function ProductVisual({
       {form === "Hair Serum" ? <Spray /> : null}
       {form === "Capsule" ? <Capsules /> : null}
       {form === "Tablet" ? <Tablets /> : null}
-      {form === "Suspension" ? <Bottle /> : null}
-      {form === "Lotion" ? <LotionBottle /> : null}
 
       {/* label text on the pack */}
       <text
