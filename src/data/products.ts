@@ -883,6 +883,44 @@ export const products: Product[] = [
     ],
     color: { from: "#ec4899", to: "#be185d", text: "#ffffff" },
   },
+  {
+    slug: "rootriq-pro-hair-serum",
+    name: "ROOTRIQ Pro Hair Serum",
+    generic: "Redensyl + Procapil + Anagain + Biotin Hair Growth Serum",
+    category: "Trichology",
+    form: "Hair Serum",
+    pack: "60ml Dropper Bottle",
+    rx: false,
+    featured: true,
+    tagline: "Advanced multi-action hair regrowth serum",
+    indications: [
+      "Androgenetic alopecia (male & female pattern hair loss)",
+      "Telogen effluvium and stress-related hair shedding",
+      "Thinning hair and reduced hair density",
+      "Postpartum hair fall and nutritional hair thinning",
+    ],
+    highlights: [
+      "Triple-actives: Redensyl, Procapil & Anagain",
+      "Biotin supports keratin infrastructure for stronger strands",
+      "Non-greasy, lightweight dropper application",
+      "Visible improvement in density within 8–12 weeks",
+    ],
+    moa:
+      "Redensyl stimulates dermal papilla cell proliferation and promotes the anagen (growth) phase. Procapil combines matrikine peptides and apigenin to inhibit follicle fibrosis and DHT-related miniaturization. Anagain reactivates dormant follicles by modulating the hair cycle信号 pathway. Biotin serves as a coenzyme for carboxylases essential to keratin synthesis.",
+    directions: [
+      "Apply 4–6 drops directly onto dry scalp, focusing on thinning areas",
+      "Massage gently for 1–2 minutes for better absorption",
+      "Use once daily, preferably at night; do not rinse",
+      "Use consistently for a minimum of 90 days for visible results",
+    ],
+    regulatory: [
+      "OTC cosmeceutical — for external use only",
+      "Pack: 60ml amber glass dropper bottle with tamper-evident seal",
+      "Dermatologically and trichologically tested",
+      "Shelf life: 24 months from date of manufacture",
+    ],
+    color: { from: "#059669", to: "#047857", text: "#ffffff" },
+  },
 ];
 
 export function getProduct(slug: string) {
