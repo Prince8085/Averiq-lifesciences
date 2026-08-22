@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Phone, Clock } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { navLinks, site } from "@/data/site";
 import { Logo } from "@/components/Logo";
 import { cn } from "@/lib/utils";
@@ -45,6 +45,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -56,6 +57,7 @@ export function Header() {
   useEffect(() => {
     setMobileOpen(false);
     setProductsOpen(false);
+    setActiveCategory(null);
   }, [pathname]);
 
   const products = navLinks.find((l) => l.label === "Products");
@@ -103,43 +105,46 @@ export function Header() {
                 </Link>
                 <div
                   className={cn(
-                    "invisible absolute left-0 top-full z-50 max-h-[70vh] w-72 translate-y-1 overflow-y-auto rounded-xl border border-slate-100 bg-white/95 p-2 opacity-0 shadow-float backdrop-blur transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
+                    "invisible absolute left-0 top-full z-50 w-64 translate-y-1 rounded-xl border border-slate-100 bg-white/95 p-1.5 opacity-0 shadow-float backdrop-blur transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
                     productsOpen && "visible translate-y-0 opacity-100"
                   )}
                 >
                   {link.children.map((child) => {
                     const forms = categoryForms[child.label] || [];
-                    const hasComingSoon = forms.some((f) => f.comingSoon);
+                    const isOpen = activeCategory === child.label;
                     return (
                       <div key={child.label}>
-                        <Link
-                          href={child.href}
-                          className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-primary-50 hover:text-primary-700"
+                        <button
+                          type="button"
+                          onClick={() => setActiveCategory(isOpen ? null : child.label)}
+                          onMouseEnter={() => setActiveCategory(child.label)}
+                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-primary-50 hover:text-primary-700"
                         >
-                          {child.label}
-                          {hasComingSoon && (
-                            <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold text-amber-600 ring-1 ring-amber-200">
-                              <Clock className="h-2 w-2" /> New Soon
-                            </span>
-                          )}
-                        </Link>
-                        {forms.length > 0 && (
-                          <div className="ml-3 border-l border-slate-100 pl-3 pb-1">
+                          <span>{child.label}</span>
+                          <ChevronDown
+                            className={cn(
+                              "h-3.5 w-3.5 text-slate-400 transition-transform duration-200",
+                              isOpen && "rotate-180"
+                            )}
+                          />
+                        </button>
+                        {isOpen && forms.length > 0 && (
+                          <div className="ml-2 border-l-2 border-primary-100 pl-2 pb-1">
                             {forms.map((f) => (
                               <Link
                                 key={f.form}
                                 href={`${child.href}${f.comingSoon ? "" : "&form=" + encodeURIComponent(f.form)}`}
                                 className={cn(
-                                  "flex items-center justify-between rounded px-2 py-1 text-xs transition-colors",
+                                  "flex items-center justify-between rounded-md px-2.5 py-1.5 text-xs transition-colors",
                                   f.comingSoon
                                     ? "text-slate-400 cursor-default"
-                                    : "text-slate-500 hover:bg-primary-50 hover:text-primary-600"
+                                    : "text-slate-600 hover:bg-primary-50 hover:text-primary-600"
                                 )}
                                 onClick={(e) => f.comingSoon && e.preventDefault()}
                               >
                                 {f.form}
                                 {f.comingSoon && (
-                                  <span className="text-[9px] font-bold text-amber-500">Coming Soon</span>
+                                  <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold text-amber-500 ring-1 ring-amber-200">Soon</span>
                                 )}
                               </Link>
                             ))}
@@ -222,22 +227,24 @@ export function Header() {
                 <div className="mb-1 ml-3 border-l border-slate-200 pl-3">
                   {link.children.map((child) => {
                     const forms = categoryForms[child.label] || [];
-                    const hasComingSoon = forms.some((f) => f.comingSoon);
+                    const isOpen = activeCategory === child.label;
                     return (
                       <div key={child.label}>
-                        <Link
-                          href={child.href}
-                          className="flex items-center justify-between py-1.5 text-sm font-medium text-slate-600"
+                        <button
+                          type="button"
+                          onClick={() => setActiveCategory(isOpen ? null : child.label)}
+                          className="flex w-full items-center justify-between py-1.5 text-sm font-medium text-slate-600"
                         >
-                          {child.label}
-                          {hasComingSoon && (
-                            <span className="inline-flex items-center gap-0.5 rounded-full bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold text-amber-600">
-                              <Clock className="h-2 w-2" /> New Soon
-                            </span>
-                          )}
-                        </Link>
-                        {forms.length > 0 && (
-                          <div className="ml-2 border-l border-slate-100 pl-2 pb-1">
+                          <span>{child.label}</span>
+                          <ChevronDown
+                            className={cn(
+                              "h-3 w-3 text-slate-400 transition-transform duration-200",
+                              isOpen && "rotate-180"
+                            )}
+                          />
+                        </button>
+                        {isOpen && forms.length > 0 && (
+                          <div className="ml-2 border-l border-primary-100 pl-2 pb-1">
                             {forms.map((f) => (
                               <Link
                                 key={f.form}
