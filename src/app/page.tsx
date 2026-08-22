@@ -9,7 +9,6 @@ import {
   Flower2,
   Pill,
   Leaf,
-  Quote,
   MessagesSquare,
 } from "lucide-react";
 import { site, therapeuticVerticals } from "@/data/site";
@@ -22,6 +21,7 @@ import { ProductVisual } from "@/components/ProductVisual";
 import { VideoSlot } from "@/components/VideoSlot";
 import { ProductMarquee } from "@/components/ProductMarquee";
 import { JsonLd } from "@/components/JsonLd";
+import { TestimonialMarquee } from "@/components/TestimonialMarquee";
 
 const verticalIcons = {
   Dermatology: Sparkles,
@@ -55,26 +55,7 @@ const whyUs = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "The acne gel formulation is exactly what my patients need — clinically sound actives with a cosmetically elegant base.",
-    name: "Dr. Neha Sharma",
-    role: "Consultant Dermatologist, Indore",
-  },
-  {
-    quote:
-      "Clean compositions, on-time dispatch and proper CoA documentation. Our pharmacy chain has stocked the Averiq range with confidence.",
-    name: "Ramesh Agrawal",
-    role: "Stockist & Distributor, Bhopal",
-  },
-  {
-    quote:
-      "Timely supply and proper documentation make Averiq a reliable partner. The product quality speaks for itself.",
-    name: "Imran Qureshi",
-    role: "Healthcare Partner, Dewas",
-  },
-];
+
 
 const homeJsonLd = {
   "@context": "https://schema.org",
@@ -496,30 +477,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ TESTIMONIALS ============ */}
+      {/* ============ TESTIMONIALS (auto-scroll marquee) ============ */}
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="What They Say"
             title="Trusted by Healthcare Professionals"
-            subtitle="Feedback from doctors, stockists and distribution partners."
+            subtitle="Feedback from doctors, stockists and distribution partners. Hover to pause."
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={i * 0.08}>
-                <figure className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-7 shadow-soft">
-                  <Quote className="h-7 w-7 text-primary-200" />
-                  <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-slate-700">
-                    “{t.quote}”
-                  </blockquote>
-                  <figcaption className="mt-5 border-t border-slate-100 pt-4">
-                    <p className="text-sm font-bold text-primary-900">{t.name}</p>
-                    <p className="text-xs font-medium text-slate-500">{t.role}</p>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+        </div>
+        <div className="mt-12">
+          <TestimonialMarquee />
         </div>
       </section>
 
