@@ -121,10 +121,10 @@ export function Header() {
             Request Product List
           </a>
           <Link
-            href="/partner"
+            href="/contact"
             className="inline-flex items-center rounded-lg bg-primary-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/25"
           >
-            Partner With Us
+            Contact Us
           </Link>
         </div>
 
@@ -188,10 +188,10 @@ export function Header() {
               Request Product List
             </a>
             <Link
-              href="/partner"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-bold text-white"
             >
-              Partner With Us
+              Contact Us
             </Link>
           </div>
         </nav>

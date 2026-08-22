@@ -38,7 +38,6 @@ export function Footer() {
               {[
                 ["About Us", "/about"],
                 ["Products", "/products"],
-                ["PCD Franchise", "/partner"],
                 ["Quality Standards", "/quality"],
                 ["Knowledge Hub", "/blog"],
                 ["Contact", "/contact"],

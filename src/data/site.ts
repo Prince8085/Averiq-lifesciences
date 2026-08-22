@@ -14,7 +14,7 @@ export const site = {
   whatsappDisplay: "+91 90000 00000",
   founded: "February 2026",
   roc: "ROC Gwalior (Madhya Pradesh)",
-  directors: ["Mahin Khan", "Abdul Muttalib"],
+  directors: [] as string[],
   url: "https://www.averiqlifesciences.com",
 } as const;
 
@@ -32,9 +32,8 @@ export const navLinks = [
       { label: "Nutraceuticals", href: "/products?category=Nutraceuticals" },
     ],
   },
-  { label: "PCD Franchise", href: "/partner" },
-  { label: "Quality Standards", href: "/quality" },
   { label: "Contact", href: "/contact" },
+  { label: "Quality Standards", href: "/quality" },
 ] as const;
 
 export const therapeuticVerticals = [

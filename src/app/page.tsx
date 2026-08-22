@@ -11,7 +11,6 @@ import {
   Pill,
   Leaf,
   Quote,
-  Truck,
   Microscope,
   Award,
   MessagesSquare,
@@ -25,7 +24,6 @@ import { ProductCard } from "@/components/ProductCard";
 import { ProductVisual } from "@/components/ProductVisual";
 import { VideoSlot } from "@/components/VideoSlot";
 import { ProductMarquee } from "@/components/ProductMarquee";
-import { LeadForm } from "@/components/LeadForm";
 import { JsonLd } from "@/components/JsonLd";
 
 const verticalIcons = {
@@ -63,21 +61,21 @@ const whyUs = [
 const testimonials = [
   {
     quote:
-      "The Avercin Gel formulation is exactly what my acne patients need — clinically sound actives with a cosmetically elegant base.",
+      "The acne gel formulation is exactly what my patients need — clinically sound actives with a cosmetically elegant base.",
     name: "Dr. Neha Sharma",
     role: "Consultant Dermatologist, Indore",
   },
   {
     quote:
-      "Clean compositions, on-time dispatch and proper CoA documentation. Our pharmacy chain has stocked Averiq range with full confidence.",
+      "Clean compositions, on-time dispatch and proper CoA documentation. Our pharmacy chain has stocked the Averiq range with confidence.",
     name: "Ramesh Agrawal",
     role: "Stockist & Distributor, Bhopal",
   },
   {
     quote:
-      "The monopoly support kit and timely supply make Averiq an easy partner to build a PCD business around.",
+      "Timely supply and proper documentation make Averiq a reliable partner. The product quality speaks for itself.",
     name: "Imran Qureshi",
-    role: "PCD Franchise Partner, Dewas",
+    role: "Healthcare Partner, Dewas",
   },
 ];
 
@@ -143,10 +141,10 @@ export default function Home() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="/partner"
+                  href="/contact"
                   className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white/70 px-6 py-3.5 text-sm font-bold text-primary-800 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-accent-500 hover:text-accent-700"
                 >
-                  PCD Franchise Enquiry
+                  Contact Us
                 </Link>
               </div>
             </Reveal>
@@ -155,7 +153,7 @@ export default function Home() {
                 {[
                   "✓ WHO-GMP Certified Manufacturing Standard",
                   "✓ 100% Tested Active Ingredients",
-                  "✓ Pan-India Distribution Support",
+                  "✓ WHO-GMP Certified Facility in Indore",
                 ].map((t) => (
                   <li key={t}>{t}</li>
                 ))}
@@ -436,13 +434,13 @@ export default function Home() {
             </Reveal>
             {/* Supplement — Hair Growth Complex */}
             <Reveal delay={0.32}>
-              <Link href="/products/averfol-tablets" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
+              <Link href="/products/rootriq-h" className="group block overflow-hidden rounded-2xl shadow-soft hover:shadow-float transition-all duration-300 hover:-translate-y-1">
                 <div className="relative aspect-square bg-slate-50">
-                  <Image src="/products/averfol-tablets.jpg" alt="Averiq Advanced Hair Growth Complex supplement" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
+                  <Image src="/products/rootriq-h.jpg" alt="ROOTRIQ-H Hair Growth Complex supplement" fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-white text-xs font-bold">Hair Growth Complex</p>
-                    <p className="text-white/70 text-[10px]">Biotin + Zinc + Folic Acid</p>
+                    <p className="text-white text-xs font-bold">ROOTRIQ-H</p>
+                    <p className="text-white/70 text-[10px]">D-Biotin + Minerals + Folic Acid</p>
                   </div>
                 </div>
               </Link>
@@ -502,73 +500,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ B2B FRANCHISE BANNER ============ */}
+      {/* ============ FACILITY VIDEO ============ */}
       <section className="mesh-dark py-20 sm:py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <Reveal>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-accent-400">
-              PCD Franchise • Third-Party Manufacturing
+              Manufacturing & Quality
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Expand Your Pharmaceutical Business with Monopoly Rights in Your
-              District
+              See Our Facility in Action
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-300">
-              Join India&apos;s fast-growing healthcare network. High profit
-              margins, promotional visual aid kit, timely supply and exclusive
-              territory rights.
+            <p className="mx-auto mt-3 max-w-2xl text-base text-slate-300">
+              A glimpse of our WHO-GMP certified manufacturing facility and
+              analytical laboratory in Indore.
             </p>
-            <ul className="mt-6 space-y-3 text-sm text-slate-200">
-              {[
-                "High profit margins & monopoly territory rights",
-                "Complete promotional visual aid kit & MR bags",
-                "Timely, documented supply with CoA on every batch",
-                "Dedicated franchise support desk",
-              ].map((b) => (
-                <li key={b} className="flex items-start gap-2.5">
-                  <Truck className="mt-0.5 h-4 w-4 shrink-0 text-accent-400" />
-                  {b}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/partner"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-600/30 transition-all hover:-translate-y-0.5 hover:bg-accent-500"
-              >
-                Become a Partner
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/quality"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:border-accent-400 hover:text-accent-300"
-              >
-                <ShieldCheck className="h-4 w-4" />
-                Our Quality Standards
-              </Link>
-            </div>
           </Reveal>
-          <Reveal delay={0.12}>
-            <div className="rounded-3xl border border-white/10 bg-white p-6 shadow-float sm:p-8">
-              <h3 className="font-display text-xl font-bold text-primary-900">
-                Apply for Franchise Rights
-              </h3>
-              <p className="mt-1 mb-6 text-sm text-slate-500">
-                Quick 60-second application — no obligations.
-              </p>
-              <LeadForm compact />
-            </div>
+          <Reveal delay={0.12} className="mt-10">
+            <VideoSlot
+              src="/media/facility.mp4"
+              title="Manufacturing & Quality in Action"
+              slot="media/facility.mp4"
+            />
           </Reveal>
         </div>
-
-        {/* Video player inside the B2B banner */}
-        <Reveal className="mx-auto mt-16 max-w-5xl px-4 sm:px-6 lg:px-8">
-          <VideoSlot
-            src="/media/facility.mp4"
-            title="Manufacturing & Quality in Action"
-            slot="media/facility.mp4"
-          />
-        </Reveal>
       </section>
 
       {/* ============ TESTIMONIALS ============ */}
