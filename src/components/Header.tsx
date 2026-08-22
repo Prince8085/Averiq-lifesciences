@@ -103,7 +103,7 @@ export function Header() {
                 </Link>
                 <div
                   className={cn(
-                    "invisible absolute left-0 top-full w-72 translate-y-1 rounded-xl border border-slate-100 bg-white/95 p-2 opacity-0 shadow-float backdrop-blur transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
+                    "invisible absolute left-0 top-full z-50 max-h-[70vh] w-72 translate-y-1 overflow-y-auto rounded-xl border border-slate-100 bg-white/95 p-2 opacity-0 shadow-float backdrop-blur transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
                     productsOpen && "visible translate-y-0 opacity-100"
                   )}
                 >
@@ -207,7 +207,7 @@ export function Header() {
       {/* Mobile menu */}
       {mobileOpen && (
         <nav
-          className="border-t border-slate-100 bg-white/95 px-4 pb-6 pt-2 backdrop-blur lg:hidden"
+          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-slate-100 bg-white/95 px-4 pb-6 pt-2 backdrop-blur lg:hidden"
           aria-label="Mobile"
         >
           {navLinks.map((link) =>
@@ -271,22 +271,24 @@ export function Header() {
               </Link>
             )
           )}
-          <div className="mt-3 flex flex-col gap-2 px-2">
-            <a
-              href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700"
-            >
-              <Phone className="h-4 w-4 text-accent-600" />
-              Request Product List
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-bold text-white"
-            >
-              Contact Us
-            </Link>
+          <div className="sticky bottom-0 border-t border-slate-100 bg-white/95 px-2 pb-2 pt-3">
+            <div className="flex flex-col gap-2">
+              <a
+                href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700"
+              >
+                <Phone className="h-4 w-4 text-accent-600" />
+                Request Product List
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-bold text-white"
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </nav>
       )}
