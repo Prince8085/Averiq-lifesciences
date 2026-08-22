@@ -5,14 +5,11 @@ import {
   BadgeCheck,
   FlaskConical,
   HeartHandshake,
-  ShieldCheck,
   Sparkles,
   Flower2,
   Pill,
   Leaf,
   Quote,
-  Microscope,
-  Award,
   MessagesSquare,
 } from "lucide-react";
 import { site, therapeuticVerticals } from "@/data/site";
@@ -34,27 +31,27 @@ const verticalIcons = {
 };
 
 const metrics = [
-  { value: 50, suffix: "+", label: "Formulations in Pipeline" },
-  { value: 100, suffix: "%", label: "Batch Consistency & Lab Verification" },
-  { value: 100, suffix: "%", label: "DCGI & FDA-Approved Compositions" },
-  { value: 25, suffix: "+", label: "States Served Pan-India" },
+  { value: 22, suffix: "+", label: "Products in Catalog" },
+  { value: 100, suffix: "%", label: "Batch Testing & Quality Control" },
+  { value: 19, suffix: "+", label: "Formulations in Catalog" },
+  { value: 4, suffix: "", label: "Therapeutic Verticals" },
 ];
 
 const whyUs = [
   {
     icon: FlaskConical,
-    title: "Advanced Molecular Formulations",
-    text: "Enhanced bioavailability and superior patient compliance through modern drug-delivery science and clinically validated actives.",
+    title: "Science-Backed Formulations",
+    text: "Modern drug-delivery science with clinically validated active ingredients for effective therapeutic outcomes.",
   },
   {
     icon: BadgeCheck,
-    title: "Verified Quality Control",
-    text: "Every batch backed by a Certificate of Analysis (CoA) with zero-tolerance QC — HPLC, dissolution and stability tested.",
+    title: "Quality Control",
+    text: "Every batch backed by a Certificate of Analysis (CoA) — tested for potency, dissolution and stability.",
   },
   {
     icon: HeartHandshake,
-    title: "Uncompromising Ethics",
-    text: "100% transparent compositions with zero misleading claims. Healthcare is a sacred trust — we build on verification.",
+    title: "Transparent Compositions",
+    text: "Clear, honest product information. We believe in building trust through transparency and verification.",
   },
 ];
 
@@ -111,12 +108,7 @@ export default function Home() {
       <section className="mesh-hero relative overflow-hidden pb-20 pt-32 sm:pt-36">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
           <div>
-            <Reveal>
-              <p className="inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-700">
-                <ShieldCheck className="h-4 w-4" />
-                WHO-GMP Certified Manufacturing
-              </p>
-            </Reveal>
+
             <Reveal delay={0.08}>
               <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.4rem]">
                 Advancing Healthcare Through{" "}
@@ -125,10 +117,9 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.16}>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                Averiq Lifesciences delivers state-of-the-art pharmaceutical and
-                cosmeceutical formulations engineered under rigorous global
-                quality benchmarks. Based in Indore, serving healthcare across
-                India.
+                Averiq Lifesciences develops pharmaceutical and cosmeceutical
+                formulations under WHO-GMP quality standards. Based in Indore,
+                serving healthcare professionals across India.
               </p>
             </Reveal>
             <Reveal delay={0.24}>
@@ -208,25 +199,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* floating badges */}
-              <div className="absolute -left-4 top-10 hidden rounded-2xl border border-slate-100 bg-white/95 px-4 py-3 shadow-float backdrop-blur sm:block">
-                <p className="flex items-center gap-2 text-xs font-bold text-primary-900">
-                  <Award className="h-4 w-4 text-accent-500" />
-                  DCGI & FDA Approved
-                </p>
-                <p className="mt-0.5 text-[10px] font-medium text-slate-500">
-                  Compliant compositions
-                </p>
-              </div>
-              <div className="absolute -right-2 bottom-24 hidden rounded-2xl border border-slate-100 bg-white/95 px-4 py-3 shadow-float backdrop-blur sm:block">
-                <p className="flex items-center gap-2 text-xs font-bold text-primary-900">
-                  <Microscope className="h-4 w-4 text-primary-600" />
-                  HPLC Lab Verified
-                </p>
-                <p className="mt-0.5 text-[10px] font-medium text-slate-500">
-                  Every batch tested
-                </p>
-              </div>
+
             </div>
           </Reveal>
         </div>
@@ -240,11 +213,10 @@ export default function Home() {
               Facility & Innovation
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">
-              Healthcare in Motion
+              Our Facility
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-base text-slate-600">
-              A glimpse of our manufacturing facility, analytical laboratory and
-              the science behind every Averiq formulation.
+              Take a look at our manufacturing facility and analytical laboratory in Indore.
             </p>
           </Reveal>
           <Reveal delay={0.12} className="mt-10">
@@ -311,7 +283,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Star Formulations"
             title="Featured Product Range"
-            subtitle="Crisp packaging, exact compositions, transparent pharmacology — explore our flagship formulations."
+            subtitle="Explore our range of pharmaceutical and cosmeceutical products."
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {featuredProducts().map((p, i) => (
@@ -336,9 +308,9 @@ export default function Home() {
       <section className="py-20 sm:py-24 bg-muted">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="Real Product Photography"
-            title="The Averiq Range — Up Close"
-            subtitle="Studio-quality product photography across our cosmeceutical, trichology and nutraceutical verticals."
+            eyebrow="Product Gallery"
+            title="The Averiq Range"
+            subtitle="Browse our product photography across cosmeceutical, trichology and nutraceutical verticals."
           />
           <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
             {/* FASHWASH — Foaming Face Wash (bottle) */}
@@ -463,8 +435,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="The Full Portfolio"
-            title="Formulations in Motion"
-            subtitle="Scrolls on its own — hover to pause. Explore the complete Averiq range across every therapeutic vertical."
+            title="Our Complete Range"
+            subtitle="Scrolls automatically — hover to pause. Browse all products across therapeutic verticals."
           />
         </div>
         <div className="mt-12">
@@ -477,8 +449,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="The Averiq Difference"
-            title="Why Healthcare Professionals Choose Averiq"
-            subtitle="Three pillars behind every formulation we release."
+            title="Why Choose Averiq"
+            subtitle="What sets our formulations apart."
           />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {whyUs.map((w, i) => (
@@ -511,8 +483,7 @@ export default function Home() {
               See Our Facility in Action
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-base text-slate-300">
-              A glimpse of our WHO-GMP certified manufacturing facility and
-              analytical laboratory in Indore.
+              Our WHO-GMP certified manufacturing facility and analytical laboratory in Indore.
             </p>
           </Reveal>
           <Reveal delay={0.12} className="mt-10">
@@ -529,9 +500,9 @@ export default function Home() {
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="Trusted Voices"
-            title="Endorsed by Doctors & Channel Partners"
-            subtitle="What healthcare professionals and distributors say about working with Averiq."
+            eyebrow="What They Say"
+            title="Trusted by Healthcare Professionals"
+            subtitle="Feedback from doctors, stockists and distribution partners."
           />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {testimonials.map((t, i) => (
@@ -557,10 +528,10 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 sm:px-6 lg:flex-row lg:px-8">
           <div className="text-center lg:text-left">
             <h2 className="font-display text-2xl font-bold text-primary-900 sm:text-3xl">
-              Need the complete product list & visual aids?
+              Want the full product catalog?
             </h2>
             <p className="mt-2 text-sm text-slate-600">
-              Get the Averiq corporate brochure, product monographs and price list on WhatsApp.
+              Get the complete product list, visual aids and pricing on WhatsApp.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-3">

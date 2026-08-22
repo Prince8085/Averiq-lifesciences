@@ -3,12 +3,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
   ChevronRight,
-  Download,
   MessageCircle,
   CheckCircle2,
   Pill,
   Package,
-  Clapperboard,
 } from "lucide-react";
 import { products, getProduct } from "@/data/products";
 import { site } from "@/data/site";
@@ -120,8 +118,7 @@ export default async function ProductPage({
               <p className="mt-2 text-sm font-semibold text-slate-600 sm:text-base">
                 {product.generic}
               </p>
-              <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent-50 px-3 py-1.5 text-xs font-bold text-accent-700 ring-1 ring-accent-100">
-                <CheckCircle2 className="h-3.5 w-3.5" />
+              <p className="mt-3 text-sm font-medium text-slate-700">
                 {product.tagline}
               </p>
 
@@ -150,20 +147,11 @@ export default async function ProductPage({
               </ul>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <EnquiryButton product={product.name} />
-                <a
-                  href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi Averiq — please share the visual aid / monograph PDF for ${product.name}.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-primary-400 hover:text-primary-700"
-                >
-                  <Download className="h-4 w-4" />
-                  Download Monograph PDF
-                </a>
+                <EnquiryButton product={product} />
               </div>
               <p className="mt-4 text-xs text-slate-500">
-                <MessageCircle className="mr-1 inline h-3.5 w-3.5 text-accent-600" />
-                Visual aid PDFs are shared on request — instant delivery via WhatsApp.
+                <MessageCircle className="mr-1 inline h-3.5 w-3.5 text-[#25D366]" />
+                Click above to send a WhatsApp message with full product details.
               </p>
             </div>
           </div>
@@ -187,10 +175,7 @@ export default async function ProductPage({
                   once the video is added.
                 </p>
               </div>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-500">
-                <Clapperboard className="h-3.5 w-3.5 text-accent-600" />
-                Auto-plays — muted loop
-              </span>
+
             </div>
             <VideoSlot
               src={`/products/${product.slug}.mp4`}

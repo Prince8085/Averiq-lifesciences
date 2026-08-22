@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { EnquiryProvider } from "@/components/EnquiryModal";
 import { site } from "@/data/site";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -25,13 +24,13 @@ export const metadata: Metadata = {
     template: "%s | Averiq Lifesciences",
   },
   description:
-    "Averiq Lifesciences Private Limited — WHO-GMP certified pharmaceutical, cosmeceutical & nutraceutical manufacturer in Indore. Dermatology, trichology, PCD pharma franchise & third-party manufacturing.",
+    "Averiq Lifesciences Private Limited — WHO-GMP certified pharmaceutical, cosmeceutical & nutraceutical manufacturer in Indore. Dermatology, trichology & general medicine formulations.",
   keywords: [
-    "PCD Pharma Franchise in Madhya Pradesh",
-    "Third-Party Pharma Manufacturer in Indore",
+    "Pharmaceutical Manufacturer in Indore",
     "Dermatology Cosmeceutical Pharma Company India",
     "Averiq Lifesciences",
     "Trichology Hair Serum Manufacturer",
+    "Acne Gel Manufacturer India",
   ],
   openGraph: {
     type: "website",
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
     siteName: site.legalName,
     title: "Averiq Lifesciences — Advanced • Verified • Quality",
     description:
-      "Scientifically formulated, clinically validated therapeutic products. PCD franchise & third-party manufacturing in Indore, India.",
+      "Scientifically formulated therapeutic products. Pharmaceutical manufacturer in Indore, India.",
   },
   twitter: {
     card: "summary",
@@ -60,11 +59,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col bg-background text-foreground antialiased">
-        <EnquiryProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </EnquiryProvider>
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

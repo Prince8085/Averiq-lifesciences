@@ -23,6 +23,11 @@
 # tooling
 .freebuff/
 
+# client source assets (keep out of git)
+averiq.cspro/
+company media/
+medicines/
+
 # misc
 .DS_Store
 *.pem

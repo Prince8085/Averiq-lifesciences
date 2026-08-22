@@ -4,11 +4,22 @@ import Link from "next/link";
 import { ArrowRight, MessageCircle, Pill, Eye } from "lucide-react";
 import type { Product } from "@/data/products";
 import { ProductImage } from "@/components/ProductImage";
-import { useEnquiry } from "@/components/EnquiryModal";
-import { cn } from "@/lib/utils";
+import { site } from "@/data/site";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { openEnquiry } = useEnquiry();
+  const waMessage = `Hi Averiq Lifesciences 👋
+
+I'm interested in *${product.name}* and would like to know more.
+
+Product: ${product.name}
+Composition: ${product.generic}
+Form: ${product.form} | Pack: ${product.pack}
+${product.rx ? "Type: Rx (Schedule H)" : "Type: OTC"}
+
+Please share availability, pricing and ordering details. Thank you!`;
+
+  const waUrl = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(waMessage)}`;
+
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-float">
       {/* gradient packshot area */}
@@ -61,16 +72,15 @@ export function ProductCard({ product }: { product: Product }) {
             <Eye className="h-3.5 w-3.5" />
             View Details
           </Link>
-          <button
-            onClick={() => openEnquiry(product.name)}
-            className={cn(
-              "inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold text-white transition-all hover:-translate-y-0.5",
-              "bg-gradient-to-r from-primary-600 to-primary-700 hover:shadow-lg hover:shadow-primary-600/30"
-            )}
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#25D366] px-3 py-2 text-xs font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#20BD5C] hover:shadow-lg hover:shadow-[#25D366]/30"
           >
             <MessageCircle className="h-3.5 w-3.5" />
             Enquire
-          </button>
+          </a>
         </div>
         <Link
           href={`/products/${product.slug}`}
