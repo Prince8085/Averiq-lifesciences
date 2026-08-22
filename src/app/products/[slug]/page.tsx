@@ -7,6 +7,11 @@ import {
   CheckCircle2,
   Pill,
   Package,
+  Shield,
+  Clock,
+  AlertTriangle,
+  FileText,
+  Building2,
 } from "lucide-react";
 import { products, getProduct } from "@/data/products";
 import { site } from "@/data/site";
@@ -92,6 +97,24 @@ export default async function ProductPage({
             <span className="text-primary-700">{product.name}</span>
           </nav>
 
+          {/* Trust badges — top strip */}
+          <RevealProduct>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-200 bg-accent-50 px-3 py-1 text-[11px] font-bold text-accent-700">
+                <Shield className="h-3.5 w-3.5" />
+                WHO-GMP Certified
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-primary-200 bg-primary-50 px-3 py-1 text-[11px] font-bold text-primary-700">
+                <FileText className="h-3.5 w-3.5" />
+                Batch Tested & CoA Available
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-bold text-slate-600">
+                <Building2 className="h-3.5 w-3.5" />
+                Made in India
+              </span>
+            </div>
+          </RevealProduct>
+
           <div className="mt-8 grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
             {/* Photo / packshot gallery */}
             <ProductGallery
@@ -102,7 +125,7 @@ export default async function ProductPage({
                     {product.category}
                   </span>
                   {product.rx && (
-                    <span className="rounded-full bg-primary-600/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-primary-700 ring-1 ring-primary-600/20">
+                    <span className="rounded-full bg-red-600/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-red-700 ring-1 ring-red-600/20">
                       Rx — Schedule H
                     </span>
                   )}
@@ -122,21 +145,46 @@ export default async function ProductPage({
                 {product.tagline}
               </p>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {/* Key info cards */}
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-xl border border-slate-100 bg-white p-4">
                   <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    <Pill className="h-3.5 w-3.5" /> Dosage Form
+                    <Pill className="h-3.5 w-3.5" /> Form
                   </p>
                   <p className="mt-1 text-sm font-bold text-primary-900">{product.form}</p>
                 </div>
                 <div className="rounded-xl border border-slate-100 bg-white p-4">
                   <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    <Package className="h-3.5 w-3.5" /> Pack Size
+                    <Package className="h-3.5 w-3.5" /> Pack
                   </p>
                   <p className="mt-1 text-sm font-bold text-primary-900">{product.pack}</p>
                 </div>
+                <div className="rounded-xl border border-slate-100 bg-white p-4">
+                  <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <Clock className="h-3.5 w-3.5" /> Shelf Life
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-primary-900">
+                    {product.regulatory.find((r) => r.includes("Shelf life"))?.match(/\d+ months/)?.[0] || "24 months"}
+                  </p>
+                </div>
               </div>
 
+              {/* Rx Warning */}
+              {product.rx && (
+                <div className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4">
+                  <div className="flex items-start gap-2.5">
+                    <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
+                    <div>
+                      <p className="text-sm font-bold text-red-800">Prescription Required</p>
+                      <p className="mt-1 text-xs text-red-700">
+                        This is a Schedule H drug. To be sold only on the prescription of a Registered Medical Practitioner.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Highlights */}
               <ul className="mt-6 space-y-2.5">
                 {product.highlights.map((h) => (
                   <li key={h} className="flex items-start gap-2.5 text-sm text-slate-700">
@@ -146,12 +194,13 @@ export default async function ProductPage({
                 ))}
               </ul>
 
+              {/* CTA */}
               <div className="mt-8 flex flex-wrap gap-3">
                 <EnquiryButton product={product} />
               </div>
               <p className="mt-4 text-xs text-slate-500">
                 <MessageCircle className="mr-1 inline h-3.5 w-3.5 text-[#25D366]" />
-                Click above to send a WhatsApp message with full product details.
+                Send a WhatsApp message with full product details.
               </p>
             </div>
           </div>
@@ -160,7 +209,7 @@ export default async function ProductPage({
 
       <section className="pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* ===== Product film — auto-plays once public/products/<slug>.mp4 exists ===== */}
+          {/* ===== Product film ===== */}
           <div className="mb-14">
             <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
               <div>
@@ -171,11 +220,9 @@ export default async function ProductPage({
                   Watch {product.name} in Action
                 </h2>
                 <p className="mt-1.5 max-w-xl text-sm text-slate-500">
-                  See the texture, application and packaging up close — the film auto-plays
-                  once the video is added.
+                  See the texture, application and packaging up close.
                 </p>
               </div>
-
             </div>
             <VideoSlot
               src={`/products/${product.slug}.mp4`}
@@ -185,6 +232,26 @@ export default async function ProductPage({
           </div>
 
           <ProductTabs product={product} />
+
+          {/* Trust strip at bottom */}
+          <div className="mt-16 rounded-2xl border border-slate-100 bg-white p-6 shadow-soft">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-center">
+              <div className="flex items-center gap-2 text-sm text-slate-600">
+                <Shield className="h-5 w-5 text-accent-600" />
+                <span className="font-semibold">WHO-GMP Certified</span>
+              </div>
+              <div className="h-4 w-px bg-slate-200" />
+              <div className="flex items-center gap-2 text-sm text-slate-600">
+                <FileText className="h-5 w-5 text-primary-600" />
+                <span className="font-semibold">Certificate of Analysis</span>
+              </div>
+              <div className="h-4 w-px bg-slate-200" />
+              <div className="flex items-center gap-2 text-sm text-slate-600">
+                <Building2 className="h-5 w-5 text-accent-600" />
+                <span className="font-semibold">Manufactured in Indore, India</span>
+              </div>
+            </div>
+          </div>
 
           {/* Related products */}
           <div className="mt-16">
@@ -222,4 +289,9 @@ export default async function ProductPage({
       </section>
     </>
   );
+}
+
+/** Simple wrapper to avoid importing the full Reveal animation on a server component */
+function RevealProduct({ children }: { children: React.ReactNode }) {
+  return <div>{children}</div>;
 }

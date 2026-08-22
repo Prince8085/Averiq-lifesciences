@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import { Search, SlidersHorizontal, X, Clock } from "lucide-react";
 import { categories, forms, products, type Category, type Form } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { cn } from "@/lib/utils";
@@ -92,20 +92,32 @@ export function ProductsExplorer() {
         {/* Form + Rx */}
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <div className="flex flex-wrap gap-1.5">
-            {(["All", ...forms] as const).map((f) => (
-              <button
-                key={f}
-                onClick={() => setForm(f)}
-                className={cn(
-                  "rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all",
-                  form === f
-                    ? "border-primary-600 bg-primary-50 text-primary-700 ring-1 ring-primary-600"
-                    : "border-slate-200 bg-white text-slate-500 hover:text-primary-700"
-                )}
-              >
-                {f}
-              </button>
-            ))}
+            {(["All", ...forms] as (Form | "All")[]).map((f) => {
+              const isAll = f === "All";
+              const hasProducts = isAll || products.some((p) => (category === "All" || p.category === category) && p.form === f);
+              return (
+                <button
+                  key={f}
+                  onClick={() => setForm(f)}
+                  className={cn(
+                    "rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all",
+                    form === f
+                      ? "border-primary-600 bg-primary-50 text-primary-700 ring-1 ring-primary-600"
+                      : hasProducts
+                        ? "border-slate-200 bg-white text-slate-500 hover:text-primary-700"
+                        : "border-dashed border-slate-300 bg-slate-50 text-slate-400 cursor-not-allowed"
+                  )}
+                  disabled={!hasProducts && !isAll}
+                >
+                  {f}
+                  {!hasProducts && !isAll && (
+                    <span className="ml-1 inline-flex items-center gap-0.5 text-[10px] font-bold text-amber-500">
+                      <Clock className="h-2.5 w-2.5" /> Soon
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
           <div className="ml-auto flex gap-1.5">
             {(
