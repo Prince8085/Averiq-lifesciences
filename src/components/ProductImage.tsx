@@ -5,31 +5,24 @@ import { cn } from "@/lib/utils";
 import type { Product } from "@/data/products";
 import { ProductVisual } from "@/components/ProductVisual";
 
-export type ProductAngle = "front" | "side" | "back";
-
 /**
- * Product photo slot.
- *
- * If a real photograph exists at `public/products/<slug>-<angle>.jpg` it is
- * shown; otherwise the branded SVG packshot renders in its place. Drop photos
- * in and they light up automatically — no code changes needed.
+ * Product photo — loads the main product photo from `public/products/<slug>.jpg`.
+ * Falls back to a branded SVG packshot if no photo exists.
  */
 export function ProductImage({
   product,
-  angle = "front",
   className,
   imgClassName,
   eager = false,
 }: {
   product: Product;
-  angle?: ProductAngle;
   className?: string;
   imgClassName?: string;
   eager?: boolean;
 }) {
   const [photo, setPhoto] = useState<string | null>(null);
 
-  const path = `/products/${product.slug}${angle === "front" ? "" : `-${angle}`}.jpg`;
+  const path = `/products/${product.slug}.jpg`;
 
   useEffect(() => {
     let alive = true;
@@ -47,7 +40,7 @@ export function ProductImage({
       // eslint-disable-next-line @next/next/no-img-element
       <img
         src={photo}
-        alt={`${product.name} — ${angle} photograph`}
+        alt={product.name}
         loading={eager ? "eager" : "lazy"}
         className={cn(className ?? imgClassName, "object-contain")}
       />
