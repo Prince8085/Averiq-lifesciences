@@ -3,18 +3,18 @@ import { cn } from "@/lib/utils";
 
 /**
  * Averiq brand lockups — using real logo from logo.jpeg
- * - `Logo`        : Header logo (white bg, clean edges)
+ * - `Logo`        : Header logo (white bg, 52px height)
  * - `LogoLockup`  : Footer lockup (CSS filter for dark bg inversion)
  */
 
 export function Logo({
   className,
-  height = 44,
+  height = 52,
 }: {
   className?: string;
   height?: number;
 }) {
-  const w = Math.round(height * 1.91);
+  const w = Math.round(height * 2.0);
   return (
     <span className={cn("inline-flex items-center", className)}>
       <Image
@@ -29,7 +29,7 @@ export function Logo({
   );
 }
 
-/** Full lockup for footer — uses CSS filter for clean dark-bg inversion. */
+/** Full lockup for footer — mix-blend-mode makes white bg invisible on dark. */
 export function LogoLockup({
   className,
   dark = false,
@@ -38,17 +38,15 @@ export function LogoLockup({
   dark?: boolean;
 }) {
   return (
-    <Image
-      src="/averiq-logo-footer-dark.png"
-      alt="Averiq Lifesciences — Advanced • Verified • Quality"
-      width={500}
-      height={261}
-      className={cn(
-        "h-auto w-52 object-contain",
-        dark && "brightness-0 invert",
-        className
-      )}
-      priority
-    />
+    <span className={cn(dark && "mix-blend-screen", className)}>
+      <Image
+        src="/averiq-logo.png"
+        alt="Averiq Lifesciences — Advanced • Verified • Quality"
+        width={500}
+        height={249}
+        className="h-auto w-52 object-contain"
+        priority
+      />
+    </span>
   );
 }
