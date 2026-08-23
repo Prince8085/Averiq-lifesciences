@@ -36,7 +36,7 @@ const sections = [
       "All content, branding, logos and product names are the property of " + site.legalName + " and may not be reproduced without written consent.",
       "Prices, pack configurations and product availability may change without notice. Please contact our sales desk for the current product list and rates.",
       "Averiq Lifesciences is not liable for any loss arising from reliance on website content. For medical advice, always consult a Registered Medical Practitioner.",
-      "These terms are governed by the laws of India, with jurisdiction at Indore, Madhya Pradesh.",
+      "These terms are governed by the laws of India, with jurisdiction at New Delhi.",
     ],
   },
 ];

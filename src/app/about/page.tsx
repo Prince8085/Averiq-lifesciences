@@ -19,7 +19,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Averiq Lifesciences Private Limited — an Indore-based pharmaceutical, cosmeceutical and nutraceutical company driven by Advanced, Verified, Quality.",
+    "AVERIQ LIFESCIENCES PVT LTD. — a New Delhi-based pharmaceutical, cosmeceutical and nutraceutical company driven by Advanced, Verified, Quality.",
 };
 
 const values = [
@@ -56,7 +56,7 @@ export default function AboutPage() {
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
               {site.legalName} is an Indian pharmaceutical enterprise
-              incorporated in Indore, Madhya Pradesh. Driven by our foundational
+              incorporated in India. Driven by our foundational
               pillar —{" "}
               <strong className="text-primary-900">Advanced, Verified, Quality</strong>{" "}
               — we develop and distribute healthcare, dermatological and
@@ -68,7 +68,7 @@ export default function AboutPage() {
             <div className="grid gap-3 rounded-2xl border border-slate-100 bg-white/80 p-6 shadow-soft backdrop-blur sm:grid-cols-2">
               {[
                 ["CIN", site.cin],
-                ["Registered Office", "Indore, Madhya Pradesh"],
+                ["Corporate Office", "New Delhi 110020"],
               ].map(([k, v]) => (
                 <div key={k}>
                   <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
@@ -137,7 +137,7 @@ export default function AboutPage() {
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {[
-              { icon: Factory, t: "WHO-GMP Facility", d: "Indore-based manufacturing under globally recognized quality protocols" },
+              { icon: Factory, t: "WHO-GMP Facility", d: "Manufacturing under globally recognized quality protocols" },
               { icon: Microscope, t: "Lab Testing", d: "HPLC potency assays, dissolution profiling and stability studies on every batch" },
               { icon: Globe2, t: "Certificate of Analysis", d: "Every batch carries a CoA — transparent documentation for all stakeholders" },
             ].map((x, i) => (

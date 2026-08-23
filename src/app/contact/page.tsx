@@ -16,7 +16,7 @@ import { JsonLd } from "@/components/JsonLd";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Contact Averiq Lifesciences — registered office in Indore, MP. General enquiries, sales, exports and institutional supply. WhatsApp quick-connect available.",
+    "Contact Averiq Lifesciences — corporate office in New Delhi. General enquiries, sales, exports and institutional supply. WhatsApp quick-connect available.",
 };
 
 const departments = [
@@ -44,10 +44,10 @@ const contactJsonLd = {
   image: `${site.url}/averiq-logo.png`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "C23- Dilip Nagar, Khajrana",
-    addressLocality: "Indore",
-    addressRegion: "Madhya Pradesh",
-    postalCode: "452016",
+    streetAddress: "E-49/5, First Floor, Okhla Industrial Area, Phase II",
+    addressLocality: "New Delhi",
+    addressRegion: "Delhi",
+    postalCode: "110020",
     addressCountry: "IN",
   },
   telephone: site.phone,
@@ -85,7 +85,7 @@ export default function ContactPage() {
             {[
               {
                 icon: MapPin,
-                t: "Registered Office",
+                t: "Corporate Office",
                 lines: [site.address],
               },
               {
@@ -152,8 +152,8 @@ export default function ContactPage() {
             <Reveal delay={0.1}>
               <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-soft">
                 <iframe
-                  title="Averiq Lifesciences — Registered Office, Indore"
-                  src="https://www.google.com/maps?q=Khajrana,+Indore,+Madhya+Pradesh+452016&output=embed"
+                  title="Averiq Lifesciences — Corporate Office, New Delhi"
+                  src="https://www.google.com/maps?q=Okhla+Industrial+Area+Phase+II,+New+Delhi+110020&output=embed"
                   className="min-h-72 w-full flex-1 border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

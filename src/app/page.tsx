@@ -52,10 +52,10 @@ const homeJsonLd = {
   foundingDate: "2026-02-17",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "C23- Dilip Nagar, Khajrana",
-    addressLocality: "Indore",
-    addressRegion: "Madhya Pradesh",
-    postalCode: "452016",
+    streetAddress: "E-49/5, First Floor, Okhla Industrial Area, Phase II",
+    addressLocality: "New Delhi",
+    addressRegion: "Delhi",
+    postalCode: "110020",
     addressCountry: "IN",
   },
   email: site.emailPrimary,
@@ -82,8 +82,8 @@ export default function Home() {
           <Reveal delay={0.16}>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
               Averiq Lifesciences develops pharmaceutical and cosmeceutical
-              formulations under WHO-GMP quality standards. Based in Indore,
-              serving healthcare professionals across India.
+              formulations under WHO-GMP quality standards, serving healthcare
+              professionals across India.
             </p>
           </Reveal>
           <Reveal delay={0.24}>

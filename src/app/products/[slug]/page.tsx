@@ -248,7 +248,7 @@ export default async function ProductPage({
               <div className="h-4 w-px bg-slate-200" />
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <Building2 className="h-5 w-5 text-accent-600" />
-                <span className="font-semibold">Manufactured in Indore, India</span>
+                <span className="font-semibold">Manufactured in India</span>
               </div>
             </div>
           </div>

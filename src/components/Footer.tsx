@@ -21,7 +21,7 @@ export function Footer() {
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
               Scientifically formulated, clinically validated and premium
               therapeutic products — engineered under rigorous global quality
-              benchmarks in Indore, serving healthcare across India.
+              benchmarks, serving healthcare across India.
             </p>
             <p className="mt-4 flex items-center gap-2 text-xs font-medium text-slate-500">
               <Landmark className="h-3.5 w-3.5 text-accent-500" />

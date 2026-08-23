@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     template: "%s | Averiq Lifesciences",
   },
   description:
-    "Averiq Lifesciences Private Limited — WHO-GMP certified pharmaceutical, cosmeceutical & nutraceutical manufacturer in Indore. Dermatology, trichology & general medicine formulations.",
+    "AVERIQ LIFESCIENCES PVT LTD. — WHO-GMP certified pharmaceutical, cosmeceutical & nutraceutical manufacturer. Dermatology, trichology & general medicine formulations.",
   keywords: [
-    "Pharmaceutical Manufacturer in Indore",
+    "Pharmaceutical Manufacturer in India",
     "Dermatology Cosmeceutical Pharma Company India",
     "Averiq Lifesciences",
     "Trichology Hair Serum Manufacturer",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: site.legalName,
     title: "Averiq Lifesciences — Advanced • Verified • Quality",
     description:
-      "Scientifically formulated therapeutic products. Pharmaceutical manufacturer in Indore, India.",
+      "Scientifically formulated therapeutic products. Pharmaceutical manufacturer in India.",
   },
   twitter: {
     card: "summary",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description: "Advanced • Verified • Quality — pharmaceutical & cosmeceutical formulations.",
   },
   icons: {
-    icon: "/icon.png",
+    icon: "/favicon.png",
     apple: "/icon.png",
   },
   robots: { index: true, follow: true },
