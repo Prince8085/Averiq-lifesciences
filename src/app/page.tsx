@@ -20,6 +20,7 @@ import { ProductMarquee } from "@/components/ProductMarquee";
 import { ProductCatalogSearch } from "@/components/ProductCatalogSearch";
 import { CertificationsStrip } from "@/components/CertificationsStrip";
 import { HeroMolecularVisual } from "@/components/HeroMolecularVisual";
+import { SlideInVisual } from "@/components/SlideInVisual";
 import { StatsCounterBar } from "@/components/StatsCounterBar";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
@@ -112,13 +113,15 @@ export default function Home() {
 
           <Reveal delay={0.2}>
             <HeroMolecularVisual />
-            <div className="mt-8 overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-900 shadow-float">
-              <img
-                src="/media/generated/averiq-hair-and-skin-science-showcase.png"
-                alt="Averiq Lifesciences — Advanced Hair and Skin Science Showcase"
-                className="w-full h-auto object-cover max-h-[460px]"
-              />
-            </div>
+            <SlideInVisual direction="right" delay={0.25} className="mt-8">
+              <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-900 shadow-float">
+                <img
+                  src="/media/generated/averiq-hair-and-skin-science-showcase.png"
+                  alt="Averiq Lifesciences — Advanced Hair and Skin Science Showcase"
+                  className="w-full h-auto object-cover max-h-[460px] transition-transform duration-700 hover:scale-[1.02]"
+                />
+              </div>
+            </SlideInVisual>
           </Reveal>
 
           {/* Our Vision / Our Mission — reveal on hover */}
@@ -247,15 +250,15 @@ export default function Home() {
           </div>
 
           {/* Verified Quality Promise Banner */}
-          <Reveal delay={0.2} className="mt-12">
+          <SlideInVisual direction="left" delay={0.2} className="mt-12">
             <div className="overflow-hidden rounded-3xl border border-slate-100 bg-slate-900 shadow-soft">
               <img
                 src="/media/generated/verified-quality-promise.png"
                 alt="Averiq Lifesciences — Verified Quality & CoA Promise"
-                className="w-full h-auto object-cover max-h-[420px]"
+                className="w-full h-auto object-cover max-h-[420px] transition-transform duration-700 hover:scale-[1.02]"
               />
             </div>
-          </Reveal>
+          </SlideInVisual>
         </div>
       </section>
 

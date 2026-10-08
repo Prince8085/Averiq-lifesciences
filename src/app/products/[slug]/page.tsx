@@ -19,6 +19,7 @@ import { ProductGallery } from "@/components/ProductGallery";
 import { ProductTabs } from "@/components/ProductTabs";
 import { EnquiryButton } from "@/components/EnquiryButton";
 import { ProductMonographButton } from "@/components/ProductMonographButton";
+import { SlideInVisual } from "@/components/SlideInVisual";
 import { VideoSlot } from "@/components/VideoSlot";
 import { JsonLd } from "@/components/JsonLd";
 import { hasProductVideo, productPhotoSrc, productVideoSrc } from "@/lib/product-media";
@@ -237,28 +238,30 @@ export default async function ProductPage({
 
           {/* ===== Mechanism of Action / Scientific Efficacy Visual ===== */}
           {product.scienceImage && (
-            <div className="mb-14 rounded-3xl border border-slate-100 bg-white p-6 shadow-soft sm:p-8">
-              <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-accent-600">
-                    Formulation Science &amp; Mechanism of Action
-                  </p>
-                  <h2 className="mt-1 font-display text-2xl font-extrabold text-primary-900 sm:text-3xl">
-                    Scientific Efficacy &amp; Cellular Action
-                  </h2>
+            <SlideInVisual direction="up" delay={0.15} className="mb-14">
+              <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-soft sm:p-8">
+                <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-accent-600">
+                      Formulation Science &amp; Mechanism of Action
+                    </p>
+                    <h2 className="mt-1 font-display text-2xl font-extrabold text-primary-900 sm:text-3xl">
+                      Scientific Efficacy &amp; Cellular Action
+                    </h2>
+                  </div>
+                  <span className="rounded-full bg-accent-50 px-3.5 py-1.5 text-xs font-bold text-accent-700 border border-accent-200">
+                    Targeted Therapeutic Science
+                  </span>
                 </div>
-                <span className="rounded-full bg-accent-50 px-3.5 py-1.5 text-xs font-bold text-accent-700 border border-accent-200">
-                  Targeted Therapeutic Science
-                </span>
+                <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-900 shadow-md">
+                  <img
+                    src={product.scienceImage}
+                    alt={`${product.name} — Mechanism of Action & Scientific Efficacy`}
+                    className="w-full h-auto object-cover max-h-[520px] transition-transform duration-700 hover:scale-[1.02]"
+                  />
+                </div>
               </div>
-              <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-900 shadow-md">
-                <img
-                  src={product.scienceImage}
-                  alt={`${product.name} — Mechanism of Action & Scientific Efficacy`}
-                  className="w-full h-auto object-cover max-h-[520px]"
-                />
-              </div>
-            </div>
+            </SlideInVisual>
           )}
 
           <ProductTabs product={product} />
