@@ -17,6 +17,8 @@ import { site, therapeuticVerticals } from "@/data/site";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { ProductMarquee } from "@/components/ProductMarquee";
+import { ProductCatalogSearch } from "@/components/ProductCatalogSearch";
+import { CertificationsStrip } from "@/components/CertificationsStrip";
 import { JsonLd } from "@/components/JsonLd";
 import { cn } from "@/lib/utils";
 
@@ -143,6 +145,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ CERTIFICATIONS & COMPLIANCE STRIP ============ */}
+      <CertificationsStrip />
+
       {/* ============ THERAPEUTIC VERTICALS ============ */}
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -181,7 +186,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ STAR FORMULATIONS (horizontal marquee) ============ */}
+      {/* ============ STAR FORMULATIONS (horizontal marquee & search catalog) ============ */}
       <section id="products" className="scroll-mt-20 bg-muted py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -192,6 +197,9 @@ export default function Home() {
         </div>
         <div className="mt-12">
           <ProductMarquee speed="60s" fadeClass="from-[#f1f5f9]" />
+        </div>
+        <div className="mx-auto mt-16 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ProductCatalogSearch />
         </div>
       </section>
 
