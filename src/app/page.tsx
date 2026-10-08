@@ -100,28 +100,40 @@ export default function Home() {
     <>
       <JsonLd data={homeJsonLd} />
 
-      {/* ============ 1. HERO SECTION (Split 2-Column Desktop Grid Layout) ============ */}
-      <section className="mesh-hero relative overflow-hidden pb-20 pt-28 sm:pt-36">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* ============ 1. HERO SECTION (With /media/heroimage.png Background) ============ */}
+      <section className="relative overflow-hidden bg-slate-950 pb-20 pt-28 text-white sm:pt-36">
+        {/* Background Hero Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <img
+            src="/media/heroimage.png"
+            alt="Averiq Lifesciences — Science & Healthcare Hero"
+            className="h-full w-full object-cover object-center opacity-35 mix-blend-luminosity scale-105"
+          />
+          {/* Gradient Overlay for text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/60" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             {/* Left Content Column */}
             <div>
               <Reveal delay={0.05}>
-                <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50/80 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-primary-700 shadow-xs">
-                  <Sparkles className="h-3.5 w-3.5 text-accent-600" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-accent-400 shadow-xs backdrop-blur">
+                  <Sparkles className="h-3.5 w-3.5 text-accent-400" />
                   SCIENCE • HEALTHCARE • TOMORROW
                 </span>
               </Reveal>
 
               <Reveal delay={0.1}>
-                <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.2rem]">
+                <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-[3.2rem]">
                   Advancing Healthcare Through{" "}
                   <span className="gradient-text">Verified Scientific Innovation</span>
                 </h1>
               </Reveal>
 
               <Reveal delay={0.15}>
-                <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
                   Averiq Lifesciences develops pharmaceutical, cosmeceutical, and
                   trichology formulations under WHO-GMP quality standards, serving
                   healthcare professionals across India.
@@ -132,17 +144,11 @@ export default function Home() {
               <Reveal delay={0.2}>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <Link
-                    href="/#products"
-                    className="inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-bold text-white shadow-md shadow-primary-600/25 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-lg"
-                  >
-                    Explore Products
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-bold text-slate-700 backdrop-blur transition-all hover:border-primary-400 hover:bg-white hover:text-primary-700"
+                    className="inline-flex items-center gap-2.5 rounded-xl bg-accent-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-600/30 transition-all hover:-translate-y-0.5 hover:bg-accent-500 hover:shadow-xl"
                   >
                     Get in Touch
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               </Reveal>
@@ -156,7 +162,7 @@ export default function Home() {
                       <div
                         key={p.label}
                         tabIndex={0}
-                        className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-left shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none"
+                        className="group rounded-2xl border border-slate-800 bg-slate-900/80 p-4 text-left shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-slate-700 hover:bg-slate-900 focus:outline-none"
                       >
                         <div className="flex items-center gap-3">
                           <span
@@ -167,13 +173,13 @@ export default function Home() {
                           >
                             <Icon className="h-4 w-4" />
                           </span>
-                          <span className="font-display text-sm font-bold text-primary-900">
+                          <span className="font-display text-sm font-bold text-white">
                             {p.label}
                           </span>
                           <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180" />
                         </div>
                         <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
-                          <p className="overflow-hidden text-xs leading-relaxed text-slate-600">
+                          <p className="overflow-hidden text-xs leading-relaxed text-slate-300">
                             <span className="block pt-2.5">{p.text}</span>
                           </p>
                         </div>
@@ -184,9 +190,9 @@ export default function Home() {
               </Reveal>
             </div>
 
-            {/* Right Hero Visual Column (Science Showcase Image) */}
+            {/* Right Hero Visual Column */}
             <SlideInVisual direction="right" delay={0.2} className="relative">
-              <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-900 shadow-float">
+              <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/90 shadow-2xl backdrop-blur">
                 <img
                   src="/media/generated/averiq-hair-and-skin-science-showcase.png"
                   alt="Averiq Lifesciences — Advanced Hair and Skin Science Showcase"
