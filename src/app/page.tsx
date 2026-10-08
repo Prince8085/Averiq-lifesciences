@@ -292,7 +292,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ 6. KEY HIGHLIGHTS / METRICS BAR ============ */}
+      {/* ============ 6. KEY HIGHLIGHTS & SCIENTIFIC MICROSCOPY BANNER ============ */}
+      <section className="bg-slate-900 py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SlideInVisual direction="up" delay={0.1}>
+            <div className="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
+              <img
+                src="/media/generated/futuristic-scientist-at-microscope.png"
+                alt="Averiq Lifesciences — Futuristic Scientist at Microscope"
+                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.01]"
+              />
+            </div>
+          </SlideInVisual>
+        </div>
+      </section>
+
       <StatsCounterBar />
 
       {/* ============ WHY CHOOSE AVERIQ ============ */}
@@ -336,6 +350,21 @@ export default function Home() {
 
       {/* ============ FAQ SECTION ============ */}
       <FaqSection />
+
+      {/* ============ FUTURISTIC BIOTECH RESEARCH BANNER ============ */}
+      <section className="bg-slate-900 py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SlideInVisual direction="up" delay={0.1}>
+            <div className="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
+              <img
+                src="/media/generated/futuristic-biotech-research-banner.png"
+                alt="Averiq Lifesciences — Futuristic Biotech Research Banner"
+                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.01]"
+              />
+            </div>
+          </SlideInVisual>
+        </div>
+      </section>
 
       {/* ============ 7. BOTTOM CALL-TO-ACTION BANNER ============ */}
       <section className="mesh-dark border-t border-slate-800 py-20 text-white">
