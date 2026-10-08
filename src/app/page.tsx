@@ -19,7 +19,6 @@ import { Reveal } from "@/components/Reveal";
 import { ProductMarquee } from "@/components/ProductMarquee";
 import { ProductCatalogSearch } from "@/components/ProductCatalogSearch";
 import { CertificationsStrip } from "@/components/CertificationsStrip";
-import { HeroMolecularVisual } from "@/components/HeroMolecularVisual";
 import { SlideInVisual } from "@/components/SlideInVisual";
 import { StatsCounterBar } from "@/components/StatsCounterBar";
 import { FaqSection } from "@/components/FaqSection";
@@ -31,6 +30,13 @@ const verticalIcons = {
   Trichology: Flower2,
   "Dental & Oral Health": Pill,
   "Gynecology & Nutraceuticals": Leaf,
+} as const;
+
+const verticalImages = {
+  Dermatology: "/media/generated/advanced-microsphere-acne-treatment-infographic.png",
+  Trichology: "/media/generated/trichology--peptide-serum-hair-science.png",
+  "Dental & Oral Health": "/media/generated/lumiriq-glow-brightening-skincare-infographic.png",
+  "Gynecology & Nutraceuticals": "/media/generated/rootriq-h-advanced-hair-nutrition-infographic.png",
 } as const;
 
 const whyUs = [
@@ -94,78 +100,108 @@ export default function Home() {
     <>
       <JsonLd data={homeJsonLd} />
 
-      {/* ============ HERO ============ */}
-      <section className="mesh-hero relative overflow-hidden pb-20 pt-32 sm:pt-36">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <Reveal delay={0.08}>
-            <h1 className="font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.4rem]">
-              Advancing Healthcare Through{" "}
-              <span className="gradient-text">Verified Scientific Innovation</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Averiq Lifesciences develops pharmaceutical and cosmeceutical
-              formulations under WHO-GMP quality standards, serving healthcare
-              professionals across India.
-            </p>
-          </Reveal>
+      {/* ============ 1. HERO SECTION (Split 2-Column Desktop Grid Layout) ============ */}
+      <section className="mesh-hero relative overflow-hidden pb-20 pt-28 sm:pt-36">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            {/* Left Content Column */}
+            <div>
+              <Reveal delay={0.05}>
+                <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50/80 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-primary-700 shadow-xs">
+                  <Sparkles className="h-3.5 w-3.5 text-accent-600" />
+                  SCIENCE • HEALTHCARE • TOMORROW
+                </span>
+              </Reveal>
 
-          <Reveal delay={0.2}>
-            <HeroMolecularVisual />
-            <SlideInVisual direction="right" delay={0.25} className="mt-8">
-              <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-900 shadow-float">
+              <Reveal delay={0.1}>
+                <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.2rem]">
+                  Advancing Healthcare Through{" "}
+                  <span className="gradient-text">Verified Scientific Innovation</span>
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.15}>
+                <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                  Averiq Lifesciences develops pharmaceutical, cosmeceutical, and
+                  trichology formulations under WHO-GMP quality standards, serving
+                  healthcare professionals across India.
+                </p>
+              </Reveal>
+
+              {/* Action Buttons */}
+              <Reveal delay={0.2}>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/#products"
+                    className="inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-bold text-white shadow-md shadow-primary-600/25 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-lg"
+                  >
+                    Explore Products
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/80 px-6 py-3.5 text-sm font-bold text-slate-700 backdrop-blur transition-all hover:border-primary-400 hover:bg-white hover:text-primary-700"
+                  >
+                    Get in Touch
+                  </Link>
+                </div>
+              </Reveal>
+
+              {/* Vision / Mission Interactive Panels */}
+              <Reveal delay={0.25} className="mt-10">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {heroPanels.map((p) => {
+                    const Icon = p.icon;
+                    return (
+                      <div
+                        key={p.label}
+                        tabIndex={0}
+                        className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-left shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span
+                            className={cn(
+                              "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md",
+                              p.tile
+                            )}
+                          >
+                            <Icon className="h-4 w-4" />
+                          </span>
+                          <span className="font-display text-sm font-bold text-primary-900">
+                            {p.label}
+                          </span>
+                          <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180" />
+                        </div>
+                        <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                          <p className="overflow-hidden text-xs leading-relaxed text-slate-600">
+                            <span className="block pt-2.5">{p.text}</span>
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Right Hero Visual Column (Science Showcase Image) */}
+            <SlideInVisual direction="right" delay={0.2} className="relative">
+              <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-900 shadow-float">
                 <img
                   src="/media/generated/averiq-hair-and-skin-science-showcase.png"
                   alt="Averiq Lifesciences — Advanced Hair and Skin Science Showcase"
-                  className="w-full h-auto object-cover max-h-[460px] transition-transform duration-700 hover:scale-[1.02]"
+                  className="w-full h-auto object-cover max-h-[520px] transition-transform duration-700 hover:scale-[1.02]"
                 />
               </div>
             </SlideInVisual>
-          </Reveal>
-
-          {/* Our Vision / Our Mission — reveal on hover */}
-          <Reveal delay={0.24}>
-            <div className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-2">
-              {heroPanels.map((p) => {
-                const Icon = p.icon;
-                return (
-                  <div
-                    key={p.label}
-                    tabIndex={0}
-                    className="group rounded-2xl border border-slate-200/70 bg-white/70 p-5 text-left shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none focus-visible:border-primary-300 focus-visible:shadow-float"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span
-                        className={cn(
-                          "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md",
-                          p.tile
-                        )}
-                      >
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <span className="font-display text-base font-bold text-primary-900">
-                        {p.label}
-                      </span>
-                      <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180" />
-                    </div>
-                    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
-                      <p className="overflow-hidden text-sm leading-relaxed text-slate-600">
-                        <span className="block pt-3">{p.text}</span>
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* ============ CERTIFICATIONS & COMPLIANCE STRIP ============ */}
+      {/* ============ 2. TRUST & COMPLIANCE BAR ============ */}
       <CertificationsStrip />
 
-      {/* ============ THERAPEUTIC VERTICALS ============ */}
+      {/* ============ 3. THERAPEUTIC VERTICALS (Categories Section) ============ */}
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -173,28 +209,41 @@ export default function Home() {
             title="Specialized Care, Clearly Segmented"
             subtitle="Explicit therapeutic divisions so doctors, distributors and patients find exactly what they need."
           />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {therapeuticVerticals.map((v, i) => {
               const Icon = verticalIcons[v.slug];
+              const imgUrl = verticalImages[v.slug];
               return (
                 <Reveal key={v.slug} delay={i * 0.07}>
                   <Link
                     href="/#products"
-                    className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
                   >
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
-                      {v.title}
-                    </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
-                      {v.blurb}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent-600">
-                      View range
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                    </span>
+                    {/* Category visual header */}
+                    <div className="relative h-40 overflow-hidden bg-slate-900">
+                      <img
+                        src={imgUrl}
+                        alt={v.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent" />
+                      <span className="absolute bottom-3 left-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-5">
+                      <h3 className="font-display text-base font-bold text-primary-900">
+                        {v.title}
+                      </h3>
+                      <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600">
+                        {v.blurb}
+                      </p>
+                      <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-accent-600">
+                        Explore range
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
                   </Link>
                 </Reveal>
               );
@@ -203,10 +252,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ STATS COUNTER BAR ============ */}
-      <StatsCounterBar />
+      {/* ============ 4. FEATURED PRODUCT RANGE SHOWCASE BANNER ============ */}
+      <section className="bg-slate-900 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SlideInVisual direction="up" delay={0.1}>
+            <div className="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
+              <img
+                src="/media/generated/averiq-skincare-innovation-showcase.png"
+                alt="Averiq Lifesciences — Featured Product Range Showcase"
+                className="w-full h-auto object-cover max-h-[460px] transition-transform duration-700 hover:scale-[1.01]"
+              />
+            </div>
+          </SlideInVisual>
+        </div>
+      </section>
 
-      {/* ============ STAR FORMULATIONS (horizontal marquee & search catalog) ============ */}
+      {/* ============ 5. STAR FORMULATIONS & LIVE SEARCH CATALOG ============ */}
       <section id="products" className="scroll-mt-20 bg-muted py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -223,7 +284,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ WHY CHOOSE ============ */}
+      {/* ============ 6. KEY HIGHLIGHTS / METRICS BAR ============ */}
+      <StatsCounterBar />
+
+      {/* ============ WHY CHOOSE AVERIQ ============ */}
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -265,33 +329,38 @@ export default function Home() {
       {/* ============ FAQ SECTION ============ */}
       <FaqSection />
 
-      {/* ============ FINAL CTA ============ */}
-      <section className="border-t border-slate-100 bg-white py-16">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 sm:px-6 lg:flex-row lg:px-8">
-          <div className="text-center lg:text-left">
-            <h2 className="font-display text-2xl font-bold text-primary-900 sm:text-3xl">
-              Want the full product catalog?
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Get the complete product list, visual aids and pricing on WhatsApp.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Averiq — please share the complete product list & visual aids.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-accent-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-600/25 transition-all hover:-translate-y-0.5 hover:bg-accent-500"
-            >
-              <MessagesSquare className="h-4 w-4" />
-              Request Product List
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-6 py-3.5 text-sm font-bold text-slate-700 transition-colors hover:border-primary-400 hover:text-primary-700"
-            >
-              Contact Our Team
-            </Link>
+      {/* ============ 7. BOTTOM CALL-TO-ACTION BANNER ============ */}
+      <section className="mesh-dark border-t border-slate-800 py-20 text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-400">
+                Partner &amp; Distribution
+              </span>
+              <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">
+                Let&apos;s Build a Healthier Tomorrow
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                Connect with us for product inquiries, institutional supply, or distribution partnerships across India.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Averiq Lifesciences — I would like to inquire about product range & availability.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-accent-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-600/30 transition-all hover:-translate-y-0.5 hover:bg-accent-500"
+              >
+                <MessagesSquare className="h-4 w-4" />
+                Request Product List
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20"
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
       </section>
