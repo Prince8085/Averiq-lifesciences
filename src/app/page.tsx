@@ -19,6 +19,9 @@ import { Reveal } from "@/components/Reveal";
 import { ProductMarquee } from "@/components/ProductMarquee";
 import { ProductCatalogSearch } from "@/components/ProductCatalogSearch";
 import { CertificationsStrip } from "@/components/CertificationsStrip";
+import { HeroMolecularVisual } from "@/components/HeroMolecularVisual";
+import { StatsCounterBar } from "@/components/StatsCounterBar";
+import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { cn } from "@/lib/utils";
 
@@ -107,6 +110,10 @@ export default function Home() {
             </p>
           </Reveal>
 
+          <Reveal delay={0.2}>
+            <HeroMolecularVisual />
+          </Reveal>
+
           {/* Our Vision / Our Mission — reveal on hover */}
           <Reveal delay={0.24}>
             <div className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-2">
@@ -186,6 +193,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ STATS COUNTER BAR ============ */}
+      <StatsCounterBar />
+
       {/* ============ STAR FORMULATIONS (horizontal marquee & search catalog) ============ */}
       <section id="products" className="scroll-mt-20 bg-muted py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -230,6 +240,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ============ FAQ SECTION ============ */}
+      <FaqSection />
 
       {/* ============ FINAL CTA ============ */}
       <section className="border-t border-slate-100 bg-white py-16">

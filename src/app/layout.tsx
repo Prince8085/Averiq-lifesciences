@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { BackToTop } from "@/components/BackToTop";
 import { site } from "@/data/site";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -60,10 +62,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col bg-background text-foreground antialiased">
+        <ScrollProgress />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
         <FloatingWhatsApp />
+        <BackToTop />
       </body>
     </html>
   );
