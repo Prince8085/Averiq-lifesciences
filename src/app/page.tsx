@@ -337,49 +337,49 @@ export default function Home() {
       {/* ============ FAQ SECTION ============ */}
       <FaqSection />
 
-      {/* ============ 7. BOTTOM CALL-TO-ACTION BANNER (With Biotech Research BG) ============ */}
+      {/* ============ 7. BOTTOM CALL-TO-ACTION BANNER (With 100% Opacity Biotech Research BG) ============ */}
       <section className="relative overflow-hidden bg-slate-950 border-t border-slate-800 py-20 text-white shadow-2xl">
-        {/* Background Image */}
+        {/* Full Opacity Background Image */}
         <div className="absolute inset-0 pointer-events-none select-none">
           <img
             src="/media/generated/futuristic-biotech-research-banner.png"
             alt="Averiq Lifesciences — Biotech Research Background"
-            className="h-full w-full object-cover opacity-45 mix-blend-luminosity scale-105"
+            className="h-full w-full object-cover opacity-100 scale-100"
           />
-          <div className="absolute inset-0 bg-slate-950/75" />
-          <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-slate-950 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-slate-950 to-transparent" />
         </div>
 
+        {/* Content Container in Frosted Glass Box for 100% Text Clarity */}
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-400">
-                Partner &amp; Distribution
-              </span>
-              <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">
-                Let&apos;s Build a Healthier Tomorrow
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
-                Connect with us for product inquiries, institutional supply, or distribution partnerships across India.
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Averiq Lifesciences — I would like to inquire about product range & availability.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-accent-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-600/30 transition-all hover:-translate-y-0.5 hover:bg-accent-500"
-              >
-                <MessagesSquare className="h-4 w-4" />
-                Request Product List
-              </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20"
-              >
-                Contact Us
-              </Link>
+          <div className="rounded-3xl border border-slate-700/80 bg-slate-950/85 p-8 sm:p-10 shadow-2xl backdrop-blur-md">
+            <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-400">
+                  Partner &amp; Distribution
+                </span>
+                <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl text-white">
+                  Let&apos;s Build a Healthier Tomorrow
+                </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base font-medium">
+                  Connect with us for product inquiries, institutional supply, or distribution partnerships across India.
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-4 shrink-0">
+                <a
+                  href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Averiq Lifesciences — I would like to inquire about product range & availability.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-accent-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-600/30 transition-all hover:-translate-y-0.5 hover:bg-accent-500"
+                >
+                  <MessagesSquare className="h-4 w-4" />
+                  Request Product List
+                </a>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur transition-all hover:bg-white/20"
+                >
+                  Contact Us
+                </Link>
+              </div>
             </div>
           </div>
         </div>
