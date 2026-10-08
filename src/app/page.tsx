@@ -292,21 +292,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ 6. KEY HIGHLIGHTS & SCIENTIFIC MICROSCOPY BANNER ============ */}
-      <section className="bg-slate-900 py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SlideInVisual direction="up" delay={0.1}>
-            <div className="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
-              <img
-                src="/media/generated/futuristic-scientist-at-microscope.png"
-                alt="Averiq Lifesciences — Futuristic Scientist at Microscope"
-                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.01]"
-              />
-            </div>
-          </SlideInVisual>
-        </div>
-      </section>
-
+      {/* ============ 6. KEY HIGHLIGHTS & METRICS BAR (With Scientist Microscope BG) ============ */}
       <StatsCounterBar />
 
       {/* ============ WHY CHOOSE AVERIQ ============ */}
@@ -351,24 +337,21 @@ export default function Home() {
       {/* ============ FAQ SECTION ============ */}
       <FaqSection />
 
-      {/* ============ FUTURISTIC BIOTECH RESEARCH BANNER ============ */}
-      <section className="bg-slate-900 py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SlideInVisual direction="up" delay={0.1}>
-            <div className="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
-              <img
-                src="/media/generated/futuristic-biotech-research-banner.png"
-                alt="Averiq Lifesciences — Futuristic Biotech Research Banner"
-                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.01]"
-              />
-            </div>
-          </SlideInVisual>
+      {/* ============ 7. BOTTOM CALL-TO-ACTION BANNER (With Biotech Research BG) ============ */}
+      <section className="relative overflow-hidden bg-slate-950 border-t border-slate-800 py-20 text-white shadow-2xl">
+        {/* Background Image */}
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <img
+            src="/media/generated/futuristic-biotech-research-banner.png"
+            alt="Averiq Lifesciences — Biotech Research Background"
+            className="h-full w-full object-cover opacity-45 mix-blend-luminosity scale-105"
+          />
+          <div className="absolute inset-0 bg-slate-950/75" />
+          <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-slate-950 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-slate-950 to-transparent" />
         </div>
-      </section>
 
-      {/* ============ 7. BOTTOM CALL-TO-ACTION BANNER ============ */}
-      <section className="mesh-dark border-t border-slate-800 py-20 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-400">
