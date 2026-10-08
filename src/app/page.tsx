@@ -100,91 +100,94 @@ export default function Home() {
     <>
       <JsonLd data={homeJsonLd} />
 
-      {/* ============ 1. HERO SECTION (With /media/heroimage.png Bright Background) ============ */}
+      {/* ============ 1. HERO SECTION (Left Aligned Text & Vivid heroimage.png Background) ============ */}
       <section className="relative overflow-hidden pb-20 pt-28 sm:pt-36">
-        {/* Full-bleed Hero Background Image */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        {/* Full-bleed Hero Background Image - Vivid & Clear */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
           <img
             src="/media/heroimage.png"
             alt="Averiq Lifesciences — Science & Healthcare Hero Background"
-            className="h-full w-full object-cover object-center opacity-85"
+            className="h-full w-full object-cover object-right opacity-100 scale-100"
           />
-          {/* Subtle light gradient overlays for legibility without darkening */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/35" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/95" />
+          {/* Subtle gradient overlay on left for text legibility without washing out right side */}
+          <div className="absolute inset-y-0 left-0 w-full lg:w-2/3 bg-gradient-to-r from-white via-white/90 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/80 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <Reveal delay={0.05}>
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white/90 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary-700 shadow-sm backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5 text-accent-600" />
-              SCIENCE • HEALTHCARE • TOMORROW
-            </span>
-          </Reveal>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl text-left">
+            <Reveal delay={0.05}>
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white/90 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary-700 shadow-sm backdrop-blur">
+                <Sparkles className="h-3.5 w-3.5 text-accent-600" />
+                SCIENCE • HEALTHCARE • TOMORROW
+              </span>
+            </Reveal>
 
-          <Reveal delay={0.1}>
-            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.4rem]">
-              Advancing Healthcare Through{" "}
-              <span className="gradient-text">Verified Scientific Innovation</span>
-            </h1>
-          </Reveal>
+            <Reveal delay={0.1}>
+              <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.5rem]">
+                Advancing Healthcare Through{" "}
+                <span className="gradient-text">Verified Scientific Innovation</span>
+              </h1>
+            </Reveal>
 
-          <Reveal delay={0.15}>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg font-medium">
-              Averiq Lifesciences develops pharmaceutical, cosmeceutical, and
-              trichology formulations under WHO-GMP quality standards, serving
-              healthcare professionals across India.
-            </p>
-          </Reveal>
+            <Reveal delay={0.15}>
+              <p className="mt-6 text-base leading-relaxed text-slate-700 sm:text-lg font-medium">
+                Averiq Lifesciences develops pharmaceutical, cosmeceutical, and
+                trichology formulations under WHO-GMP quality standards, serving
+                healthcare professionals across India.
+              </p>
+            </Reveal>
 
-          {/* Action Button */}
-          <Reveal delay={0.2}>
-            <div className="mt-8 flex justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-primary-600/30 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl"
-              >
-                Get in Touch
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </Reveal>
+            {/* Action Button */}
+            <Reveal delay={0.2}>
+              <div className="mt-8 flex items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-primary-600/30 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl"
+                >
+                  Get in Touch
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </Reveal>
 
-          {/* Vision / Mission Interactive Panels */}
-          <Reveal delay={0.25} className="mt-12">
-            <div className="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2">
-              {heroPanels.map((p) => {
-                const Icon = p.icon;
-                return (
-                  <div
-                    key={p.label}
-                    tabIndex={0}
-                    className="group rounded-2xl border border-slate-200/80 bg-white/90 p-5 text-left shadow-soft backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span
-                        className={cn(
-                          "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md",
-                          p.tile
-                        )}
-                      >
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <span className="font-display text-base font-bold text-primary-900">
-                        {p.label}
-                      </span>
-                      <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180" />
+            {/* Vision / Mission Interactive Panels */}
+            <Reveal delay={0.25} className="mt-12">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {heroPanels.map((p) => {
+                  const Icon = p.icon;
+                  return (
+                    <div
+                      key={p.label}
+                      tabIndex={0}
+                      className="group rounded-2xl border border-slate-200/80 bg-white/90 p-5 text-left shadow-soft backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={cn(
+                            "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md",
+                            p.tile
+                          )}
+                        >
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        <span className="font-display text-base font-bold text-primary-900">
+                          {p.label}
+                        </span>
+                        <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180" />
+                      </div>
+                      <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                        <p className="overflow-hidden text-sm leading-relaxed text-slate-600">
+                          <span className="block pt-3">{p.text}</span>
+                        </p>
+                      </div>
                     </div>
-                    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
-                      <p className="overflow-hidden text-sm leading-relaxed text-slate-600">
-                        <span className="block pt-3">{p.text}</span>
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </Reveal>
+                  );
+                })}
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
