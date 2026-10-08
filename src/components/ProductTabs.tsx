@@ -2,24 +2,32 @@
 
 import { useState } from "react";
 import {
-  Stethoscope,
+  Sparkles,
+  FlaskConical,
   Activity,
   ClipboardList,
   PackageCheck,
   CheckCircle2,
+  AlertTriangle,
+  Info,
 } from "lucide-react";
 import type { Product } from "@/data/products";
 import { cn } from "@/lib/utils";
 
-const tabs = [
-  { key: "indications", label: "Indications", icon: Stethoscope },
-  { key: "moa", label: "Mechanism of Action", icon: Activity },
-  { key: "directions", label: "Directions & Precautions", icon: ClipboardList },
-  { key: "regulatory", label: "Packaging & Regulatory", icon: PackageCheck },
-] as const;
-
 export function ProductTabs({ product }: { product: Product }) {
-  const [active, setActive] = useState<(typeof tabs)[number]["key"]>("indications");
+  const tabs: { key: string; label: string; icon: typeof Sparkles }[] = [
+    { key: "overview", label: "Overview & Benefits", icon: Sparkles },
+    ...(product.actives.length
+      ? [{ key: "actives", label: "Key Ingredients", icon: FlaskConical }]
+      : []),
+    ...(product.why.length
+      ? [{ key: "why", label: `Why ${product.name}`, icon: Activity }]
+      : []),
+    { key: "directions", label: "Directions & Safety", icon: ClipboardList },
+    { key: "storage", label: "Storage & Pack", icon: PackageCheck },
+  ];
+
+  const [active, setActive] = useState<string>("overview");
 
   return (
     <div className="mt-12">
@@ -45,33 +53,87 @@ export function ProductTabs({ product }: { product: Product }) {
       </div>
 
       <div className="mt-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-soft sm:p-8">
-        {active === "indications" && (
+        {active === "overview" && (
           <div>
             <h3 className="font-display text-lg font-bold text-primary-900">
-              Therapeutic Indications & Clinical Uses
+              Product Overview
             </h3>
+            <p className="mt-4 text-sm leading-relaxed text-slate-700">
+              {product.overview}
+            </p>
+
+            <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-primary-100 bg-primary-50/60 p-4">
+              <Info className="mt-0.5 h-4 w-4 shrink-0 text-primary-600" />
+              <p className="text-sm text-slate-700">
+                <span className="font-bold text-primary-900">Indication: </span>
+                {product.indication}
+              </p>
+            </div>
+
+            <h4 className="mt-7 font-display text-base font-bold text-primary-900">
+              Key Benefits
+            </h4>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {product.indications.map((i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-slate-700">
+              {product.benefits.map((b) => (
+                <li key={b} className="flex items-start gap-2.5 text-sm text-slate-700">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
-                  {i}
+                  {b}
                 </li>
               ))}
             </ul>
           </div>
         )}
-        {active === "moa" && (
+
+        {active === "actives" && (
           <div>
             <h3 className="font-display text-lg font-bold text-primary-900">
-              Mechanism of Action (Pharmacology)
+              Key Ingredients &amp; Their Role
             </h3>
-            <p className="mt-4 text-sm leading-relaxed text-slate-700">{product.moa}</p>
+            <ul className="mt-4 space-y-4">
+              {product.actives.map((a) => (
+                <li
+                  key={a.name}
+                  className="rounded-xl border border-slate-100 bg-slate-50/60 p-4"
+                >
+                  <p className="font-display text-sm font-bold text-primary-900">
+                    {a.name}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                    {a.role}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
+
+        {active === "why" && (
+          <div>
+            <h3 className="font-display text-lg font-bold text-primary-900">
+              Why {product.name}?
+            </h3>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              {product.why.map((w) => (
+                <div
+                  key={w.title}
+                  className="rounded-xl border border-slate-100 bg-white p-4 shadow-soft"
+                >
+                  <p className="font-display text-sm font-bold text-primary-900">
+                    {w.title}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                    {w.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {active === "directions" && (
           <div>
             <h3 className="font-display text-lg font-bold text-primary-900">
-              Direction for Use & Precautions
+              Directions for Use
             </h3>
             <ul className="mt-4 space-y-3">
               {product.directions.map((d) => (
@@ -81,21 +143,61 @@ export function ProductTabs({ product }: { product: Product }) {
                 </li>
               ))}
             </ul>
+
+            {product.safety.length > 0 && (
+              <>
+                <h4 className="mt-7 flex items-center gap-2 font-display text-base font-bold text-primary-900">
+                  <AlertTriangle className="h-4 w-4 text-amber-500" />
+                  Safety Information
+                </h4>
+                <ul className="mt-4 space-y-3">
+                  {product.safety.map((s) => (
+                    <li key={s} className="flex items-start gap-2.5 text-sm text-slate-700">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" />
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         )}
-        {active === "regulatory" && (
+
+        {active === "storage" && (
           <div>
             <h3 className="font-display text-lg font-bold text-primary-900">
-              Packaging & Regulatory Information
+              Storage &amp; Packaging
             </h3>
-            <ul className="mt-4 space-y-3">
-              {product.regulatory.map((r) => (
-                <li key={r} className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500" />
-                  {r}
-                </li>
-              ))}
-            </ul>
+            <dl className="mt-5 grid gap-4 sm:grid-cols-3">
+              <div className="rounded-xl border border-slate-100 bg-white p-4">
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  Dosage Form
+                </dt>
+                <dd className="mt-1 text-sm font-bold text-primary-900">
+                  {product.form}
+                </dd>
+              </div>
+              <div className="rounded-xl border border-slate-100 bg-white p-4">
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  Pack Size
+                </dt>
+                <dd className="mt-1 text-sm font-bold text-primary-900">
+                  {product.pack}
+                </dd>
+              </div>
+              <div className="rounded-xl border border-slate-100 bg-white p-4">
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  Prescription Status
+                </dt>
+                <dd className="mt-1 text-sm font-bold text-primary-900">
+                  {product.rx ? "Rx — Schedule H" : "OTC"}
+                </dd>
+              </div>
+            </dl>
+            <p className="mt-5 flex items-start gap-2.5 text-sm text-slate-700">
+              <PackageCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
+              {product.storage}
+            </p>
           </div>
         )}
       </div>

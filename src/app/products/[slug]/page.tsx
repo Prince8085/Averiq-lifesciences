@@ -8,7 +8,6 @@ import {
   Pill,
   Package,
   Shield,
-  Clock,
   AlertTriangle,
   FileText,
   Building2,
@@ -36,7 +35,7 @@ export async function generateMetadata({
   if (!product) return { title: "Product Not Found" };
   return {
     title: `${product.name} — ${product.generic}`,
-    description: `${product.name} (${product.generic}). ${product.tagline}. Indications: ${product.indications.slice(0, 3).join(", ")}. Pack: ${product.pack}.`,
+    description: `${product.name} (${product.generic}). ${product.tagline}. ${product.indication} Pack: ${product.pack}.`,
   };
 }
 
@@ -83,16 +82,11 @@ export default async function ProductPage({
               Home
             </Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <Link href="/products" className="hover:text-primary-700">
+            <Link href="/#products" className="hover:text-primary-700">
               Products
             </Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <Link
-              href={`/products?category=${encodeURIComponent(product.category)}`}
-              className="hover:text-primary-700"
-            >
-              {product.category}
-            </Link>
+            <span>{product.category}</span>
             <ChevronRight className="h-3.5 w-3.5" />
             <span className="text-primary-700">{product.name}</span>
           </nav>
@@ -161,10 +155,10 @@ export default async function ProductPage({
                 </div>
                 <div className="rounded-xl border border-slate-100 bg-white p-4">
                   <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    <Clock className="h-3.5 w-3.5" /> Shelf Life
+                    <Shield className="h-3.5 w-3.5" /> Type
                   </p>
                   <p className="mt-1 text-sm font-bold text-primary-900">
-                    {product.regulatory.find((r) => r.includes("Shelf life"))?.match(/\d+ months/)?.[0] || "24 months"}
+                    {product.rx ? "Rx — Schedule H" : "OTC"}
                   </p>
                 </div>
               </div>
@@ -184,9 +178,9 @@ export default async function ProductPage({
                 </div>
               )}
 
-              {/* Highlights */}
+              {/* Key benefits */}
               <ul className="mt-6 space-y-2.5">
-                {product.highlights.map((h) => (
+                {product.benefits.map((h) => (
                   <li key={h} className="flex items-start gap-2.5 text-sm text-slate-700">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
                     {h}

@@ -43,10 +43,11 @@ export function ProductVisual({
       {/* soft platform shadow */}
       <ellipse cx="100" cy="172" rx="62" ry="10" fill="#0f172a" opacity="0.08" />
 
-      {form === "Gel" || form === "Cream" ? <Tube /> : null}
+      {form === "Gel" || form === "Cream" || form === "Sunscreen" ? <Tube /> : null}
       {form === "Face Wash" ? <FaceWashTube /> : null}
       {form === "Serum" ? <Dropper /> : null}
       {form === "Hair Serum" ? <Spray /> : null}
+      {form === "Shampoo" ? <LotionBottle /> : null}
       {form === "Capsule" ? <Capsules /> : null}
       {form === "Tablet" ? <Tablets /> : null}
 
@@ -177,20 +178,7 @@ export function ProductVisual({
     );
   }
 
-  function Bottle() {
-    return (
-      <g>
-        <rect x="76" y="58" width="48" height="88" rx="10" fill={`url(#pv-${form})`} />
-        <rect x="84" y="70" width="32" height="44" rx="5" fill="#ffffff" opacity="0.9" />
-        <rect x="88" y="46" width="24" height="16" rx="3" fill={to} />
-        <rect x="84" y="30" width="32" height="18" rx="5" fill="#0f172a" opacity="0.85" />
-        {/* measure cup */}
-        <rect x="122" y="150" width="34" height="16" rx="4" fill="#ffffff" stroke="#cbd5e1" />
-        <line x1="124" y1="146" x2="124" y2="152" stroke="#cbd5e1" strokeWidth="2" />
-      </g>
-    );
-  }
-
+  /** Pump bottle — used for shampoos and other liquid formats */
   function LotionBottle() {
     return (
       <g>

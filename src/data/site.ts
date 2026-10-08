@@ -23,17 +23,16 @@ export const navLinks = [
   { label: "About Us", href: "/about" },
   {
     label: "Products",
-    href: "/products",
+    href: "/#products",
     children: [
-      { label: "Dermatology", href: "/products?category=Dermatology" },
-      { label: "Cosmeceuticals", href: "/products?category=Cosmeceuticals" },
-      { label: "Trichology", href: "/products?category=Trichology" },
-      { label: "General Medicine", href: "/products?category=General Medicine" },
-      { label: "Nutraceuticals", href: "/products?category=Nutraceuticals" },
+      { label: "Dermatology" },
+      { label: "Cosmeceuticals" },
+      { label: "Trichology" },
+      { label: "Dental & Oral Health" },
+      { label: "Gynecology & Nutraceuticals" },
     ],
   },
   { label: "Contact", href: "/contact" },
-  { label: "Quality Standards", href: "/quality" },
 ] as const;
 
 export const therapeuticVerticals = [
@@ -41,7 +40,7 @@ export const therapeuticVerticals = [
     slug: "Dermatology",
     title: "Dermatology & Cosmeceuticals",
     blurb:
-      "Advanced skincare, acne management, pigmentation correctors, sunscreen gels and anti-aging topicals.",
+      "Advanced skincare, acne management, pigmentation correctors, sunscreens and therapeutic topicals.",
     icon: "sparkles",
   },
   {
@@ -52,17 +51,17 @@ export const therapeuticVerticals = [
     icon: "flower",
   },
   {
-    slug: "General Medicine",
-    title: "General Medicine & Anti-Infectives",
+    slug: "Dental & Oral Health",
+    title: "Dental & Oral Health",
     blurb:
-      "Broad-spectrum antibiotics, analgesics, antipyretics and gastro-resistant tablets.",
+      "Oral care and dental therapeutic formulations — an expanding Averiq range.",
     icon: "pill",
   },
   {
-    slug: "Nutraceuticals",
-    title: "Nutraceuticals & Dietary Supplements",
+    slug: "Gynecology & Nutraceuticals",
+    title: "Gynecology & Nutraceuticals",
     blurb:
-      "Multivitamins, antioxidant blends, mineral complexes and immunity boosters.",
+      "Women's health formulations alongside multivitamins, mineral complexes and nutraceutical support.",
     icon: "leaf",
   },
 ] as const;

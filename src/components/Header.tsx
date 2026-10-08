@@ -7,38 +7,11 @@ import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { navLinks, site } from "@/data/site";
 import { Logo } from "@/components/Logo";
 import { cn } from "@/lib/utils";
-import { products } from "@/data/products";
+import { products, type Category } from "@/data/products";
 
-const categoryForms: Record<string, { form: string; comingSoon: boolean }[]> = {
-  Dermatology: [
-    { form: "Gel", comingSoon: false },
-    { form: "Capsule", comingSoon: false },
-    { form: "Cream", comingSoon: false },
-    { form: "Serum", comingSoon: true },
-    { form: "Tablet", comingSoon: true },
-  ],
-  Cosmeceuticals: [
-    { form: "Face Wash", comingSoon: false },
-    { form: "Gel", comingSoon: false },
-    { form: "Cream", comingSoon: true },
-    { form: "Serum", comingSoon: true },
-  ],
-  Trichology: [
-    { form: "Hair Serum", comingSoon: false },
-    { form: "Shampoo", comingSoon: true },
-    { form: "Tablet", comingSoon: true },
-  ],
-  "General Medicine": [
-    { form: "Tablet", comingSoon: false },
-    { form: "Capsule", comingSoon: true },
-    { form: "Syrup", comingSoon: true },
-  ],
-  Nutraceuticals: [
-    { form: "Tablet", comingSoon: false },
-    { form: "Powder", comingSoon: true },
-    { form: "Softgel", comingSoon: true },
-  ],
-};
+function itemsFor(label: string) {
+  return products.filter((p) => p.category === (label as Category));
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -54,13 +27,11 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
+  const closeMenus = () => {
     setMobileOpen(false);
     setProductsOpen(false);
     setActiveCategory(null);
-  }, [pathname]);
-
-  const products = navLinks.find((l) => l.label === "Products");
+  };
 
   return (
     <header
@@ -105,12 +76,12 @@ export function Header() {
                 </Link>
                 <div
                   className={cn(
-                    "invisible absolute left-0 top-full z-50 w-64 translate-y-1 rounded-xl border border-slate-100 bg-white/95 p-1.5 opacity-0 shadow-float backdrop-blur transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
+                    "invisible absolute left-0 top-full z-50 w-72 translate-y-1 rounded-xl border border-slate-100 bg-white/95 p-1.5 opacity-0 shadow-float backdrop-blur transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
                     productsOpen && "visible translate-y-0 opacity-100"
                   )}
                 >
                   {link.children.map((child) => {
-                    const forms = categoryForms[child.label] || [];
+                    const items = itemsFor(child.label);
                     const isOpen = activeCategory === child.label;
                     return (
                       <div key={child.label}>
@@ -128,37 +99,29 @@ export function Header() {
                             )}
                           />
                         </button>
-                        {isOpen && forms.length > 0 && (
-                          <div className="ml-2 border-l-2 border-primary-100 pl-2 pb-1">
-                            {forms.map((f) => (
-                              <Link
-                                key={f.form}
-                                href={`${child.href}${f.comingSoon ? "" : "&form=" + encodeURIComponent(f.form)}`}
-                                className={cn(
-                                  "flex items-center justify-between rounded-md px-2.5 py-1.5 text-xs transition-colors",
-                                  f.comingSoon
-                                    ? "text-slate-400 cursor-default"
-                                    : "text-slate-600 hover:bg-primary-50 hover:text-primary-600"
-                                )}
-                                onClick={(e) => f.comingSoon && e.preventDefault()}
-                              >
-                                {f.form}
-                                {f.comingSoon && (
-                                  <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold text-amber-500 ring-1 ring-amber-200">Soon</span>
-                                )}
-                              </Link>
-                            ))}
+                        {isOpen && (
+                          <div className="ml-2 border-l-2 border-primary-100 pb-1 pl-2">
+                            {items.length > 0 ? (
+                              items.map((p) => (
+                                <Link
+                                  key={p.slug}
+                                  href={`/products/${p.slug}`}
+                                  onClick={closeMenus}
+                                  className="block rounded-md px-2.5 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-primary-50 hover:text-primary-600"
+                                >
+                                  {p.name}
+                                </Link>
+                              ))
+                            ) : (
+                              <span className="block px-2.5 py-1.5 text-xs text-slate-400">
+                                Coming soon
+                              </span>
+                            )}
                           </div>
                         )}
                       </div>
                     );
                   })}
-                  <Link
-                    href="/products"
-                    className="mt-1 block rounded-lg border-t border-slate-100 px-3 py-2 text-sm font-bold text-primary-600 hover:bg-primary-50"
-                  >
-                    View all products →
-                  </Link>
                 </div>
               </div>
             ) : (
@@ -220,13 +183,14 @@ export function Header() {
               <div key={link.label}>
                 <Link
                   href={link.href}
+                  onClick={closeMenus}
                   className="block px-2 py-2.5 text-sm font-bold text-slate-800"
                 >
                   {link.label}
                 </Link>
                 <div className="mb-1 ml-3 border-l border-slate-200 pl-3">
                   {link.children.map((child) => {
-                    const forms = categoryForms[child.label] || [];
+                    const items = itemsFor(child.label);
                     const isOpen = activeCategory === child.label;
                     return (
                       <div key={child.label}>
@@ -243,24 +207,24 @@ export function Header() {
                             )}
                           />
                         </button>
-                        {isOpen && forms.length > 0 && (
-                          <div className="ml-2 border-l border-primary-100 pl-2 pb-1">
-                            {forms.map((f) => (
-                              <Link
-                                key={f.form}
-                                href={`${child.href}${f.comingSoon ? "" : "&form=" + encodeURIComponent(f.form)}`}
-                                className={cn(
-                                  "flex items-center justify-between rounded px-2 py-0.5 text-xs",
-                                  f.comingSoon ? "text-slate-400" : "text-slate-500"
-                                )}
-                                onClick={(e) => f.comingSoon && e.preventDefault()}
-                              >
-                                {f.form}
-                                {f.comingSoon && (
-                                  <span className="text-[9px] font-bold text-amber-500">Soon</span>
-                                )}
-                              </Link>
-                            ))}
+                        {isOpen && (
+                          <div className="ml-2 border-l border-primary-100 pb-1 pl-2">
+                            {items.length > 0 ? (
+                              items.map((p) => (
+                                <Link
+                                  key={p.slug}
+                                  href={`/products/${p.slug}`}
+                                  onClick={closeMenus}
+                                  className="block rounded px-2 py-0.5 text-xs text-slate-500 hover:text-primary-600"
+                                >
+                                  {p.name}
+                                </Link>
+                              ))
+                            ) : (
+                              <span className="block px-2 py-0.5 text-xs text-slate-400">
+                                Coming soon
+                              </span>
+                            )}
                           </div>
                         )}
                       </div>
@@ -272,6 +236,7 @@ export function Header() {
               <Link
                 key={link.label}
                 href={link.href}
+                onClick={closeMenus}
                 className="block px-2 py-2.5 text-sm font-bold text-slate-800"
               >
                 {link.label}
@@ -291,6 +256,7 @@ export function Header() {
               </a>
               <Link
                 href="/contact"
+                onClick={closeMenus}
                 className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-bold text-white"
               >
                 Contact Us

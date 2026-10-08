@@ -2,21 +2,34 @@ export type Category =
   | "Dermatology"
   | "Cosmeceuticals"
   | "Trichology"
-  | "General Medicine"
-  | "Nutraceuticals";
+  | "Dental & Oral Health"
+  | "Gynecology & Nutraceuticals";
 
 export type Form =
   | "Gel"
   | "Serum"
-  | "Capsule"
-  | "Tablet"
   | "Hair Serum"
+  | "Face Wash"
   | "Cream"
-  | "Face Wash";
+  | "Sunscreen"
+  | "Shampoo"
+  | "Capsule"
+  | "Tablet";
+
+export interface ActiveIngredient {
+  name: string;
+  role: string;
+}
+
+export interface WhyPoint {
+  title: string;
+  text: string;
+}
 
 export interface Product {
   slug: string;
   name: string;
+  /** Composition / descriptor line shown under the product name */
   generic: string;
   category: Category;
   form: Form;
@@ -24,11 +37,14 @@ export interface Product {
   rx: boolean;
   featured?: boolean;
   tagline: string;
-  indications: string[];
-  highlights: string[];
-  moa: string;
+  overview: string;
+  benefits: string[];
+  actives: ActiveIngredient[];
+  why: WhyPoint[];
+  indication: string;
   directions: string[];
-  regulatory: string[];
+  safety: string[];
+  storage: string;
   /** packshot palette */
   color: { from: string; to: string; text: string };
 }
@@ -37,211 +53,78 @@ export const categories: Category[] = [
   "Dermatology",
   "Cosmeceuticals",
   "Trichology",
-  "General Medicine",
-  "Nutraceuticals",
+  "Dental & Oral Health",
+  "Gynecology & Nutraceuticals",
 ];
 
 export const forms: Form[] = [
   "Gel",
   "Serum",
   "Hair Serum",
-  "Cream",
   "Face Wash",
+  "Sunscreen",
+  "Shampoo",
   "Capsule",
   "Tablet",
 ];
 
 export const products: Product[] = [
-  /* ──────────── COSMECEUTICALS ──────────── */
-  {
-    slug: "averq-fashwash",
-    name: "Averq FashWash Face Wash",
-    generic: "Salicylic Acid IP 2% w/w + Niacinamide IP 4% w/w",
-    category: "Cosmeceuticals",
-    form: "Face Wash",
-    pack: "100g Squeeze Tube with Flip-Cap",
-    rx: false,
-    featured: true,
-    tagline: "Deep-clean anti-acne daily face wash",
-    indications: [
-      "Oily and acne-prone skin",
-      "Blackheads & whiteheads (comedones)",
-      "Excess sebum and visible pores",
-      "Dull, congested skin texture",
-    ],
-    highlights: [
-      "2% salicylic acid (BHA) unclogs pores from within",
-      "Niacinamide 4% controls oil and soothes redness",
-      "Sulfate-light, pH 5.5 skin-friendly foaming base",
-      "Gentle enough for twice-daily use",
-    ],
-    moa:
-      "Salicylic acid is a lipophilic beta-hydroxy acid that penetrates sebum-filled pores, dissolves the intercellular cement holding dead skin cells, and exfoliates from within to clear comedones. Niacinamide reduces sebum production, calms inflammation, and strengthens the skin barrier, keeping pores clean longer after each wash.",
-    directions: [
-      "Wet face, massage a pea-sized amount for 30–60 seconds",
-      "Pay extra attention to T-zone and acne-prone areas",
-      "Rinse thoroughly with lukewarm water; use 1–2 times daily",
-      "Avoid eye contact — rinse immediately with water if contact occurs",
-    ],
-    regulatory: [
-      "OTC cosmeceutical — for external use only",
-      "Pack: 100g squeeze tube with flip-cap, in printed carton",
-      "Dermatologically tested, paraben-reduced formula",
-      "Shelf life: 24 months from date of manufacture",
-    ],
-    color: { from: "#0d9488", to: "#065f46", text: "#ffffff" },
-  },
-  {
-    slug: "averq-sunscreen-gel",
-    name: "Averq Sunscreen Gel SPF 50+",
-    generic: "Zinc Oxide 12% + Octinoxate 7.5% + Niacinamide 2% — SPF 50+ PA++++",
-    category: "Cosmeceuticals",
-    form: "Gel",
-    pack: "50g Aluminium Tube",
-    rx: false,
-    featured: true,
-    tagline: "Non-greasy broad-spectrum photoprotection",
-    indications: [
-      "Daily UVA & UVB protection (SPF 50+ PA++++)",
-      "Prevention of photoaging and pigmentation",
-      "Post-procedure / post-peel sun protection",
-      "Tan prevention in outdoor exposure",
-    ],
-    highlights: [
-      "Broad-spectrum SPF 50+ PA++++ dual-filter system",
-      "Matte, non-greasy gel finish — suits Indian skin",
-      "Niacinamide soothes and repairs post-sun skin",
-      "Water-resistant up to 80 minutes",
-    ],
-    moa:
-      "Zinc oxide physically reflects and scatters both UVA and UVB rays across the skin surface, while octinoxate absorbs UVB energy and converts it to harmless heat. Niacinamide adds antioxidant defense and accelerates barrier repair, reducing cumulative photodamage and pigment formation.",
-    directions: [
-      "Apply liberally 20 minutes before sun exposure",
-      "Use a generous layer — about 2 finger-lengths for the face",
-      "Reapply every 2–3 hours, and after swimming or sweating",
-      "Use daily even on cloudy days or indoors near windows",
-    ],
-    regulatory: [
-      "OTC cosmeceutical — for external use only",
-      "Pack: 50g aluminium tube in printed carton",
-      "Manufactured under WHO-GMP; complies with Indian cosmetic rules",
-      "Shelf life: 24 months from date of manufacture",
-    ],
-    color: { from: "#f59e0b", to: "#ea580c", text: "#ffffff" },
-  },
-  /* ──────────── TRICHOLOGY ──────────── */
-  {
-    slug: "averfol-hair-serum",
-    name: "Averfol Hair Serum",
-    generic: "Procapil 3% + Redensyl 3% + Anagain 2% + Biotin",
-    category: "Trichology",
-    form: "Hair Serum",
-    pack: "60ml Spray Bottle",
-    rx: false,
-    featured: true,
-    tagline: "Science-backed hair regrowth & density",
-    indications: [
-      "Androgenetic alopecia (male & female pattern)",
-      "Telogen effluvium and stress-related shedding",
-      "Thinning hair and reduced hair density",
-      "Postpartum hair fall",
-    ],
-    highlights: [
-      "Triple-actives: Procapil, Redensyl & Anagain",
-      "Clinically studied actives for visible density in 90 days",
-      "Non-greasy, leave-on spray — no residue",
-      "Suitable for daily use on all hair types",
-    ],
-    moa:
-      "Redensyl stimulates dermal papilla cell proliferation and promotes the anagen (growth) phase of the hair cycle. Procapil combines matrikine peptides and apigenin to inhibit follicle fibrosis and DHT-related miniaturization, while Anagain reactivates dormant follicles and biotin supports keratin synthesis for stronger hair shafts.",
-    directions: [
-      "Spray 4–6 pumps directly onto dry scalp, focusing on thinning areas",
-      "Massage gently for 1–2 minutes for absorption",
-      "Use once daily, preferably at night; do not rinse",
-      "Use consistently for a minimum of 90 days for best results",
-    ],
-    regulatory: [
-      "OTC cosmeceutical — for external use only",
-      "Pack: 60ml amber spray bottle with metered nozzle",
-      "Dermatologically and trichologically tested",
-      "Shelf life: 24 months from date of manufacture",
-    ],
-    color: { from: "#16a34a", to: "#062e5b", text: "#ffffff" },
-  },
-  {
-    slug: "rootriq-pro-hair-serum",
-    name: "ROOTRIQ Pro Hair Serum",
-    generic: "Redensyl + Procapil + Anagain + Biotin Hair Growth Serum",
-    category: "Trichology",
-    form: "Hair Serum",
-    pack: "60ml Dropper Bottle",
-    rx: false,
-    featured: true,
-    tagline: "Advanced multi-action hair regrowth serum",
-    indications: [
-      "Androgenetic alopecia (male & female pattern hair loss)",
-      "Telogen effluvium and stress-related hair shedding",
-      "Thinning hair and reduced hair density",
-      "Postpartum hair fall and nutritional hair thinning",
-    ],
-    highlights: [
-      "Triple-actives: Redensyl, Procapil & Anagain",
-      "Biotin supports keratin infrastructure for stronger strands",
-      "Non-greasy, lightweight dropper application",
-      "Visible improvement in density within 8–12 weeks",
-    ],
-    moa:
-      "Redensyl stimulates dermal papilla cell proliferation and promotes the anagen (growth) phase. Procapil combines matrikine peptides and apigenin to inhibit follicle fibrosis and DHT-related miniaturization. Anagain reactivates dormant follicles by modulating the hair cycle pathway. Biotin serves as a coenzyme for carboxylases essential to keratin synthesis.",
-    directions: [
-      "Apply 4–6 drops directly onto dry scalp, focusing on thinning areas",
-      "Massage gently for 1–2 minutes for better absorption",
-      "Use once daily, preferably at night; do not rinse",
-      "Use consistently for a minimum of 90 days for visible results",
-    ],
-    regulatory: [
-      "OTC cosmeceutical — for external use only",
-      "Pack: 60ml amber glass dropper bottle with tamper-evident seal",
-      "Dermatologically and trichologically tested",
-      "Shelf life: 24 months from date of manufacture",
-    ],
-    color: { from: "#059669", to: "#047857", text: "#ffffff" },
-  },
   /* ──────────── DERMATOLOGY ──────────── */
   {
-    slug: "avqlin-ad",
-    name: "AVQLIN AD Gel",
-    generic: "Clindamycin Phosphate IP 1.0% w/w + Adapalene IP 0.1% w/w",
+    slug: "avqlin-ad-gel",
+    name: "AVqlin AD Gel",
+    generic: "Clindamycin Phosphate & Adapalene Gel",
     category: "Dermatology",
     form: "Gel",
-    pack: "20gm Printed Nozzle Tube",
+    pack: "20 gm Tube",
     rx: true,
-    tagline: "Clindamycin + Adapalene dual-action acne therapy",
-    indications: [
-      "Moderate to severe acne vulgaris",
-      "Inflammatory papules and pustules",
-      "Comedonal acne with post-inflammatory pigmentation",
-      "Maintenance of acne clearance",
+    featured: true,
+    tagline: "Advanced Microsphere Technology · Anti-acne topical gel",
+    overview:
+      "AVqlin AD Gel is a topical dermatological preparation combining Clindamycin Phosphate and Adapalene, designed for the management of acne vulgaris. The formulation features Advanced Microsphere Technology, designed to support uniform distribution of the active ingredients and consistent topical application.",
+    benefits: [
+      "Helps manage acne vulgaris",
+      "Helps reduce acne-associated inflammatory lesions",
+      "Adapalene helps normalize follicular keratinization",
+      "Clindamycin provides topical antibacterial activity",
+      "Advanced Microsphere Technology supports uniform topical application",
+      "Convenient combination of complementary anti-acne actions",
     ],
-    highlights: [
-      "Clindamycin suppresses C. acnes colonization",
-      "Adapalene normalizes follicular keratinization",
-      "Non-greasy gel base for improved compliance",
-      "Once-daily nighttime application",
+    actives: [
+      {
+        name: "Adapalene",
+        role: "A topical retinoid that helps normalize abnormal follicular cell turnover and helps prevent formation of comedonal lesions.",
+      },
+      {
+        name: "Clindamycin Phosphate",
+        role: "A topical lincosamide antibiotic that provides antibacterial activity against acne-associated bacteria and helps manage inflammation.",
+      },
     ],
-    moa:
-      "Clindamycin is a lincosamide antibiotic that inhibits bacterial protein synthesis by binding to the 50S ribosomal subunit, suppressing Cutibacterium acnes growth. Adapalene, a third-generation retinoid, binds nuclear retinoic acid receptors (RAR-beta/gamma) to normalize follicular epithelial desquamation, preventing microcomedone formation.",
+    why: [
+      {
+        title: "Dual-Action Acne Management",
+        text: "Combines the complementary actions of Adapalene + Clindamycin Phosphate in a single topical formulation.",
+      },
+      {
+        title: "Advanced Microsphere Technology",
+        text: "A sophisticated formulation approach designed to support uniform dispersion and consistent delivery of the active ingredients across the treated area.",
+      },
+    ],
+    indication:
+      "For the topical management of acne vulgaris, as directed by the physician.",
     directions: [
-      "Apply a thin layer to clean, dry skin once daily at bedtime",
-      "Start on alternate nights for the first two weeks",
-      "Use moisturizer and SPF 50+ sunscreen every morning",
-      "Avoid waxing, other retinoids and harsh scrubs during therapy",
+      "Apply a thin layer to the affected area as directed by the dermatologist / physician.",
+      "For external use only. Avoid contact with eyes, lips and mucosal surfaces.",
     ],
-    regulatory: [
-      "Schedule H — Prescription Drug. To be sold on the prescription of a Registered Medical Practitioner only.",
-      "Pack: 20gm printed nozzle tube, length 110mm",
-      "Store below 30°C, protected from direct sunlight",
-      "Shelf life: 24 months from date of manufacture",
+    safety: [
+      "Use only as directed by the physician.",
+      "Initial dryness, redness, peeling or irritation may occur.",
+      "Avoid excessive sun exposure and use suitable sunscreen during treatment.",
+      "Do not apply to severely irritated or damaged skin unless advised by a physician.",
+      "Keep out of reach of children.",
     ],
+    storage:
+      "Store in a cool, dry place, away from direct sunlight and excessive heat. Keep the container tightly closed.",
     color: { from: "#7c3aed", to: "#0b5cab", text: "#ffffff" },
   },
   {
@@ -250,149 +133,496 @@ export const products: Product[] = [
     generic: "Isotretinoin Capsules IP 20 mg",
     category: "Dermatology",
     form: "Capsule",
-    pack: "10x10 Alu-Alu Blister",
+    pack: "20 mg Capsules (Alu-Alu Blister)",
     rx: true,
-    tagline: "Severe recalcitrant nodular acne therapy",
-    indications: [
-      "Severe nodulocystic acne unresponsive to oral antibiotics",
-      "Recalcitrant acne causing scarring",
-      "Acne with severe psychological impact",
-      "Rosacea (off-label, specialist-directed)",
+    featured: true,
+    tagline: "Oral retinoid therapy · Severe acne management",
+    overview:
+      "ISOTRIQ-20 is an oral dermatological formulation containing Isotretinoin 20 mg, a systemic retinoid used for the treatment of severe, treatment-resistant acne vulgaris. It works by reducing sebaceous gland activity, controlling excess sebum production and targeting key factors involved in acne development.",
+    benefits: [
+      "Helps manage severe, treatment-resistant acne vulgaris",
+      "Significantly reduces excess sebum production",
+      "Helps reduce inflammatory acne lesions",
+      "Supports normalization of follicular keratinization",
+      "Helps reduce the formation of new acne lesions",
+      "Provides a systemic treatment option for severe acne under specialist supervision",
     ],
-    highlights: [
-      "Gold-standard oral retinoid for severe acne",
-      "Reduces sebum production by up to 90%",
-      "Addresses all four pathogenic factors of acne",
-      "Long-term remission after a single course",
+    actives: [
+      {
+        name: "Isotretinoin IP 20 mg",
+        role: "A systemic retinoid derived from vitamin A that acts on multiple factors involved in acne development — reducing sebaceous gland size and activity, decreasing excessive sebum secretion, normalizing follicular keratinization and reducing acne-associated inflammation.",
+      },
     ],
-    moa:
-      "Isotretinoin is a systemic retinoid that profoundly reduces sebaceous gland size and sebum output, normalizes follicular keratinization, reduces Cutibacterium acnes colonization, and exerts anti-inflammatory effects — addressing all four pathogenic drivers of acne in a single agent.",
+    why: [
+      {
+        title: "Sebum Regulation",
+        text: "Reduces excessive oil production.",
+      },
+      {
+        title: "Follicular Normalization",
+        text: "Helps prevent clogged pores.",
+      },
+      {
+        title: "Anti-Inflammatory Action",
+        text: "Helps reduce acne-associated inflammation.",
+      },
+      {
+        title: "Acne Bacterial Environment",
+        text: "Reduced sebum indirectly creates less favourable conditions for C. acnes proliferation.",
+      },
+    ],
+    indication:
+      "For the treatment of severe, treatment-resistant acne vulgaris, including severe nodular acne, under specialist medical supervision.",
     directions: [
-      "0.5–1.0 mg/kg/day in two divided doses with food for 15–20 weeks",
-      "Total cumulative dose target: 120–150 mg/kg for optimal remission",
-      "Monthly liver function and lipid panel monitoring",
-      "Strict pregnancy prevention (Category X) — pregnancy test required",
+      "Take orally strictly as prescribed by the dermatologist.",
+      "Dosage and treatment duration depend on individual patient requirements and clinical assessment.",
+      "Prescription medicine. Not intended for self-medication.",
     ],
-    regulatory: [
-      "Schedule H — Prescription Drug. To be sold on the prescription of a Registered Medical Practitioner only.",
-      "Pack: 10x10 Alu-Alu blister strips",
-      "REMS compliance required",
-      "Shelf life: 24 months from date of manufacture",
+    safety: [
+      "Strictly contraindicated during pregnancy due to the risk of severe birth defects.",
+      "Effective pregnancy prevention and pregnancy testing are required for patients who can become pregnant, according to the prescribing protocol.",
+      "May cause dryness of lips, skin and eyes.",
+      "Liver function and lipid levels require monitoring as advised by the physician.",
+      "Avoid vitamin A supplements and tetracycline antibiotics unless specifically assessed by the prescribing specialist.",
+      "Do not donate blood during treatment and for at least one month after stopping treatment.",
+      "Use only under the supervision of a qualified dermatologist.",
     ],
+    storage:
+      "Store in a cool, dry and dark place below 25°C, protected from direct sunlight, heat and moisture.",
     color: { from: "#dc2626", to: "#991b1b", text: "#ffffff" },
   },
   {
-    slug: "lumiriq-ac",
-    name: "LUMIRIQ AC",
-    generic: "Clindamycin Phosphate + Adapalene + Niacinamide Cream",
-    category: "Dermatology",
-    form: "Cream",
-    pack: "20g Tube",
-    rx: true,
-    tagline: "Triple-action acne cream formulation",
-    indications: [
-      "Mild to moderate acne vulgaris",
-      "Inflammatory papules and comedones",
-      "Post-inflammatory hyperpigmentation",
-      "Acne-prone sensitive skin",
-    ],
-    highlights: [
-      "Clindamycin + Adapalene + Niacinamide in a single cream",
-      "Cream base suitable for dry or sensitive skin types",
-      "Anti-inflammatory, antimicrobial and sebum-regulating",
-      "Well-tolerated for extended treatment courses",
-    ],
-    moa:
-      "Clindamycin inhibits C. acnes protein synthesis via 50S ribosomal binding. Adapalene normalizes follicular keratinization through RAR-beta/gamma activation. Niacinamide reduces sebum production, blocks melanosome transfer, and strengthens the skin barrier — a triple-pathway approach to acne management.",
-    directions: [
-      "Apply a thin layer to clean, dry skin once or twice daily",
-      "Use in the evening for best results; apply moisturizer if dryness occurs",
-      "Use broad-spectrum SPF 50+ sunscreen every morning",
-      "Discontinue if excessive irritation, peeling or dryness occurs",
-    ],
-    regulatory: [
-      "Schedule H — Prescription Drug. To be sold on the prescription of a Registered Medical Practitioner only.",
-      "Pack: 20g aluminium tube in printed carton",
-      "Store below 25°C, protected from light",
-      "Shelf life: 24 months from date of manufacture",
-    ],
-    color: { from: "#ec4899", to: "#be185d", text: "#ffffff" },
-  },
-  /* ──────────── GENERAL MEDICINE ──────────── */
-  {
-    slug: "ataariq-25",
+    slug: "atariq-25",
     name: "ATARIQ 25",
     generic: "Hydroxyzine Hydrochloride Tablets I.P. 25 mg",
-    category: "General Medicine",
+    category: "Dermatology",
     form: "Tablet",
-    pack: "10x10 Tablets",
+    pack: "10 × 10 Tablets",
     rx: true,
-    tagline: "Antihistamine & anxiolytic therapy",
-    indications: [
-      "Urticaria (hives) and allergic skin conditions",
-      "Anxiety and tension associated with dermatological conditions",
-      "Pruritus (chronic itching)",
-      "Sedation pre- and post-procedural",
+    tagline: "Antihistamine · Anti-pruritic therapy",
+    overview:
+      "ATARIQ 25 contains Hydroxyzine Hydrochloride 25 mg, an antihistamine used for the management of itching and allergic skin conditions. It provides effective symptomatic relief under medical supervision.",
+    benefits: [
+      "Helps relieve itching and pruritus",
+      "Helps manage symptoms associated with allergic skin conditions",
+      "Provides antihistaminic action",
+      "Supports symptomatic relief of allergy-related discomfort",
     ],
-    highlights: [
-      "25mg hydroxyzine for reliable antihistamine action",
-      "Mild anxiolytic — useful in psychodermatology",
-      "Non-sedating at low doses, sedating at higher doses",
-      "Well-tolerated with minimal anticholinergic effects",
+    actives: [
+      {
+        name: "Hydroxyzine Hydrochloride I.P. 25 mg",
+        role: "An antihistamine that helps reduce the effects of histamine and provides relief from itching and allergic symptoms.",
+      },
     ],
-    moa:
-      "Hydroxyzine is a first-generation antihistamine (H1-receptor inverse agonist) that competitively blocks histamine at H1 receptors, reducing allergic symptoms. It also exerts anxiolytic activity via central 5-HT2A antagonism and mild sedation through H1 blockade in the CNS.",
-    directions: [
-      "25–50 mg three to four times daily, or as directed by physician",
-      "Elderly or hepatic impairment: start at 25 mg daily",
-      "May cause drowsiness — avoid driving if sedated",
-      "Not recommended in pregnancy (Category C)",
+    why: [],
+    indication:
+      "For the management of itching and allergic skin conditions, as directed by the physician.",
+    directions: ["Take as directed by the physician."],
+    safety: [
+      "Prescription medicine. Use only under medical supervision.",
+      "May cause drowsiness or sedation. Avoid driving or operating machinery if affected.",
+      "Avoid alcohol unless advised otherwise by your physician.",
+      "Keep out of reach of children.",
     ],
-    regulatory: [
-      "Schedule H — Prescription Drug. To be sold on the prescription of a Registered Medical Practitioner only.",
-      "Pack: 10x10 blister strip",
-      "Store below 30°C, protected from light and moisture",
-      "Shelf life: 36 months from date of manufacture",
-    ],
+    storage:
+      "Store in a cool, dry place away from direct sunlight and moisture.",
     color: { from: "#2563eb", to: "#1e40af", text: "#ffffff" },
   },
-  /* ──────────── NUTRACEUTICALS ──────────── */
+  /* ──────────── COSMECEUTICALS ──────────── */
   {
-    slug: "rootriq-h",
-    name: "ROOTRIQ-H Tablets",
-    generic: "D-Biotin, N-Acetyl L-Cysteine, Calcium Pantothenate, Selenium, Copper, Zinc, Manganese & Folic Acid Tablets",
-    category: "Nutraceuticals",
-    form: "Tablet",
-    pack: "10x1x10 Tablets",
+    slug: "lumiriq-ac-face-wash",
+    name: "LUMIRIQ AC Face Wash",
+    generic:
+      "Clarifying Face Wash · Potassium Azeloyl Diglycinate, Glycolic Acid, Salicylic Acid, Niacinamide, Zinc PCA & Witch Hazel",
+    category: "Cosmeceuticals",
+    form: "Face Wash",
+    pack: "75 ml",
     rx: false,
     featured: true,
-    tagline: "Complete hair & skin nutrition complex",
-    indications: [
-      "Nutritional hair thinning and shedding",
-      "Weak, brittle and slow-growing hair",
-      "Biotin and micronutrient deficiency",
-      "Supportive therapy alongside topical hair serums",
+    tagline: "For acne & skin rejuvenation",
+    overview:
+      "Lumiriq AC is a refreshing clarifying face wash formulated with Potassium Azeloyl Diglycinate, Glycolic Acid, Salicylic Acid, Niacinamide, Zinc PCA and Witch Hazel. It gently cleanses the skin while helping control excess oil, refine pores and improve the appearance of acne-prone skin.",
+    benefits: [
+      "Deep cleansing",
+      "Helps control excess oil",
+      "Helps refine and unclog pores",
+      "Supports clearer-looking skin",
+      "Helps improve skin texture",
+      "Suitable for oily and acne-prone skin",
     ],
-    highlights: [
-      "D-Biotin for keratin production",
-      "N-Acetyl L-Cysteine for antioxidant support",
-      "Selenium, Zinc, Copper & Manganese for follicle nourishment",
-      "Folic Acid & Calcium Pantothenate for cell regeneration",
+    actives: [
+      {
+        name: "Potassium Azeloyl Diglycinate",
+        role: "Helps support oil control and skin clarification.",
+      },
+      {
+        name: "Salicylic Acid",
+        role: "Helps unclog pores and remove excess buildup.",
+      },
+      {
+        name: "Glycolic Acid",
+        role: "Provides gentle exfoliation and helps refine skin texture.",
+      },
+      {
+        name: "Niacinamide",
+        role: "Helps support skin clarity and the skin barrier.",
+      },
+      {
+        name: "Zinc PCA",
+        role: "Helps control excess oil and supports acne-prone skin.",
+      },
+      {
+        name: "Witch Hazel",
+        role: "Helps soothe the skin and supports excess oil control.",
+      },
     ],
-    moa:
-      "D-Biotin acts as a coenzyme for carboxylases essential to keratin production. N-Acetyl L-Cysteine provides sulfur amino acids for disulfide bond formation in keratin. Calcium Pantothenate (Vitamin B5) supports adrenal function and hair cortex nourishment. Selenium, Zinc, Copper and Manganese are essential trace minerals that support follicle cell division, protein synthesis and antioxidant defense.",
+    why: [],
+    indication: "For acne-prone and oily skin, as part of a daily cleansing routine.",
     directions: [
-      "Take one tablet twice daily after meals, or as directed",
-      "Continue for 3–6 months for visible improvement",
-      "Do not exceed the recommended daily dose",
-      "Keep out of reach of children",
+      "Wet your face and dispense a small amount of Lumiriq AC Face Wash onto your fingertips.",
+      "Gently massage over the face in circular motions, avoiding the eye area.",
+      "Rinse thoroughly with water and pat dry.",
     ],
-    regulatory: [
-      "OTC nutraceutical dietary supplement — not a medicine",
-      "Pack: 10x1x10 blister strip",
-      "Contains no added sugar or artificial colors",
-      "Shelf life: 24 months from date of manufacture",
+    safety: [
+      "For external use only. Avoid contact with eyes and mouth.",
+      "If irritation or rash occurs, discontinue use and consult a dermatologist.",
     ],
+    storage: "Store in a cool, dry place. Keep the container tightly closed.",
+    color: { from: "#0d9488", to: "#065f46", text: "#ffffff" },
+  },
+  {
+    slug: "lumiriq-glow-face-wash",
+    name: "LUMIRIQ GLOW Face Wash",
+    generic:
+      "Brightening & Pigmentation Care Face Wash · Clair Blanche-III™, B-White™ (Oligopeptide-68), Kojic Acid Dipalmitate, Alpha Arbutin, Niacinamide & Licorice Extract",
+    category: "Cosmeceuticals",
+    form: "Face Wash",
+    pack: "75 g",
+    rx: false,
+    featured: true,
+    tagline: "Cleanse · Brighten · Even",
+    overview:
+      "Lumiriq Glow is a gentle, sulphate-free brightening face wash formulated with advanced pigmentation-care actives to help reduce the appearance of pigmentation, even skin tone and maintain skin hydration. It provides gentle cleansing while leaving the skin fresh, smooth and radiant.",
+    benefits: [
+      "Helps reduce the appearance of pigmentation",
+      "Helps even skin tone",
+      "Provides gentle cleansing",
+      "Helps maintain skin hydration",
+      "Supports brighter, clearer-looking skin",
+      "Suitable for daily use",
+    ],
+    actives: [
+      {
+        name: "Clair Blanche-III™",
+        role: "A premium multi-active brightening complex by Ichimaru Pharcos, Japan, designed to target multiple pathways involved in pigmentation and support a brighter, more even-looking complexion.",
+      },
+      {
+        name: "B-White™ (Oligopeptide-68)",
+        role: "An advanced brightening peptide by Clariant, designed to support melanin regulation and improve the appearance of uneven pigmentation.",
+      },
+      {
+        name: "Kojic Acid Dipalmitate",
+        role: "Helps support pigmentation control and brighter-looking skin.",
+      },
+      {
+        name: "Alpha Arbutin",
+        role: "Helps reduce the appearance of pigmentation and uneven skin tone.",
+      },
+      {
+        name: "Niacinamide",
+        role: "Helps improve skin clarity and supports the skin barrier.",
+      },
+      {
+        name: "Licorice Extract",
+        role: "Helps soothe the skin and supports a brighter, more even-looking complexion.",
+      },
+    ],
+    why: [
+      {
+        title: "Sulphate Free",
+        text: "A gentle cleansing base that respects the skin barrier.",
+      },
+      {
+        title: "Gentle & Non-Stripping",
+        text: "Cleanses without leaving the skin tight or dry.",
+      },
+      {
+        title: "Dermatologically Tested",
+        text: "Suitable for all skin types, including daily use.",
+      },
+    ],
+    indication:
+      "For pigmentation-prone, uneven or dull skin, as part of a daily brightening routine.",
+    directions: [
+      "Wet your face, take a small amount of Lumiriq Glow Face Wash and gently massage over the face in circular motions.",
+      "Rinse thoroughly with water and pat dry.",
+    ],
+    safety: [
+      "For external use only. Avoid contact with eyes.",
+      "If irritation or rash occurs, discontinue use and consult a dermatologist.",
+    ],
+    storage:
+      "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
+    color: { from: "#ec4899", to: "#be185d", text: "#ffffff" },
+  },
+  {
+    slug: "lumiriq-ac-serum",
+    name: "LUMIRIQ AC Face Serum",
+    generic:
+      "Clarifying Face Serum · Salicylic Acid, Niacinamide, Zinc PCA & ACZero™ with Hyaluronic Acid, Aquaxyl™ & Ceramide Complex",
+    category: "Cosmeceuticals",
+    form: "Serum",
+    pack: "30 ml",
+    rx: false,
+    featured: true,
+    tagline: "Multi-active complex for acne-prone skin",
+    overview:
+      "Lumiriq AC is a multi-active clarifying face serum formulated for acne-prone skin. Its advanced combination of Salicylic Acid, Niacinamide, Zinc PCA and ACZero™ helps unclog pores, control excess oil, reduce the appearance of acne marks and support a healthy skin barrier. Enriched with Hyaluronic Acid, Aquaxyl™ and Ceramide Complex for balanced hydration and skin comfort.",
+    benefits: [
+      "Helps unclog pores",
+      "Helps control acne and excess oil",
+      "Helps reduce the appearance of acne marks",
+      "Supports a healthy skin barrier",
+      "Provides balanced hydration",
+      "Helps soothe acne-prone skin",
+      "Promotes clearer, smoother-looking skin",
+    ],
+    actives: [
+      {
+        name: "Salicylic Acid",
+        role: "Helps unclog pores and remove excess buildup for clearer-looking skin.",
+      },
+      {
+        name: "Niacinamide",
+        role: "Helps reduce the appearance of acne marks and supports skin clarity.",
+      },
+      {
+        name: "Zinc PCA",
+        role: "Helps control excess oil and supports acne-prone skin.",
+      },
+      {
+        name: "ACZero™",
+        role: "Provides anti-acne and soothing support for clearer, calmer-looking skin.",
+      },
+      {
+        name: "Hyaluronic Acid",
+        role: "Helps provide deep hydration and maintain skin moisture.",
+      },
+      {
+        name: "Aquaxyl™",
+        role: "Supports long-lasting moisture and hydration.",
+      },
+      {
+        name: "Ceramide Complex",
+        role: "Helps strengthen and support the skin barrier.",
+      },
+    ],
+    why: [],
+    indication:
+      "For acne-prone skin with excess oil, congested pores and post-acne marks.",
+    directions: [
+      "Cleanse your face with a gentle facial cleanser and pat dry.",
+      "Apply a small amount of Lumiriq AC serum onto the palm or directly onto the desired areas.",
+      "Gently massage until fully absorbed. Follow with a moisturizer if required.",
+    ],
+    safety: [
+      "For external use only. Avoid contact with eyes.",
+      "If irritation or rash occurs, discontinue use and consult a dermatologist.",
+    ],
+    storage:
+      "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
+    color: { from: "#0891b2", to: "#0e7490", text: "#ffffff" },
+  },
+  {
+    slug: "uvriq-sunscreen",
+    name: "UVRIQ Whipped Invisible Sunscreen",
+    generic:
+      "SPF 50+ | PA+++ · Broad Spectrum UVA & UVB Protection",
+    category: "Cosmeceuticals",
+    form: "Sunscreen",
+    pack: "50 gm",
+    rx: false,
+    featured: true,
+    tagline: "Ultra-light, non-greasy, invisible finish",
+    overview:
+      "UVRIQ Whipped Invisible Sunscreen is an ultra-light, non-greasy sunscreen formulated to provide broad-spectrum UVA & UVB protection. Its lightweight whipped texture offers a fast-absorbing, invisible finish without leaving a white cast.",
+    benefits: [
+      "SPF 50+ broad-spectrum protection",
+      "PA+++ UVA protection",
+      "Photostable UV filter system",
+      "Ultra-light whipped texture",
+      "Fast absorbing, non-greasy finish",
+      "No white cast · Non-comedogenic",
+      "Suitable for all skin types",
+    ],
+    actives: [
+      {
+        name: "Niacinamide",
+        role: "Helps support the skin barrier and overall skin appearance.",
+      },
+      {
+        name: "Vitamin E",
+        role: "Provides antioxidant support and helps maintain skin conditioning.",
+      },
+      {
+        name: "Alpha Glucosyl Rutin",
+        role: "Provides antioxidant support and complements daily skin protection.",
+      },
+    ],
+    why: [],
+    indication:
+      "For daily broad-spectrum sun protection for all skin types.",
+    directions: [
+      "Apply generously and evenly to the face and exposed skin as the last step of your morning skincare routine.",
+      "Reapply as required, especially after sweating or prolonged sun exposure.",
+    ],
+    safety: [
+      "For external use only. Avoid direct contact with eyes.",
+      "If irritation occurs, discontinue use and consult a dermatologist.",
+    ],
+    storage:
+      "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
+    color: { from: "#f59e0b", to: "#ea580c", text: "#ffffff" },
+  },
+  /* ──────────── TRICHOLOGY ──────────── */
+  {
+    slug: "rootriq-pro-hair-serum",
+    name: "ROOTRIQ PRO Hair Serum",
+    generic:
+      "Advanced Clinically Studied Actives Complex · Procapil® 3%, Redensyl® 3%, Anagain™ 2%, Follicusan™ 1%, Rice Exosome 1%, Root Biotech, Anagelin, Caffeine & Biotin",
+    category: "Trichology",
+    form: "Hair Serum",
+    pack: "50 ml",
+    rx: false,
+    featured: true,
+    tagline: "Hair growth serum · For all hair types · Men & women",
+    overview:
+      "ROOTRIQ PRO Hair Serum is an advanced multi-active hair serum formulated to reduce hair fall, support hair growth, improve hair density and strengthen hair roots. Its powerful combination of clinically studied hair-growth actives and scalp-supporting ingredients provides comprehensive care for healthier-looking hair.",
+    benefits: [
+      "Helps reduce hair fall",
+      "Supports hair growth",
+      "Helps improve hair density",
+      "Helps strengthen hair roots",
+      "Supports a healthy scalp environment",
+      "Helps maintain the natural hair-growth cycle",
+    ],
+    actives: [
+      { name: "Procapil® 3%", role: "Helps reduce hair fall and supports stronger hair anchoring." },
+      { name: "Redensyl® 3%", role: "Supports hair density and promotes healthy hair growth." },
+      { name: "Anagain™ 2%", role: "Helps revitalize hair follicles and support the natural hair-growth cycle." },
+      { name: "Follicusan™ 1%", role: "Helps nourish and strengthen the hair-root environment." },
+      { name: "Rice Exosome 1%", role: "Supports scalp renewal and a healthy scalp environment." },
+      { name: "Root Biotech", role: "Advanced botanical active supporting hair follicle and scalp care." },
+      { name: "Anagelin", role: "Helps support hair follicle vitality and healthy hair growth." },
+      { name: "Caffeine", role: "Supports scalp and hair-root care and a healthy hair-growth environment." },
+      { name: "Biotin", role: "Supports healthy-looking and stronger hair." },
+    ],
+    why: [],
+    indication:
+      "For hair fall, thinning hair and reduced hair density in men and women.",
+    directions: [
+      "Apply a generous amount directly onto the scalp and massage gently with fingertips.",
+      "Use AM/PM as directed.",
+    ],
+    safety: [
+      "For external use only. Avoid contact with eyes.",
+      "In case of irritation or rash, discontinue use and consult a dermatologist.",
+      "A patch test is recommended before first use.",
+    ],
+    storage:
+      "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
+    color: { from: "#059669", to: "#047857", text: "#ffffff" },
+  },
+  {
+    slug: "rootriq-ahf-shampoo",
+    name: "ROOTRIQ AHF Shampoo",
+    generic:
+      "Hair Strengthening Shampoo · Redensyl® & AnaGain™ Complex, Hydrolyzed Protein, Caffeine, Zinc PCA & Panthenol",
+    category: "Trichology",
+    form: "Shampoo",
+    pack: "Hair Strengthening Shampoo",
+    rx: false,
+    tagline: "Strengthen · Nourish · Balance",
+    overview:
+      "ROOTRIQ AHF is an advanced hair-strengthening shampoo formulated with Redensyl® & AnaGain™ Complex, Hydrolyzed Protein, Caffeine, Zinc PCA and Panthenol. It gently cleanses the scalp while helping reduce hair fall, strengthen hair and maintain a healthy scalp environment.",
+    benefits: [
+      "Helps reduce hair fall",
+      "Strengthens weak and fragile hair",
+      "Helps nourish hair roots",
+      "Supports a healthy scalp environment",
+      "Helps improve hair texture and manageability",
+      "Helps maintain stronger, healthier-looking hair",
+    ],
+    actives: [
+      { name: "Redensyl®", role: "Helps support the natural hair-growth cycle and promotes healthier-looking hair." },
+      { name: "AnaGain™", role: "Helps support hair follicle activity and the natural hair-growth cycle." },
+      { name: "Hydrolyzed Protein", role: "Helps strengthen and condition the hair fibre while improving hair texture." },
+      { name: "Caffeine", role: "Provides scalp and hair-root support for healthier-looking hair." },
+      { name: "Zinc PCA", role: "Helps balance excess scalp oil and supports a healthy scalp environment." },
+      { name: "Panthenol", role: "Helps moisturize, condition and improve the smoothness of hair." },
+    ],
+    why: [],
+    indication:
+      "For hair fall, weak and fragile hair and an unbalanced scalp.",
+    directions: [
+      "Wet hair thoroughly. Apply an adequate amount of ROOTRIQ AHF to the scalp and hair.",
+      "Gently massage into a rich lather and rinse thoroughly. Repeat if required.",
+      "Use regularly for best results.",
+    ],
+    safety: [
+      "For external use only. Avoid contact with eyes.",
+      "If irritation or rash occurs, discontinue use and consult a dermatologist.",
+    ],
+    storage:
+      "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
+    color: { from: "#16a34a", to: "#065f46", text: "#ffffff" },
+  },
+  /* ──────────── GYNECOLOGY & NUTRACEUTICALS ──────────── */
+  {
+    slug: "rootriq-h-tablets",
+    name: "ROOTRIQ-H Tablets",
+    generic:
+      "Therapeutic-Dose Hair Nutrition Formula · D-Biotin, N-Acetyl L-Cysteine, Calcium Pantothenate, Selenium, Copper, Zinc, Manganese & Folic Acid",
+    category: "Gynecology & Nutraceuticals",
+    form: "Tablet",
+    pack: "10 Tablets",
+    rx: false,
+    featured: true,
+    tagline: "Therapeutic-dose nutritional support for healthy hair",
+    overview:
+      "ROOTRIQ-H is a therapeutic-dose nutritional formula combining Biotin, N-Acetyl L-Cysteine, Calcium Pantothenate, Selenium, Copper, Zinc, Manganese and Folic Acid. It is designed to provide targeted nutritional support for healthy hair growth, stronger hair roots and overall hair wellness.",
+    benefits: [
+      "Supports healthy hair growth",
+      "Helps provide targeted hair nutrition",
+      "Supports stronger hair roots",
+      "Supports healthy hair structure",
+      "Helps maintain overall hair and scalp wellness",
+    ],
+    actives: [
+      { name: "D-Biotin", role: "Supports healthy hair growth and stronger-looking hair." },
+      { name: "N-Acetyl L-Cysteine", role: "Provides cysteine support for healthy keratin formation." },
+      { name: "Calcium Pantothenate", role: "Supports nutritional requirements for healthy hair maintenance." },
+      { name: "Selenium", role: "Provides antioxidant nutritional support for hair and scalp." },
+      { name: "Zinc", role: "Supports normal hair and scalp health." },
+      { name: "Copper", role: "Supports normal hair pigmentation and connective tissue health." },
+      { name: "Manganese", role: "Provides essential nutritional support for connective tissue and hair health." },
+      { name: "Folic Acid", role: "Supports normal cell growth and renewal." },
+    ],
+    why: [
+      {
+        title: "Therapeutic-Dose Formula",
+        text: "A carefully formulated combination of essential vitamins, minerals and amino-acid support designed to provide targeted nutritional support for hair health.",
+      },
+    ],
+    indication:
+      "Targeted nutritional support for healthy hair growth and stronger hair roots.",
+    directions: ["Take as directed by the physician."],
+    safety: [
+      "Use under medical guidance.",
+      "Keep out of reach of children.",
+    ],
+    storage:
+      "Store in a cool, dry and dark place. Protect from direct sunlight and moisture.",
     color: { from: "#16a34a", to: "#15803d", text: "#ffffff" },
   },
 ];
@@ -403,4 +633,8 @@ export function getProduct(slug: string) {
 
 export function featuredProducts() {
   return products.filter((p) => p.featured);
+}
+
+export function productsByCategory(category: Category) {
+  return products.filter((p) => p.category === category);
 }

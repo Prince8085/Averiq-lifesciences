@@ -16,16 +16,23 @@ import { ProductImage } from "@/components/ProductImage";
 export function ProductMarquee({
   speed = "32s",
   items = products,
+  fadeClass = "from-[#fafcff]",
 }: {
   speed?: string;
   items?: typeof products;
+  /** Tailwind `from-*` colour for the edge fade masks (match the section bg) */
+  fadeClass?: string;
 }) {
   const track = [...items, ...items];
   return (
     <div className="group relative overflow-hidden py-2">
       {/* edge fade masks */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#fafcff] to-transparent sm:w-28" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#fafcff] to-transparent sm:w-28" />
+      <div
+        className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r to-transparent sm:w-28 ${fadeClass}`}
+      />
+      <div
+        className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l to-transparent sm:w-28 ${fadeClass}`}
+      />
 
       <div
         className="flex w-max animate-marquee gap-5 px-5 [animation-play-state:running] group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]"

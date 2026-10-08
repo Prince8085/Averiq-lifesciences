@@ -37,8 +37,8 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               {[
                 ["About Us", "/about"],
-                ["Products", "/products"],
-                ["Quality Standards", "/quality"],
+                ["Products", "/#products"],
+                ["Careers", "/career"],
                 ["Knowledge Hub", "/blog"],
                 ["Contact", "/contact"],
               ].map(([label, href]) => (
@@ -63,7 +63,7 @@ export function Footer() {
               {therapeuticVerticals.map((v) => (
                 <li key={v.slug}>
                   <Link
-                    href={`/products?category=${encodeURIComponent(v.slug)}`}
+                    href="/#products"
                     className="text-slate-400 transition-colors hover:text-accent-400"
                   >
                     {v.title}

@@ -13,14 +13,14 @@ export default function NotFound() {
         </h1>
         <p className="mx-auto mt-3 max-w-md text-sm text-slate-600">
           The page may have moved or never existed. Let&apos;s get you back to
-          the catalog.
+          our products.
         </p>
         <Link
-          href="/products"
+          href="/#products"
           className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary-600 px-6 py-3.5 text-sm font-bold text-white shadow-md shadow-primary-600/25 transition-all hover:-translate-y-0.5 hover:bg-primary-700"
         >
           <ArrowLeft className="h-4 w-4" />
-          Browse Products
+          View Our Products
         </Link>
       </div>
     </section>

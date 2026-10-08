@@ -9,26 +9,29 @@ import {
   Pill,
   Leaf,
   MessagesSquare,
+  Eye,
+  Target,
+  ChevronDown,
 } from "lucide-react";
 import { site, therapeuticVerticals } from "@/data/site";
-import { featuredProducts } from "@/data/products";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductMarquee } from "@/components/ProductMarquee";
 import { JsonLd } from "@/components/JsonLd";
+import { cn } from "@/lib/utils";
 
 const verticalIcons = {
   Dermatology: Sparkles,
   Trichology: Flower2,
-  "General Medicine": Pill,
-  Nutraceuticals: Leaf,
-};
+  "Dental & Oral Health": Pill,
+  "Gynecology & Nutraceuticals": Leaf,
+} as const;
 
 const whyUs = [
   {
     icon: FlaskConical,
     title: "Science-Backed Formulations",
-    text: "Modern drug-delivery science with clinically validated active ingredients for effective therapeutic outcomes.",
+    text: "Modern drug-delivery science with clinically studied active ingredients for effective therapeutic outcomes.",
   },
   {
     icon: BadgeCheck,
@@ -39,6 +42,21 @@ const whyUs = [
     icon: HeartHandshake,
     title: "Transparent Compositions",
     text: "Clear, honest product information. We believe in building trust through transparency and verification.",
+  },
+];
+
+const heroPanels = [
+  {
+    label: "Our Vision",
+    icon: Eye,
+    tile: "from-primary-600 to-primary-700 shadow-primary-600/25",
+    text: "To build a dependable and scientifically progressive life sciences organisation, empowering healthcare professionals with quality formulations and fostering sustainable growth through ethical business practices.",
+  },
+  {
+    label: "Our Mission",
+    icon: Target,
+    tile: "from-accent-500 to-accent-600 shadow-accent-500/25",
+    text: "Quality without compromise, innovation in formulation and partner empowerment — delivering WHO-GMP manufactured formulations that healthcare professionals can prescribe with confidence.",
   },
 ];
 
@@ -86,15 +104,40 @@ export default function Home() {
               professionals across India.
             </p>
           </Reveal>
+
+          {/* Our Vision / Our Mission — reveal on hover */}
           <Reveal delay={0.24}>
-            <div className="mt-10">
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-8 py-4 text-sm font-bold text-white shadow-md shadow-primary-600/25 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/30"
-              >
-                Explore Products
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+            <div className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-2">
+              {heroPanels.map((p) => {
+                const Icon = p.icon;
+                return (
+                  <div
+                    key={p.label}
+                    tabIndex={0}
+                    className="group rounded-2xl border border-slate-200/70 bg-white/70 p-5 text-left shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none focus-visible:border-primary-300 focus-visible:shadow-float"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={cn(
+                          "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md",
+                          p.tile
+                        )}
+                      >
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span className="font-display text-base font-bold text-primary-900">
+                        {p.label}
+                      </span>
+                      <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180" />
+                    </div>
+                    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                      <p className="overflow-hidden text-sm leading-relaxed text-slate-600">
+                        <span className="block pt-3">{p.text}</span>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
         </div>
@@ -114,7 +157,7 @@ export default function Home() {
               return (
                 <Reveal key={v.slug} delay={i * 0.07}>
                   <Link
-                    href={`/products?category=${encodeURIComponent(v.slug)}`}
+                    href="/#products"
                     className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
                   >
                     <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
@@ -138,30 +181,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ FEATURED PRODUCTS ============ */}
-      <section className="bg-muted py-20 sm:py-24">
+      {/* ============ STAR FORMULATIONS (horizontal marquee) ============ */}
+      <section id="products" className="scroll-mt-20 bg-muted py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Star Formulations"
-            title="Featured Product Range"
-            subtitle="Explore our range of pharmaceutical and cosmeceutical products."
+            title="Our Product Range"
+            subtitle="Our complete pharmaceutical and cosmeceutical range — hover to pause and open any product for its full monograph."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredProducts().map((p, i) => (
-              <Reveal key={p.slug} delay={i * 0.06}>
-                <ProductCard product={p} />
-              </Reveal>
-            ))}
-          </div>
-          <Reveal className="mt-10 text-center">
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-primary-600 px-6 py-3 text-sm font-bold text-primary-700 transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:text-white"
-            >
-              Browse the full catalog
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
+        </div>
+        <div className="mt-12">
+          <ProductMarquee speed="60s" fadeClass="from-[#f1f5f9]" />
         </div>
       </section>
 
