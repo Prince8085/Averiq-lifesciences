@@ -351,37 +351,33 @@ export default function Home() {
       {/* ============ FAQ SECTION ============ */}
       <FaqSection />
 
-      {/* ============ FUTURISTIC BIOTECH RESEARCH BANNER SHOWCASE ============ */}
-      <section className="bg-slate-900 py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SlideInVisual direction="up" delay={0.1}>
-            <div className="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
-              <img
-                src="/media/generated/futuristic-biotech-research-banner.png"
-                alt="Averiq Lifesciences — Futuristic Biotech Research Banner"
-                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.01]"
-              />
-            </div>
-          </SlideInVisual>
+      {/* ============ 7. BOTTOM CALL-TO-ACTION BANNER (With 100% Vivid Biotech Research Background) ============ */}
+      <section className="relative overflow-hidden bg-slate-950 border-t border-slate-800 py-24 text-white shadow-2xl">
+        {/* Background Image: 100% Opacity, right-aligned so scientist visual is 100% unblocked */}
+        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+          <img
+            src="/media/generated/futuristic-biotech-research-banner.png"
+            alt="Averiq Lifesciences — Biotech Research Background"
+            className="h-full w-full object-cover object-right opacity-100 scale-100"
+          />
+          {/* Left gradient fade for text legibility without blocking the right side artwork */}
+          <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-slate-950 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-slate-950 to-transparent" />
         </div>
-      </section>
 
-      {/* ============ 7. BOTTOM CALL-TO-ACTION BANNER ============ */}
-      <section className="mesh-dark border-t border-slate-800 py-20 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-400">
-                Partner &amp; Distribution
-              </span>
-              <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl text-white">
-                Let&apos;s Build a Healthier Tomorrow
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base font-medium">
-                Connect with us for product inquiries, institutional supply, or distribution partnerships across India.
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4 shrink-0">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl text-left">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-400">
+              Partner &amp; Distribution
+            </span>
+            <h2 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl text-white">
+              Let&apos;s Build a Healthier Tomorrow
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base font-medium">
+              Connect with us for product inquiries, institutional supply, or distribution partnerships across India.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Averiq Lifesciences — I would like to inquire about product range & availability.")}`}
                 target="_blank"
