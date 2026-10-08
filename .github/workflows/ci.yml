@@ -14,11 +14,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
+          # Next.js 16 requires Node >= 20.9
           node-version: '20'
-          cache: 'pnpm'
+          cache: 'npm'
       - name: Install
-        run: pnpm install
+        run: npm ci
       - name: Lint
-        run: pnpm lint || echo "No lint script"
+        run: npm run lint
       - name: Build
-        run: pnpm build
+        run: npm run build

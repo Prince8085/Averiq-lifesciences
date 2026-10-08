@@ -20,6 +20,7 @@ import { ProductTabs } from "@/components/ProductTabs";
 import { EnquiryButton } from "@/components/EnquiryButton";
 import { VideoSlot } from "@/components/VideoSlot";
 import { JsonLd } from "@/components/JsonLd";
+import { hasProductVideo, productPhotoSrc, productVideoSrc } from "@/lib/product-media";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -47,6 +48,11 @@ export default async function ProductPage({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
+
+  // Only advertise a product film when a real file exists for this slug;
+  // products without one simply skip the section (no placeholder on the live site).
+  const hasFilm = hasProductVideo(product.slug);
+  const poster = productPhotoSrc(product.slug);
 
   const schema = {
     "@context": "https://schema.org",
@@ -203,27 +209,29 @@ export default async function ProductPage({
 
       <section className="pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* ===== Product film ===== */}
-          <div className="mb-14">
-            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-              <div>
-                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-accent-600">
-                  Product Film
-                </p>
-                <h2 className="mt-1 font-display text-2xl font-extrabold text-primary-900 sm:text-3xl">
-                  Watch {product.name} in Action
-                </h2>
-                <p className="mt-1.5 max-w-xl text-sm text-slate-500">
-                  See the texture, application and packaging up close.
-                </p>
+          {/* ===== Product film — rendered only for products that actually have one ===== */}
+          {hasFilm && (
+            <div className="mb-14">
+              <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-accent-600">
+                    Product Film
+                  </p>
+                  <h2 className="mt-1 font-display text-2xl font-extrabold text-primary-900 sm:text-3xl">
+                    Watch {product.name} in Action
+                  </h2>
+                  <p className="mt-1.5 max-w-xl text-sm text-slate-500">
+                    See the texture, application and packaging up close.
+                  </p>
+                </div>
               </div>
+              <VideoSlot
+                src={productVideoSrc(product.slug)}
+                title={`${product.name} — product film`}
+                poster={poster ?? undefined}
+              />
             </div>
-            <VideoSlot
-              src={`/products/${product.slug}.mp4`}
-              title={`${product.name} — product film`}
-              slot={`products/${product.slug}.mp4`}
-            />
-          </div>
+          )}
 
           <ProductTabs product={product} />
 
