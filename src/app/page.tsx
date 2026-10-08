@@ -100,100 +100,111 @@ export default function Home() {
     <>
       <JsonLd data={homeJsonLd} />
 
-      {/* ============ 1. HERO SECTION (Light & Clean Mesh Gradient Theme) ============ */}
-      <section className="mesh-hero relative overflow-hidden pb-20 pt-28 sm:pt-36">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            {/* Left Content Column */}
-            <div>
-              <Reveal delay={0.05}>
-                <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50/80 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-primary-700 shadow-xs backdrop-blur">
-                  <Sparkles className="h-3.5 w-3.5 text-accent-600" />
-                  SCIENCE • HEALTHCARE • TOMORROW
-                </span>
-              </Reveal>
+      {/* ============ 1. HERO SECTION (With /media/heroimage.png Bright Background) ============ */}
+      <section className="relative overflow-hidden pb-20 pt-28 sm:pt-36">
+        {/* Full-bleed Hero Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <img
+            src="/media/heroimage.png"
+            alt="Averiq Lifesciences — Science & Healthcare Hero Background"
+            className="h-full w-full object-cover object-center opacity-85"
+          />
+          {/* Subtle light gradient overlays for legibility without darkening */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/35" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/95" />
+        </div>
 
-              <Reveal delay={0.1}>
-                <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.2rem]">
-                  Advancing Healthcare Through{" "}
-                  <span className="gradient-text">Verified Scientific Innovation</span>
-                </h1>
-              </Reveal>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <Reveal delay={0.05}>
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white/90 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary-700 shadow-sm backdrop-blur">
+              <Sparkles className="h-3.5 w-3.5 text-accent-600" />
+              SCIENCE • HEALTHCARE • TOMORROW
+            </span>
+          </Reveal>
 
-              <Reveal delay={0.15}>
-                <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  Averiq Lifesciences develops pharmaceutical, cosmeceutical, and
-                  trichology formulations under WHO-GMP quality standards, serving
-                  healthcare professionals across India.
-                </p>
-              </Reveal>
+          <Reveal delay={0.1}>
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.4rem]">
+              Advancing Healthcare Through{" "}
+              <span className="gradient-text">Verified Scientific Innovation</span>
+            </h1>
+          </Reveal>
 
-              {/* Action Buttons */}
-              <Reveal delay={0.2}>
-                <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-7 py-3.5 text-sm font-bold text-white shadow-md shadow-primary-600/25 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-lg"
-                  >
-                    Get in Touch
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </Reveal>
+          <Reveal delay={0.15}>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg font-medium">
+              Averiq Lifesciences develops pharmaceutical, cosmeceutical, and
+              trichology formulations under WHO-GMP quality standards, serving
+              healthcare professionals across India.
+            </p>
+          </Reveal>
 
-              {/* Vision / Mission Interactive Panels */}
-              <Reveal delay={0.25} className="mt-10">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {heroPanels.map((p) => {
-                    const Icon = p.icon;
-                    return (
-                      <div
-                        key={p.label}
-                        tabIndex={0}
-                        className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-left shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none"
-                      >
-                        <div className="flex items-center gap-3">
-                          <span
-                            className={cn(
-                              "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md",
-                              p.tile
-                            )}
-                          >
-                            <Icon className="h-4 w-4" />
-                          </span>
-                          <span className="font-display text-sm font-bold text-primary-900">
-                            {p.label}
-                          </span>
-                          <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180" />
-                        </div>
-                        <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
-                          <p className="overflow-hidden text-xs leading-relaxed text-slate-600">
-                            <span className="block pt-2.5">{p.text}</span>
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </Reveal>
+          {/* Action Button */}
+          <Reveal delay={0.2}>
+            <div className="mt-8 flex justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-primary-600/30 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-xl"
+              >
+                Get in Touch
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
+          </Reveal>
 
-            {/* Right Hero Visual Column */}
-            <SlideInVisual direction="right" delay={0.2} className="relative">
-              <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-900 shadow-float">
-                <img
-                  src="/media/generated/averiq-hair-and-skin-science-showcase.png"
-                  alt="Averiq Lifesciences — Advanced Hair and Skin Science Showcase"
-                  className="w-full h-auto object-cover max-h-[520px] transition-transform duration-700 hover:scale-[1.02]"
-                />
-              </div>
-            </SlideInVisual>
-          </div>
+          {/* Vision / Mission Interactive Panels */}
+          <Reveal delay={0.25} className="mt-12">
+            <div className="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2">
+              {heroPanels.map((p) => {
+                const Icon = p.icon;
+                return (
+                  <div
+                    key={p.label}
+                    tabIndex={0}
+                    className="group rounded-2xl border border-slate-200/80 bg-white/90 p-5 text-left shadow-soft backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={cn(
+                          "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md",
+                          p.tile
+                        )}
+                      >
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span className="font-display text-base font-bold text-primary-900">
+                        {p.label}
+                      </span>
+                      <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180" />
+                    </div>
+                    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                      <p className="overflow-hidden text-sm leading-relaxed text-slate-600">
+                        <span className="block pt-3">{p.text}</span>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ============ 2. TRUST & COMPLIANCE BAR ============ */}
       <CertificationsStrip />
+
+      {/* ============ HERO SCIENCE SHOWCASE BANNER (Moved Down) ============ */}
+      <section className="bg-slate-900 py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SlideInVisual direction="up" delay={0.1}>
+            <div className="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl">
+              <img
+                src="/media/generated/averiq-hair-and-skin-science-showcase.png"
+                alt="Averiq Lifesciences — Advanced Hair and Skin Science Showcase"
+                className="w-full h-auto object-cover max-h-[500px] transition-transform duration-700 hover:scale-[1.01]"
+              />
+            </div>
+          </SlideInVisual>
+        </div>
+      </section>
 
       {/* ============ 3. THERAPEUTIC VERTICALS (Categories Section) ============ */}
       <section className="py-20 sm:py-24">
