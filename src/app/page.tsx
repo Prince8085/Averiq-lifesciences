@@ -202,7 +202,7 @@ export default function Home() {
               <img
                 src="/media/generated/averiq-hair-and-skin-science-showcase.png"
                 alt="Averiq Lifesciences — Advanced Hair and Skin Science Showcase"
-                className="w-full h-auto object-cover max-h-[500px] transition-transform duration-700 hover:scale-[1.01]"
+                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.01]"
               />
             </div>
           </SlideInVisual>
@@ -268,7 +268,7 @@ export default function Home() {
               <img
                 src="/media/generated/averiq-skincare-innovation-showcase.png"
                 alt="Averiq Lifesciences — Featured Product Range Showcase"
-                className="w-full h-auto object-cover max-h-[460px] transition-transform duration-700 hover:scale-[1.01]"
+                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.01]"
               />
             </div>
           </SlideInVisual>
@@ -327,7 +327,7 @@ export default function Home() {
               <img
                 src="/media/generated/verified-quality-promise.png"
                 alt="Averiq Lifesciences — Verified Quality & CoA Promise"
-                className="w-full h-auto object-cover max-h-[420px] transition-transform duration-700 hover:scale-[1.02]"
+                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.02]"
               />
             </div>
           </SlideInVisual>

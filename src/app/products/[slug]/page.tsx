@@ -257,7 +257,7 @@ export default async function ProductPage({
                   <img
                     src={product.scienceImage}
                     alt={`${product.name} — Mechanism of Action & Scientific Efficacy`}
-                    className="w-full h-auto object-cover max-h-[520px] transition-transform duration-700 hover:scale-[1.02]"
+                    className="w-full h-auto block transition-transform duration-700 hover:scale-[1.02]"
                   />
                 </div>
               </div>

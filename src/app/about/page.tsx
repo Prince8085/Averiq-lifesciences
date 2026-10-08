@@ -86,7 +86,7 @@ export default function AboutPage() {
               <img
                 src="/media/generated/pharmaceutical-randd-scientist-examining-vial.png"
                 alt="Averiq Lifesciences — Pharmaceutical R&D Science"
-                className="w-full h-auto object-cover max-h-[460px] transition-transform duration-700 hover:scale-[1.02]"
+                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.02]"
               />
             </div>
           </SlideInVisual>
