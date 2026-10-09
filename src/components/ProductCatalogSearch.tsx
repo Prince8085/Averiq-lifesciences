@@ -138,7 +138,7 @@ export function ProductCatalogSearch() {
             <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-500">Pack: {p.pack}</span>
               <span className="inline-flex items-center gap-1 text-xs font-bold text-accent-600 group-hover:translate-x-0.5 transition-transform">
-                View Monograph
+                View Details
                 <ArrowRight className="h-3.5 w-3.5" />
               </span>
             </div>

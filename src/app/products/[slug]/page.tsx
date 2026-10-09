@@ -18,7 +18,6 @@ import { ProductVisual } from "@/components/ProductVisual";
 import { ProductGallery } from "@/components/ProductGallery";
 import { ProductTabs } from "@/components/ProductTabs";
 import { EnquiryButton } from "@/components/EnquiryButton";
-import { ProductMonographButton } from "@/components/ProductMonographButton";
 import { SlideInVisual } from "@/components/SlideInVisual";
 import { VideoSlot } from "@/components/VideoSlot";
 import { JsonLd } from "@/components/JsonLd";
@@ -199,7 +198,6 @@ export default async function ProductPage({
               {/* CTA */}
               <div className="mt-8 flex flex-wrap gap-3">
                 <EnquiryButton product={product} />
-                <ProductMonographButton product={product} />
               </div>
               <p className="mt-4 text-xs text-slate-500">
                 <MessageCircle className="mr-1 inline h-3.5 w-3.5 text-[#25D366]" />
