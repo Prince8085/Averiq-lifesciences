@@ -2,20 +2,19 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
- * Averiq Lifesciences Vector Brand Lockup
- * - `Logo`        : Header logo (transparent vector original logo, retina crisp)
- * - `LogoLockup`  : Footer lockup (dark background inverted vector logo)
+ * Averiq Lifesciences Complete Brand Lockup
+ * Contains the main emblem symbol + AVERIQ + LIFESCIENCES.
+ * Aspect ratio: 2.092:1 (7383 x 3529)
  */
 
 export function Logo({
   className,
-  height = 42,
+  height = 48,
 }: {
   className?: string;
   height?: number;
 }) {
-  // Vector brand lockup aspect ratio is 7.88:1 (9052 x 1149)
-  const width = Math.round(height * 7.88);
+  const width = Math.round(height * 2.092);
 
   return (
     <span className={cn("inline-flex items-center select-none", className)}>
@@ -24,7 +23,7 @@ export function Logo({
         alt="Averiq Lifesciences — Advanced • Verified • Quality"
         width={width}
         height={height}
-        className="h-9 sm:h-11 w-auto object-contain transition-opacity duration-300 hover:opacity-90"
+        className="h-11 sm:h-14 w-auto object-contain transition-opacity duration-300 hover:opacity-90"
         priority
       />
     </span>
@@ -43,9 +42,9 @@ export function LogoLockup({
       <Image
         src={dark ? "/averiq-logo-footer-dark.png" : "/averiq-logo-header-hd.png"}
         alt="Averiq Lifesciences — Advanced • Verified • Quality"
-        width={360}
-        height={46}
-        className="h-10 sm:h-12 w-auto object-contain"
+        width={250}
+        height={120}
+        className="h-14 sm:h-16 w-auto object-contain"
         priority
       />
     </span>
