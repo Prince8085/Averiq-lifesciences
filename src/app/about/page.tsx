@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import { SlideInVisual } from "@/components/SlideInVisual";
 import { LogoLockup } from "@/components/Logo";
 import { site } from "@/data/site";
 
@@ -80,16 +79,6 @@ export default function AboutPage() {
               ))}
             </div>
           </Reveal>
-
-          <SlideInVisual direction="right" delay={0.2} className="mt-10">
-            <div className="overflow-hidden rounded-3xl border border-slate-100 bg-slate-900 shadow-float">
-              <img
-                src="/media/generated/pharmaceutical-randd-scientist-examining-vial.png"
-                alt="Averiq Lifesciences — Pharmaceutical R&D Science"
-                className="w-full h-auto block transition-transform duration-700 hover:scale-[1.02]"
-              />
-            </div>
-          </SlideInVisual>
         </div>
       </section>
 
