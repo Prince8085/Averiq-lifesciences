@@ -13,7 +13,7 @@ import { LogoLockup } from "@/components/Logo";
 export function Footer() {
   return (
     <footer className="mesh-dark text-slate-300">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-16 pb-28 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
           {/* Brand */}
           <div>
