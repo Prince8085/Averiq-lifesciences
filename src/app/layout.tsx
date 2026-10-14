@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     template: "%s | Averiq Lifesciences",
   },
   description:
-    "AVERIQ LIFESCIENCES PVT LTD. — WHO-GMP certified pharmaceutical, cosmeceutical & nutraceutical manufacturer. Dermatology, trichology & general medicine formulations.",
+    "AVERIQ LIFESCIENCES PVT LTD. — an ethical pharmaceutical marketing company supplying dermatology, trichology, dental and nutraceutical formulations to doctors and healthcare professionals across India.",
   keywords: [
-    "Pharmaceutical Manufacturer in India",
+    "Pharmaceutical Company in India",
     "Dermatology Cosmeceutical Pharma Company India",
     "Averiq Lifesciences",
-    "Trichology Hair Serum Manufacturer",
-    "Acne Gel Manufacturer India",
+    "Trichology Hair Serum Range",
+    "Acne Gel Range India",
   ],
   openGraph: {
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: site.legalName,
     title: "Averiq Lifesciences — Advanced • Verified • Quality",
     description:
-      "Scientifically formulated therapeutic products. Pharmaceutical manufacturer in India.",
+      "Scientifically formulated therapeutic products supplied to doctors and healthcare professionals across India.",
   },
   twitter: {
     card: "summary",

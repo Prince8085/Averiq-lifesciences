@@ -2,8 +2,9 @@ import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
-  FlaskConical,
+  Globe2,
   HeartHandshake,
+  ShieldCheck,
   Sparkles,
   Flower2,
   Pill,
@@ -18,8 +19,6 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { ProductMarquee } from "@/components/ProductMarquee";
 import { ProductCatalogSearch } from "@/components/ProductCatalogSearch";
-import { CertificationsStrip } from "@/components/CertificationsStrip";
-import { StatsCounterBar } from "@/components/StatsCounterBar";
 import { JsonLd } from "@/components/JsonLd";
 import { cn } from "@/lib/utils";
 
@@ -32,19 +31,24 @@ const verticalIcons = {
 
 const whyUs = [
   {
-    icon: FlaskConical,
-    title: "Science-Backed Formulations",
-    text: "Modern drug-delivery science with clinically studied active ingredients for effective therapeutic outcomes.",
+    icon: HeartHandshake,
+    title: "Uncompromising Ethical Approach",
+    text: "Averiq Lifesciences operates strictly on an ethical medical marketing model. We completely bypass franchise or PCD systems, choosing instead to partner directly with doctors and specialists to deliver genuine, highly effective therapeutic solutions for patients.",
   },
   {
     icon: BadgeCheck,
-    title: "Quality Control",
-    text: "Every batch backed by a Certificate of Analysis (CoA) — tested for potency, dissolution and stability.",
+    title: "The Promise of Advanced • Verified • Quality",
+    text: "Our guiding philosophy is the foundation of every product we offer. As a premium brand owner, we partner only with trusted and certified manufacturing units to ensure that every product meets the highest safety, quality, and industry standards.",
   },
   {
-    icon: HeartHandshake,
-    title: "Transparent Compositions",
-    text: "Clear, honest product information. We believe in building trust through transparency and verification.",
+    icon: Globe2,
+    title: "Future-Ready Multi-Specialty Vision",
+    text: "While we currently drive innovation through cutting-edge dermatological and cosmeceutical therapies, our vision is to build a broad, comprehensive healthcare portfolio. We are actively laying the groundwork for upcoming divisions in Dental Care, Gynecology, and General Medicine.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Clinical Transparency & Trust",
+    text: "Healthcare professionals choose Averiq because our therapeutic claims are scientifically backed and driven by proven efficacy. Our entire operational framework is built on absolute clinical transparency, ensuring that doctors can rely on the science and integrity behind every formulation we offer.",
   },
 ];
 
@@ -53,13 +57,13 @@ const heroPanels = [
     label: "Our Vision",
     icon: Eye,
     tile: "from-primary-600 to-primary-700 shadow-primary-600/25",
-    text: "To build a dependable and scientifically progressive life sciences organisation, empowering healthcare professionals with quality formulations and fostering sustainable growth through ethical business practices.",
+    text: "To be a trusted and leading name in the Indian pharmaceutical sector, recognized for our ethical standards, premium product quality, and diverse multi-specialty healthcare offerings.",
   },
   {
     label: "Our Mission",
     icon: Target,
     tile: "from-accent-500 to-accent-600 shadow-accent-500/25",
-    text: "Quality without compromise, innovation in formulation and partner empowerment — delivering WHO-GMP manufactured formulations that healthcare professionals can prescribe with confidence.",
+    text: "To continuously expand our therapeutic reach by introducing scientifically backed formulations across various medical disciplines, ensuring that healthcare professionals have access to the best possible treatments for their patients.",
   },
 ];
 
@@ -96,15 +100,15 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <Reveal delay={0.08}>
             <h1 className="font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.4rem]">
-              Advancing Healthcare Through{" "}
-              <span className="gradient-text">Verified Scientific Innovation</span>
+              Advancing Healthcare,{" "}
+              <span className="gradient-text">Ethically.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Averiq Lifesciences develops pharmaceutical, cosmeceutical, and
-              trichology formulations under WHO-GMP quality standards, serving
-              healthcare professionals across India.
+              Delivering premium, research-driven pharmaceutical solutions
+              backed by our promise of Advanced • Verified • Quality — where
+              trust meets scientific excellence.
             </p>
           </Reveal>
 
@@ -112,10 +116,10 @@ export default function Home() {
           <Reveal delay={0.2}>
             <div className="mt-8 flex justify-center">
               <Link
-                href="/contact"
+                href="/about"
                 className="inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-8 py-3.5 text-sm font-bold text-white shadow-md shadow-primary-600/25 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-lg"
               >
-                Get in Touch
+                Discover Averiq
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -159,8 +163,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ CERTIFICATIONS & COMPLIANCE STRIP ============ */}
-      <CertificationsStrip />
+      {/* ============ WELCOME ============ */}
+      <section className="border-y border-slate-100 bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Introduction"
+            title="Welcome to Averiq Lifesciences"
+            subtitle="An ethical, quality-driven pharmaceutical company built for long-term therapeutic partnerships."
+          />
+          <Reveal delay={0.08}>
+            <div className="mx-auto mt-8 max-w-3xl space-y-5 text-center text-sm leading-relaxed text-slate-600 sm:text-base">
+              <p>
+                At Averiq Lifesciences Private Limited, we are committed to
+                elevating patient care through a specialized and diverse
+                healthcare portfolio. As an ethical pharmaceutical company, we
+                partner closely with medical professionals to provide highly
+                effective, compliant, and quality-assured treatments.
+              </p>
+              <p>
+                Driven by our core philosophy of Advanced • Verified • Quality,
+                our journey begins with cutting-edge dermatological and
+                cosmeceutical therapies, with a strong, steadfast vision to
+                expand into comprehensive multi-specialty medicine. Whether it
+                is our current specialized ranges or our upcoming therapeutic
+                divisions, our focus remains unchanged: improving lives through
+                science.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ============ THERAPEUTIC VERTICALS ============ */}
       <section className="py-20 sm:py-24">
@@ -200,9 +232,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ STATS COUNTER BAR ============ */}
-      <StatsCounterBar />
-
       {/* ============ STAR FORMULATIONS (horizontal marquee & search catalog) ============ */}
       <section id="products" className="scroll-mt-20 bg-muted py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -226,9 +255,9 @@ export default function Home() {
           <SectionHeading
             eyebrow="The Averiq Difference"
             title="Why Choose Averiq"
-            subtitle="What sets our formulations apart."
+            subtitle="What sets Averiq apart as an ethical, quality-driven pharmaceutical company."
           />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {whyUs.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.08}>
                 <div className="h-full rounded-2xl border border-slate-100 bg-white p-8 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float">

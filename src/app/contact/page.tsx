@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const departments = [
   {
     icon: BriefcaseBusiness,
-    title: "Sales & Distribution",
+    title: "Sales & Product Enquiries",
     email: "sales@averiqlifesciences.com",
   },
   {
@@ -71,7 +71,7 @@ export default function ContactPage() {
               Let&apos;s Talk Healthcare
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
-              Doctors, distributors and patients — our desk
+              Doctors and healthcare professionals — our desk
               responds within one business day.
             </p>
           </Reveal>

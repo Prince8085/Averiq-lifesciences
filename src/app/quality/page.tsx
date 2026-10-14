@@ -1,60 +1,75 @@
 import type { Metadata } from "next";
 import {
   ShieldCheck,
-  FlaskConical,
-  TestTubes,
-  Microscope,
   FileCheck2,
   BellRing,
-  Award,
   BadgeCheck,
+  HeartHandshake,
 } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Quality Standards & Assurance",
+  title: "Quality & Assurance",
   description:
-    "WHO-GMP certified quality at Averiq Lifesciences — strict QA/QC protocols, HPLC analytical testing, stability studies, pharmacovigilance and full compliance documentation.",
+    "Quality and assurance at Averiq Lifesciences — how we select what we supply, the documentation we provide, and our commitment to ethical, transparent pharmaceutical marketing.",
 };
 
-const protocols = [
+const process = [
   {
-    icon: FlaskConical,
-    title: "Incoming Raw Material Control",
-    text: "Every API and excipient is quarantined and identity-tested before release — no exceptions, no shortcuts.",
-  },
-  {
-    icon: TestTubes,
-    title: "In-Process Quality Control",
-    text: "Real-time monitoring of blending, granulation, compression and filling against validated parameters.",
-  },
-  {
-    icon: Microscope,
-    title: "Finished Batch Release",
-    text: "Complete analytical release: potency (HPLC), content uniformity, dissolution, microbial limits and appearance.",
+    icon: HeartHandshake,
+    title: "Partner Selection",
+    text: "We work only with trusted and certified manufacturing units, evaluated on certification, audit history, capacity and compliance records before a single product is considered.",
   },
   {
     icon: FileCheck2,
-    title: "Documentation & CoA",
-    text: "Every batch ships with a Certificate of Analysis and full batch documentation for audit trail integrity.",
+    title: "Product Evaluation",
+    text: "Compositions, strengths, pack presentations, stability details and regulatory status are reviewed against the applicable Indian requirements for the category.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Documentation Review",
+    text: "Batch documentation, labelling, shelf-life and storage details are verified and kept ready before a product enters the Averiq portfolio.",
+  },
+  {
+    icon: BellRing,
+    title: "Ongoing Vigilance",
+    text: "Supply quality, complaints and regulatory updates are monitored continuously so the portfolio stays compliant long after launch.",
   },
 ];
 
-const labs = [
-  ["HPLC Potency Assays", "Verifies active ingredient concentration against pharmacopoeial standards"],
-  ["Dissolution Profiling", "Confirms drug release performance meets specification"],
-  ["Stability Studies", "Accelerated & long-term ICH-condition testing for shelf-life claims"],
-  ["Microbial Testing", "Total viable count and pathogen absence for topicals and oral solids"],
-  ["Content Uniformity", "Ensures every dose carries the labelled amount"],
-  ["Physical Testing", "Hardness, friability, disintegration and viscosity checks"],
+const documentation = [
+  [
+    "Composition & Strength Details",
+    "Full active-ingredient composition and strength for every product we supply",
+  ],
+  [
+    "Batch Documentation",
+    "Batch records and analysis documents provided by our manufacturing partners with each consignment",
+  ],
+  [
+    "Storage & Handling Guidance",
+    "Clear storage instructions and shelf-life information for every pack",
+  ],
+  [
+    "Regulatory Status",
+    "Rx and OTC classification declared as per the applicable Indian regulations",
+  ],
+  [
+    "Pack & Presentation Details",
+    "Pack size, presentation and visual-aid information for prescriber communication",
+  ],
+  [
+    "Responsive Support",
+    "A dedicated desk for queries on documentation, availability and product information",
+  ],
 ];
 
-const certifications = [
-  "WHO-GMP compliant manufacturing protocols",
-  "DCGI (CDSCO) registered compositions",
-  "FDA-compliant documentation standards",
-  "ISO-aligned quality management practices",
+const commitments = [
+  "Sourced from trusted, certified manufacturing partners",
+  "Compositions aligned with Indian regulatory requirements",
+  "Rx and OTC status clearly declared on every product",
+  "Batch documentation available with each consignment",
 ];
 
 export default function QualityPage() {
@@ -64,34 +79,36 @@ export default function QualityPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
-              Quality Assurance
+              Quality & Assurance
             </p>
             <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
-              Zero Tolerance. <span className="gradient-text">Zero Shortcuts.</span>
+              Verified Quality,{" "}
+              <span className="gradient-text">Without Compromise.</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Quality at Averiq is not a department — it&apos;s the foundation.
-              From incoming raw materials to the finished pack in your hand,
-              every step is verified, documented and traceable.
+              As an ethical pharmaceutical marketing company, we do not make
+              claims we cannot support. Every range we supply is selected
+              against documented quality, safety and compliance criteria — and
+              backed by transparent documentation.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Protocols */}
+      {/* Selection process */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="QA / QC Protocols"
-            title="A Four-Gate Verification Pipeline"
-            subtitle="Every Averiq batch passes through four independent quality gates."
+            eyebrow="Our Process"
+            title="How We Select What We Supply"
+            subtitle="Four checks every product passes before it carries the Averiq name."
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {protocols.map((p, i) => (
+            {process.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.07}>
                 <div className="relative h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float">
                   <span className="absolute -top-3 left-6 rounded-full bg-primary-600 px-3 py-1 text-[11px] font-extrabold text-white">
-                    Gate {i + 1}
+                    Step {i + 1}
                   </span>
                   <span className="mt-2 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
                     <p.icon className="h-5 w-5" />
@@ -99,7 +116,9 @@ export default function QualityPage() {
                   <h3 className="mt-4 font-display text-base font-bold text-primary-900">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.text}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    {p.text}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -107,21 +126,20 @@ export default function QualityPage() {
         </div>
       </section>
 
-      {/* Lab testing */}
+      {/* Documentation */}
       <section className="bg-muted py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <Reveal>
               <h2 className="font-display text-2xl font-bold text-primary-900 sm:text-3xl">
-                High-Tech Analytical Laboratory
+                Transparent Documentation
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                Our in-house analytical lab runs the full pharmacopoeial test
-                battery on every product line, so clinical claims are backed by
-                data — not promises.
+                We supply the paperwork healthcare professionals actually need —
+                without overstating what we do ourselves.
               </p>
               <div className="mt-8 space-y-4">
-                {labs.map(([t, d]) => (
+                {documentation.map(([t, d]) => (
                   <div key={t} className="flex items-start gap-3">
                     <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent-600" />
                     <div>
@@ -135,26 +153,28 @@ export default function QualityPage() {
             <Reveal delay={0.1}>
               <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-float">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                  Certifications & Compliance
+                  What Our Commitment Covers
                 </p>
                 <ul className="mt-5 space-y-4">
-                  {certifications.map((c) => (
+                  {commitments.map((c) => (
                     <li key={c} className="flex items-start gap-3">
-                      <Award className="mt-0.5 h-5 w-5 shrink-0 text-primary-600" />
-                      <span className="text-sm font-semibold text-slate-700">{c}</span>
+                      <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary-600" />
+                      <span className="text-sm font-semibold text-slate-700">
+                        {c}
+                      </span>
                     </li>
                   ))}
                 </ul>
                 <div className="mt-7 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 p-5 text-sm text-primary-50">
                   <p className="flex items-center gap-2 font-display font-bold text-white">
                     <ShieldCheck className="h-5 w-5 text-accent-400" />
-                    Quality Policy
+                    Our Quality Commitment
                   </p>
                   <p className="mt-2 text-xs leading-relaxed text-primary-100">
                     “Quality is everyone&apos;s responsibility. We commit to
-                    supplying safe, effective and consistent products while
-                    continuously improving our processes.” — Averiq Quality
-                    Manual
+                    supplying safe, effective and consistent products to the
+                    healthcare professionals who prescribe them, while
+                    continuously improving our processes.”
                   </p>
                 </div>
               </div>
@@ -163,7 +183,7 @@ export default function QualityPage() {
         </div>
       </section>
 
-      {/* Pharmacovigilance */}
+      {/* Safety reporting */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>

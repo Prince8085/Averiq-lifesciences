@@ -19,9 +19,9 @@ export function Footer() {
           <div>
             <LogoLockup dark className="w-44" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
-              Scientifically formulated, clinically validated and premium
-              therapeutic products — engineered under rigorous global quality
-              benchmarks, serving healthcare across India.
+              Premium, research-driven therapeutic products for dermatology,
+              trichology and allied specialties — supplied to doctors and
+              healthcare professionals across India.
             </p>
             <p className="mt-4 flex items-center gap-2 text-xs font-medium text-slate-500">
               <Landmark className="h-3.5 w-3.5 text-accent-500" />
@@ -38,7 +38,7 @@ export function Footer() {
               {[
                 ["About Us", "/about"],
                 ["Products", "/#products"],
-                ["Careers", "/career"],
+                ["Quality & Assurance", "/quality"],
                 ["Knowledge Hub", "/blog"],
                 ["Contact", "/contact"],
               ].map(([label, href]) => (
@@ -124,7 +124,7 @@ export function Footer() {
             </ul>
             <div className="mt-5 flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2.5 text-xs text-slate-400">
               <ShieldCheck className="h-4 w-4 shrink-0 text-accent-500" />
-              WHO-GMP certified manufacturing partner
+              Ethical medical marketing · direct doctor partnerships
             </div>
           </div>
         </div>

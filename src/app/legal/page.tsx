@@ -14,8 +14,8 @@ const sections = [
     body: [
       "The information provided on this website is intended solely for educational and informational purposes for healthcare practitioners and business associates. It does not constitute medical advice or substitute professional diagnosis or treatment.",
       "Formulations marked with Rx are Schedule H drugs under the Drugs and Cosmetics Act, 1940, and are to be sold by retail only on the prescription of a Registered Medical Practitioner.",
-      "Averiq Lifesciences Private Limited is a registered corporate manufacturer and wholesale distributor. We do not sell prescription pharmaceuticals directly to retail consumers online.",
-      "Product claims are based on published literature and manufacturer data. Always consult a physician before using any pharmaceutical, cosmeceutical or nutraceutical product.",
+      "Averiq Lifesciences Private Limited is an ethical pharmaceutical marketing company. We partner directly with doctors and specialists, and we do not sell prescription pharmaceuticals directly to retail consumers online.",
+      "Product information is based on published literature and on data provided by our manufacturing partners. Always consult a physician before using any pharmaceutical, cosmeceutical or nutraceutical product.",
     ],
   },
   {

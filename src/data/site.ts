@@ -32,6 +32,7 @@ export const navLinks = [
       { label: "Gynecology & Nutraceuticals" },
     ],
   },
+  { label: "Quality & Assurance", href: "/quality" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

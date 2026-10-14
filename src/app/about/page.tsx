@@ -5,10 +5,8 @@ import {
   Eye,
   HeartHandshake,
   ShieldCheck,
-  Factory,
-  Microscope,
+  BadgeCheck,
   Globe2,
-  Users,
   ArrowRight,
 } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -19,31 +17,36 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "AVERIQ LIFESCIENCES PVT LTD. — a New Delhi-based pharmaceutical, cosmeceutical and nutraceutical company driven by Advanced, Verified, Quality.",
+    "AVERIQ LIFESCIENCES PVT LTD. — a New Delhi-based pharmaceutical marketing company driven by Advanced • Verified • Quality.",
 };
 
-const values = [
+const commitment = [
+  {
+    icon: HeartHandshake,
+    title: "Trusted Sourcing",
+    text: "We work only with trusted and certified manufacturing units — evaluated on certification, audit history and compliance before any product is considered.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Quality-Conscious Selection",
+    text: "Compositions, pack details, shelf life and regulatory status are reviewed against documented criteria so only suitable products carry the Averiq name.",
+  },
+  {
+    icon: Globe2,
+    title: "Reliable Supply",
+    text: "Dependable availability and consistent delivery to doctors, clinics and institutions, backed by a responsive desk for product information.",
+  },
   {
     icon: ShieldCheck,
-    title: "Quality Without Compromise",
-    text: "Adherence to WHO-GMP manufacturing protocols across every batch and every product line.",
-  },
-  {
-    icon: Microscope,
-    title: "Innovation in Formulation",
-    text: "Enhancing drug bioavailability, patient comfort and clinical outcomes through modern drug-delivery science.",
-  },
-  {
-    icon: Users,
-    title: "Trusted Partnerships",
-    text: "Building transparent networks with healthcare professionals, distributors and stockists.",
+    title: "Customer Trust",
+    text: "Clear, honest product information and transparent communication — no unsupported claims, no shortcuts, and long-term relationships over one-time sales.",
   },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Who We Are */}
       <section className="mesh-hero pb-16 pt-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
@@ -51,38 +54,45 @@ export default function AboutPage() {
               Corporate Profile
             </p>
             <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
-              Advanced. Verified. Quality.
-              <span className="block gradient-text">That&apos;s the Averiq promise.</span>
+              About Averiq Lifesciences
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              {site.legalName} is an Indian pharmaceutical enterprise
-              incorporated in India. Driven by our foundational
-              pillar —{" "}
-              <strong className="text-primary-900">Advanced, Verified, Quality</strong>{" "}
-              — we develop and distribute healthcare, dermatological and
-              cosmeceutical solutions. We focus on building formulations that
-              healthcare professionals can prescribe with confidence.
+              Averiq Lifesciences Private Limited is a forward-thinking
+              pharmaceutical company dedicated to redefining healthcare
+              standards. Founded with a vision to deliver excellence, we operate
+              strictly on an ethical medical marketing model. We believe that
+              true healthcare innovation is achieved by working directly with
+              doctors, specialists, and healthcare practitioners to understand
+              patient needs and provide precise, effective solutions.
             </p>
-          </Reveal>
-          <Reveal delay={0.12} className="mt-10">
-            <div className="grid gap-3 rounded-2xl border border-slate-100 bg-white/80 p-6 shadow-soft backdrop-blur sm:grid-cols-2">
-              {[
-                ["CIN", site.cin],
-                ["Corporate Office", "New Delhi 110020"],
-              ].map(([k, v]) => (
-                <div key={k}>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    {k}
-                  </p>
-                  <p className="mt-1 text-sm font-bold text-primary-900">{v}</p>
-                </div>
-              ))}
-            </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* Our Philosophy */}
+      <section className="bg-muted py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <h2 className="font-display text-2xl font-bold text-primary-900 sm:text-3xl">
+              Our Philosophy
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+              Driven by our guiding principle —{" "}
+              <strong className="text-primary-900">
+                Advanced • Verified • Quality
+              </strong>{" "}
+              — we go beyond merely offering healthcare products; we build
+              long-term, trusted therapeutic brands. By maintaining a clean,
+              transparent, and professionally driven operational model, we
+              ensure that every formulation bearing the Averiq name stands for
+              uncompromising efficacy, clinical safety, and strict regulatory
+              compliance.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Vision & Mission */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-2">
@@ -95,10 +105,9 @@ export default function AboutPage() {
                   Our Vision
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  To build a dependable and scientifically progressive life
-                  sciences organization, empowering healthcare professionals with
-                  quality formulations and fostering sustainable growth through
-                  ethical business practices.
+                  To be a trusted and leading name in the Indian pharmaceutical
+                  sector, recognized for our ethical standards, premium product
+                  quality, and diverse multi-specialty healthcare offerings.
                 </p>
               </div>
             </Reveal>
@@ -110,42 +119,39 @@ export default function AboutPage() {
                 <h2 className="mt-5 font-display text-2xl font-bold text-primary-900">
                   Our Mission
                 </h2>
-                <ul className="mt-4 space-y-3">
-                  {values.map((v) => (
-                    <li key={v.title} className="flex items-start gap-3">
-                      <HeartHandshake className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
-                      <div>
-                        <p className="text-sm font-bold text-primary-900">{v.title}</p>
-                        <p className="text-sm text-slate-600">{v.text}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+                  To continuously expand our therapeutic reach by introducing
+                  scientifically backed formulations across various medical
+                  disciplines, ensuring that healthcare professionals have
+                  access to the best possible treatments for their patients.
+                </p>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Compliance */}
+      {/* Our Commitment to Standards */}
       <section className="bg-muted py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="Quality & Compliance"
+            eyebrow="Quality & Trust"
             title="Our Commitment to Standards"
-            subtitle="Every formulation is manufactured under WHO-GMP protocols with quality control at every stage."
+            subtitle="Simple, dependable standards — from the way we source, to the way we supply."
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-3">
-            {[
-              { icon: Factory, t: "WHO-GMP Facility", d: "Manufacturing under globally recognized quality protocols" },
-              { icon: Microscope, t: "Lab Testing", d: "HPLC potency assays, dissolution profiling and stability studies on every batch" },
-              { icon: Globe2, t: "Certificate of Analysis", d: "Every batch carries a CoA — transparent documentation for all stakeholders" },
-            ].map((x, i) => (
-              <Reveal key={x.t} delay={i * 0.08}>
-                <div className="h-full rounded-2xl border border-slate-100 bg-white p-6 text-center shadow-soft">
-                  <x.icon className="mx-auto h-8 w-8 text-primary-600" />
-                  <p className="mt-3 font-display text-sm font-bold text-primary-900">{x.t}</p>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600">{x.d}</p>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {commitment.map((c, i) => (
+              <Reveal key={c.title} delay={i * 0.07}>
+                <div className="h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
+                    <c.icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 font-display text-base font-bold text-primary-900">
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    {c.text}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -159,7 +165,7 @@ export default function AboutPage() {
           <div>
             <LogoLockup dark className="mx-auto w-48 lg:mx-0" />
             <p className="mt-4 max-w-xl text-sm text-slate-300">
-              {site.legalName} | {site.cin} | {site.address}
+              {site.legalName} | {site.address}
             </p>
           </div>
           <Link

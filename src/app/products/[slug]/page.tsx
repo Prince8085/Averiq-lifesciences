@@ -62,11 +62,6 @@ export default async function ProductPage({
     description: `${product.generic} — ${product.tagline}`,
     category: product.category,
     brand: { "@type": "Brand", name: site.name },
-    manufacturer: {
-      "@type": "Organization",
-      name: site.legalName,
-      address: site.address,
-    },
     additionalProperty: [
       { "@type": "PropertyValue", name: "Dosage Form", value: product.form },
       { "@type": "PropertyValue", name: "Pack Size", value: product.pack },
@@ -103,11 +98,11 @@ export default async function ProductPage({
             <div className="mt-6 flex flex-wrap gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-200 bg-accent-50 px-3 py-1 text-[11px] font-bold text-accent-700">
                 <Shield className="h-3.5 w-3.5" />
-                WHO-GMP Certified
+                Certified Sourcing Partners
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-primary-200 bg-primary-50 px-3 py-1 text-[11px] font-bold text-primary-700">
                 <FileText className="h-3.5 w-3.5" />
-                Batch Tested & CoA Available
+                Batch Documents on Request
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-bold text-slate-600">
                 <Building2 className="h-3.5 w-3.5" />
@@ -269,17 +264,17 @@ export default async function ProductPage({
             <div className="flex flex-wrap items-center justify-center gap-6 text-center">
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <Shield className="h-5 w-5 text-accent-600" />
-                <span className="font-semibold">WHO-GMP Certified</span>
+                <span className="font-semibold">Certified Sourcing Partners</span>
               </div>
               <div className="h-4 w-px bg-slate-200" />
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <FileText className="h-5 w-5 text-primary-600" />
-                <span className="font-semibold">Certificate of Analysis</span>
+                <span className="font-semibold">Batch Documentation</span>
               </div>
               <div className="h-4 w-px bg-slate-200" />
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <Building2 className="h-5 w-5 text-accent-600" />
-                <span className="font-semibold">Manufactured in India</span>
+                <span className="font-semibold">Made in India</span>
               </div>
             </div>
           </div>
