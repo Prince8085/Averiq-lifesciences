@@ -5,6 +5,7 @@ import {
   BellRing,
   BadgeCheck,
   HeartHandshake,
+  Check,
 } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
@@ -12,69 +13,55 @@ import { Reveal } from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Quality & Assurance",
   description:
-    "Quality and assurance at Averiq Lifesciences — how we select what we supply, the documentation we provide, and our commitment to ethical, transparent pharmaceutical marketing.",
+    "Advance Verified Quality at Averiq Lifesciences — how we select what we supply, the documentation we provide, and our commitment to ethical, transparent pharmaceutical marketing.",
 };
 
 const process = [
   {
     icon: HeartHandshake,
-    title: "Partner Selection",
-    text: "We work only with trusted and certified manufacturing units, evaluated on certification, audit history, capacity and compliance records before a single product is considered.",
+    title: "Elite Partner Selection",
+    text: "We collaborate exclusively with state-of-the-art, WHO-GMP-certified manufacturing units. Before initiating any partnership, we meticulously evaluate the facility's audit history, certifications, and past compliance records to ensure they meet our exacting corporate standards.",
   },
   {
     icon: FileCheck2,
-    title: "Product Evaluation",
-    text: "Compositions, strengths, pack presentations, stability details and regulatory status are reviewed against the applicable Indian requirements for the category.",
+    title: "Scientific Formulation Review",
+    text: "Whether it is our current advanced dermatological range or our upcoming Dental and Gynecology divisions, every formulation is thoroughly vetted. Active ingredients, compositional balance, and product stability are verified against the latest clinical needs and medical research.",
   },
   {
     icon: BadgeCheck,
-    title: "Documentation Review",
-    text: "Batch documentation, labelling, shelf-life and storage details are verified and kept ready before a product enters the Averiq portfolio.",
+    title: "Absolute Regulatory Compliance",
+    text: "We strictly adhere to all Indian cosmetic and pharmaceutical regulations. Every product label, packaging design, and therapeutic claim undergoes a rigorous legal and clinical review. We ensure absolute accuracy — what is stated on the label is exactly what is delivered in the formulation, with zero exaggerated claims.",
   },
   {
     icon: BellRing,
-    title: "Ongoing Vigilance",
-    text: "Supply quality, complaints and regulatory updates are monitored continuously so the portfolio stays compliant long after launch.",
+    title: "Batch-to-Batch Consistency",
+    text: "Our quality control does not end at the product launch. We implement continuous monitoring protocols to ensure that from the first batch to the hundredth, the safety, efficacy, and premium quality of our products remain unequivocally consistent.",
   },
 ];
 
-const documentation = [
-  [
-    "Composition & Strength Details",
-    "Full active-ingredient composition and strength for every product we supply",
-  ],
-  [
-    "Batch Documentation",
-    "Batch records and analysis documents provided by our manufacturing partners with each consignment",
-  ],
-  [
-    "Storage & Handling Guidance",
-    "Clear storage instructions and shelf-life information for every pack",
-  ],
-  [
-    "Regulatory Status",
-    "Rx and OTC classification declared as per the applicable Indian regulations",
-  ],
-  [
-    "Pack & Presentation Details",
-    "Pack size, presentation and visual-aid information for prescriber communication",
-  ],
-  [
-    "Responsive Support",
-    "A dedicated desk for queries on documentation, availability and product information",
-  ],
-];
-
-const commitments = [
-  "Sourced from trusted, certified manufacturing partners",
-  "Compositions aligned with Indian regulatory requirements",
-  "Rx and OTC status clearly declared on every product",
-  "Batch documentation available with each consignment",
+const documents = [
+  {
+    title: "Clear Composition & Strength",
+    text: "Accurate and completely transparent declarations of all active ingredients.",
+  },
+  {
+    title: "Authentic Batch Records",
+    text: "Verified batch analysis and testing documents provided by our certified manufacturing partners.",
+  },
+  {
+    title: "Honest Clinical Claims",
+    text: "Scientifically backed therapeutic indications without overstated or misleading results.",
+  },
+  {
+    title: "Optimal Storage Guidelines",
+    text: "Clear, practical instructions for shelf-life and storage to ensure maximum product efficacy reaches the end-user.",
+  },
 ];
 
 export default function QualityPage() {
   return (
     <>
+      {/* Hero */}
       <section className="mesh-hero pb-16 pt-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
@@ -82,26 +69,29 @@ export default function QualityPage() {
               Quality & Assurance
             </p>
             <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
-              Verified Quality,{" "}
-              <span className="gradient-text">Without Compromise.</span>
+              Advance Verified Quality:{" "}
+              <span className="gradient-text">Our Ultimate Benchmark</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              As an ethical pharmaceutical marketing company, we do not make
-              claims we cannot support. Every range we supply is selected
-              against documented quality, safety and compliance criteria — and
-              backed by transparent documentation.
+              Averiq Lifesciences is a strictly ethical pharmaceutical company.
+              As a premium brand owner, our focus goes beyond simply bringing
+              products to market; we are dedicated to delivering a standard of
+              quality that doctors and healthcare professionals can trust
+              without hesitation. &ldquo;Advance Verified Quality&rdquo; is not
+              just our tagline — it is the foundational promise behind every
+              formulation that carries the Averiq name.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Selection process */}
+      {/* The Four Pillars */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="Our Process"
-            title="How We Select What We Supply"
-            subtitle="Four checks every product passes before it carries the Averiq name."
+            eyebrow="Our Stringent Process"
+            title="The Four Pillars of Averiq's Quality Control"
+            subtitle="Operating as a brand-building entity rather than a direct manufacturer requires exceptional oversight. Our selection and monitoring processes are among the most rigorous in the industry. No product enters the Averiq portfolio until it clears these four critical steps:"
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {process.map((p, i) => (
@@ -126,25 +116,31 @@ export default function QualityPage() {
         </div>
       </section>
 
-      {/* Documentation */}
+      {/* Complete Clinical Transparency */}
       <section className="bg-muted py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid items-start gap-12 lg:grid-cols-2">
             <Reveal>
-              <h2 className="font-display text-2xl font-bold text-primary-900 sm:text-3xl">
-                Transparent Documentation
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                We supply the paperwork healthcare professionals actually need —
-                without overstating what we do ourselves.
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
+                Clinical Transparency
               </p>
-              <div className="mt-8 space-y-4">
-                {documentation.map(([t, d]) => (
-                  <div key={t} className="flex items-start gap-3">
-                    <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent-600" />
+              <h2 className="mt-3 font-display text-2xl font-bold text-primary-900 sm:text-3xl">
+                Complete Clinical Transparency
+              </h2>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                We believe in empowering healthcare professionals with the
+                precise, honest documentation they need to prescribe with
+                absolute confidence. Our clinical transparency model includes:
+              </p>
+              <div className="mt-8 space-y-5">
+                {documents.map((d) => (
+                  <div key={d.title} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent-600" />
                     <div>
-                      <p className="text-sm font-bold text-primary-900">{t}</p>
-                      <p className="text-sm text-slate-600">{d}</p>
+                      <p className="text-sm font-bold text-primary-900">
+                        {d.title}
+                      </p>
+                      <p className="text-sm text-slate-600">{d.text}</p>
                     </div>
                   </div>
                 ))}
@@ -153,29 +149,46 @@ export default function QualityPage() {
             <Reveal delay={0.1}>
               <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-float">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                  What Our Commitment Covers
+                  Our Quality Pledge
                 </p>
-                <ul className="mt-5 space-y-4">
-                  {commitments.map((c) => (
-                    <li key={c} className="flex items-start gap-3">
-                      <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary-600" />
-                      <span className="text-sm font-semibold text-slate-700">
-                        {c}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-7 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 p-5 text-sm text-primary-50">
-                  <p className="flex items-center gap-2 font-display font-bold text-white">
-                    <ShieldCheck className="h-5 w-5 text-accent-400" />
-                    Our Quality Commitment
+                <div className="mt-5 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 p-6 text-sm">
+                  <p className="font-display font-bold text-white">
+                    Our Quality Pledge
                   </p>
-                  <p className="mt-2 text-xs leading-relaxed text-primary-100">
-                    “Quality is everyone&apos;s responsibility. We commit to
-                    supplying safe, effective and consistent products to the
-                    healthcare professionals who prescribe them, while
-                    continuously improving our processes.”
+                  <p className="mt-3 italic leading-relaxed text-primary-100">
+                    &ldquo;For us, quality is not a choice; it is a fundamental
+                    responsibility. We are committed to supplying only safe,
+                    highly effective, and strictly compliant products to the
+                    healthcare professionals who prescribe them. At Averiq
+                    Lifesciences, patient safety and clinical integrity will
+                    always take precedence over business.&rdquo;
                   </p>
+                </div>
+                <div className="mt-6 space-y-4">
+                  <div className="flex items-start gap-3">
+                    <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary-600" />
+                    <div>
+                      <p className="text-sm font-bold text-primary-900">
+                        What Our Commitment Covers
+                      </p>
+                      <ul className="mt-2 space-y-2">
+                        {[
+                          "Sourced from trusted, WHO-GMP-certified manufacturing partners",
+                          "Compositions aligned with Indian regulatory requirements",
+                          "Rx and OTC status clearly declared on every product",
+                          "Batch documentation available with each consignment",
+                        ].map((c) => (
+                          <li
+                            key={c}
+                            className="flex items-start gap-2 text-sm text-slate-700"
+                          >
+                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
+                            {c}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -183,7 +196,7 @@ export default function QualityPage() {
         </div>
       </section>
 
-      {/* Safety reporting */}
+      {/* Responsive Clinical Support */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
@@ -193,22 +206,24 @@ export default function QualityPage() {
               </span>
               <div className="flex-1">
                 <h2 className="font-display text-2xl font-bold text-primary-900">
-                  Pharmacovigilance & Safety Reporting
+                  Responsive Clinical Support
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-                  Healthcare professionals and patients can report any adverse
-                  event, product complaint or quality concern directly to our
-                  pharmacovigilance desk. Every report is investigated, logged
-                  and, where applicable, escalated to the relevant regulatory
-                  authority.
+                  We stand completely behind the quality of every Averiq
+                  product. If healthcare professionals or patients have any
+                  queries regarding our product documentation, ingredient
+                  formulation, or overall quality, our support team is always
+                  accessible. We are committed to addressing all product-related
+                  feedback promptly to maintain the highest standards of clinical
+                  trust.
                 </p>
               </div>
               <a
-                href="mailto:pv@averiqlifesciences.com"
+                href="mailto:careers@averiqlifesciences.com"
                 className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-primary-600 px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-700"
               >
                 <BellRing className="h-4 w-4" />
-                Report to PV Desk
+                Contact Our Team
               </a>
             </div>
           </Reveal>
