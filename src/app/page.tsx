@@ -20,6 +20,8 @@ import { Reveal } from "@/components/Reveal";
 import { ProductMarquee } from "@/components/ProductMarquee";
 import { ProductCatalogSearch } from "@/components/ProductCatalogSearch";
 import { JsonLd } from "@/components/JsonLd";
+import { HeroImage } from "@/components/HeroImage";
+import { TrichologyFeatureCard } from "@/components/TrichologyFeatureCard";
 import { cn } from "@/lib/utils";
 
 const verticalIcons = {
@@ -96,8 +98,17 @@ export default function Home() {
       <JsonLd data={homeJsonLd} />
 
       {/* ============ HERO ============ */}
-      <section className="mesh-hero relative overflow-hidden pb-20 pt-32 sm:pt-36">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <section className="mesh-hero relative overflow-hidden pb-20 pt-32 sm:pt-36">
+              {/* Hero Background Images */}
+              <HeroImage
+                mobileSrc="/optimized/hero/face-wash-ritual-1920w.webp"
+                desktopSrc="/optimized/hero/sunscreen-glow-1920w.webp"
+                blurSrc="/optimized/hero/face-wash-ritual-blur.webp"
+                alt="Averiq Lifesciences — Advancing Healthcare Ethically"
+                priority
+              />
+
+              <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 relative z-10">
           <Reveal delay={0.08}>
             <h1 className="font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.4rem]">
               Advancing Healthcare,{" "}
@@ -195,42 +206,54 @@ export default function Home() {
       </section>
 
       {/* ============ THERAPEUTIC VERTICALS ============ */}
-      <section className="py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Therapeutic Verticals"
-            title="Specialized Care, Clearly Segmented"
-            subtitle="Explicit therapeutic divisions so doctors and patients find exactly what they need."
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {therapeuticVerticals.map((v, i) => {
-              const Icon = verticalIcons[v.slug];
-              return (
-                <Reveal key={v.slug} delay={i * 0.07}>
-                  <Link
-                    href="/#products"
-                    className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
-                  >
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
-                      {v.title}
-                    </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
-                      {v.blurb}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent-600">
-                      View range
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+            <section className="py-20 sm:py-24">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <SectionHeading
+                  eyebrow="Therapeutic Verticals"
+                  title="Specialized Care, Clearly Segmented"
+                  subtitle="Explicit therapeutic divisions so doctors and patients find exactly what they need."
+                />
+                <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                  {therapeuticVerticals.map((v, i) => {
+                    // Trichology gets the special asymmetric feature card
+                    if (v.slug === "Trichology") {
+                      return (
+                        <TrichologyFeatureCard
+                          key={v.slug}
+                          delay={i * 0.07}
+                          imageSrc="/optimized/verticals/scalp-serum-rituals-1920w.webp"
+                          blurSrc="/optimized/verticals/scalp-serum-rituals-blur.webp"
+                          alt="ROOTRIQ PRO Hair Serum — Advanced hair growth formulation"
+                        />
+                      );
+                    }
+                    const Icon = verticalIcons[v.slug];
+                    return (
+                      <Reveal key={v.slug} delay={i * 0.07}>
+                        <Link
+                          href="/#products"
+                          className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
+                        >
+                          <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
+                            <Icon className="h-6 w-6" />
+                          </span>
+                          <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
+                            {v.title}
+                          </h3>
+                          <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                            {v.blurb}
+                          </p>
+                          <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent-600">
+                            View range
+                            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                          </span>
+                        </Link>
+                      </Reveal>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
 
       {/* ============ STAR FORMULATIONS (horizontal marquee & search catalog) ============ */}
       <section id="products" className="scroll-mt-20 bg-muted py-20 sm:py-24">

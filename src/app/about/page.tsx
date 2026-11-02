@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Target,
   Eye,
@@ -47,27 +48,51 @@ export default function AboutPage() {
   return (
     <>
       {/* Who We Are */}
-      <section className="mesh-hero pb-16 pt-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
-              Corporate Profile
-            </p>
-            <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
-              About Averiq Lifesciences
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Averiq Lifesciences Private Limited is a forward-thinking
-              pharmaceutical company dedicated to redefining healthcare
-              standards. Founded with a vision to deliver excellence, we operate
-              strictly on an ethical medical marketing model. We believe that
-              true healthcare innovation is achieved by working directly with
-              doctors, specialists, and healthcare practitioners to understand
-              patient needs and provide precise, effective solutions.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+            <section className="mesh-hero pb-16 pt-28">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:items-center">
+                  {/* Content - left on desktop */}
+                  <div className="lg:order-2">
+                    <Reveal>
+                      <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
+                        Corporate Profile
+                      </p>
+                      <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
+                        About Averiq Lifesciences
+                      </h1>
+                      <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                        Averiq Lifesciences Private Limited is a forward-thinking
+                        pharmaceutical company dedicated to redefining healthcare
+                        standards. Founded with a vision to deliver excellence, we operate
+                        strictly on an ethical medical marketing model. We believe that
+                        true healthcare innovation is achieved by working directly with
+                        doctors, specialists, and healthcare practitioners to understand
+                        patient needs and provide precise, effective solutions.
+                      </p>
+                    </Reveal>
+                  </div>
+
+                  {/* Portrait Image - right on desktop, above on mobile */}
+                  <div className="mt-10 lg:mt-0 lg:order-1">
+                    <Reveal delay={0.1}>
+                      <div className="relative aspect-[4/5] max-w-md mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-float">
+                        <Image
+                          src="/optimized/about/skincare-portrait-1280w.webp"
+                          alt="Averiq Lifesciences — Ethical pharmaceutical team"
+                          fill
+                          priority={false}
+                          placeholder="blur"
+                          blurDataURL="/optimized/about/skincare-portrait-blur.webp"
+                          sizes="(max-width: 1023px) 100vw, 50vw"
+                          className="object-cover"
+                          quality={90}
+                        />
+                      </div>
+                    </Reveal>
+                  </div>
+                </div>
+              </div>
+            </section>
 
       {/* Our Philosophy */}
       <section className="bg-muted py-20">
