@@ -295,12 +295,13 @@ export default async function ProductPage({
                     className="group flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-soft transition-all hover:-translate-y-1 hover:shadow-float"
                   >
                     <ProductVisual
-                      form={p.form}
-                      name={p.name}
-                      from={p.color.from}
-                      to={p.color.to}
-                      className="h-16 w-16 shrink-0"
-                    />
+                                          form={p.form}
+                                          name={p.name}
+                                          slug={p.slug}
+                                          from={p.color.from}
+                                          to={p.color.to}
+                                          className="h-16 w-16 shrink-0"
+                                        />
                     <div>
                       <p className="font-display text-sm font-bold text-primary-900 group-hover:text-primary-600">
                         {p.name}

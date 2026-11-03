@@ -70,7 +70,7 @@ export default function ContactPage() {
             <h1 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
               Let&apos;s Talk Healthcare
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
+            <p className="mt-4 max-w-2xl prose-body-lg text-slate-600">
               Doctors and healthcare professionals — our desk
               responds within one business day.
             </p>

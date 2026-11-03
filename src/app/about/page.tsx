@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { getBlurPlaceholder } from "@/lib/blur-placeholders";
 import {
   Target,
   Eye,
@@ -54,42 +55,42 @@ export default function AboutPage() {
                   {/* Content - left on desktop */}
                   <div className="lg:order-2">
                     <Reveal>
-                      <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
-                        Corporate Profile
-                      </p>
-                      <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
-                        About Averiq Lifesciences
-                      </h1>
-                      <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                        Averiq Lifesciences Private Limited is a forward-thinking
-                        pharmaceutical company dedicated to redefining healthcare
-                        standards. Founded with a vision to deliver excellence, we operate
-                        strictly on an ethical medical marketing model. We believe that
-                        true healthcare innovation is achieved by working directly with
-                        doctors, specialists, and healthcare practitioners to understand
-                        patient needs and provide precise, effective solutions.
-                      </p>
-                    </Reveal>
+                                          <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
+                                            Corporate Profile
+                                          </p>
+                                          <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
+                                            About Averiq Lifesciences
+                                          </h1>
+                                          <p className="mt-6 max-w-3xl prose-body-lg text-slate-600">
+                                            Averiq Lifesciences Private Limited is a forward-thinking
+                                            pharmaceutical company dedicated to redefining healthcare
+                                            standards. Founded with a vision to deliver excellence, we operate
+                                            strictly on an ethical medical marketing model. We believe that
+                                            true healthcare innovation is achieved by working directly with
+                                            doctors, specialists, and healthcare practitioners to understand
+                                            patient needs and provide precise, effective solutions.
+                                          </p>
+                                        </Reveal>
                   </div>
 
                   {/* Portrait Image - right on desktop, above on mobile */}
-                  <div className="mt-10 lg:mt-0 lg:order-1">
-                    <Reveal delay={0.1}>
-                      <div className="relative aspect-[4/5] max-w-md mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-float">
-                        <Image
-                          src="/optimized/about/skincare-portrait-1280w.webp"
-                          alt="Averiq Lifesciences — Ethical pharmaceutical team"
-                          fill
-                          priority={false}
-                          placeholder="blur"
-                          blurDataURL="/optimized/about/skincare-portrait-blur.webp"
-                          sizes="(max-width: 1023px) 100vw, 50vw"
-                          className="object-cover"
-                          quality={90}
-                        />
-                      </div>
-                    </Reveal>
-                  </div>
+                                    <div className="mt-10 lg:mt-0 lg:order-1">
+                                      <Reveal delay={0.1}>
+                                        <div className="relative aspect-[2/3] max-w-md mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-float">
+                                          <Image
+                                            src="/optimized/about/radiant-smile-skincare-portrait-1200w.webp"
+                                            alt="Averiq Lifesciences — Ethical pharmaceutical team"
+                                            fill
+                                            priority={false}
+                                            placeholder="blur"
+                                            blurDataURL={getBlurPlaceholder("clinical")}
+                                            sizes="(max-width: 1023px) 100vw, 50vw"
+                                            className="object-cover"
+                                            quality={90}
+                                          />
+                                        </div>
+                                      </Reveal>
+                                    </div>
                 </div>
               </div>
             </section>
@@ -98,91 +99,91 @@ export default function AboutPage() {
       <section className="bg-muted py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className="font-display text-2xl font-bold text-primary-900 sm:text-3xl">
-              Our Philosophy
-            </h2>
-            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-              Driven by our guiding principle —{" "}
-              <strong className="text-primary-900">
-                Advanced • Verified • Quality
-              </strong>{" "}
-              — we go beyond merely offering healthcare products; we build
-              long-term, trusted therapeutic brands. By maintaining a clean,
-              transparent, and professionally driven operational model, we
-              ensure that every formulation bearing the Averiq name stands for
-              uncompromising efficacy, clinical safety, and strict regulatory
-              compliance.
-            </p>
-          </Reveal>
+                      <h2 className="font-display text-2xl font-bold text-primary-900 sm:text-3xl">
+                        Our Philosophy
+                      </h2>
+                      <p className="mt-4 max-w-3xl prose-body text-slate-600">
+                        Driven by our guiding principle —{" "}
+                        <strong className="text-primary-900">
+                          Advanced • Verified • Quality
+                        </strong>{" "}
+                        — we go beyond merely offering healthcare products; we build
+                        long-term, trusted therapeutic brands. By maintaining a clean,
+                        transparent, and professionally driven operational model, we
+                        ensure that every formulation bearing the Averiq name stands for
+                        uncompromising efficacy, clinical safety, and strict regulatory
+                        compliance.
+                      </p>
+                    </Reveal>
         </div>
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <Reveal>
-              <div className="h-full rounded-3xl border border-slate-100 bg-white p-8 shadow-soft">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
-                  <Eye className="h-6 w-6" />
-                </span>
-                <h2 className="mt-5 font-display text-2xl font-bold text-primary-900">
-                  Our Vision
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  To be a trusted and leading name in the Indian pharmaceutical
-                  sector, recognized for our ethical standards, premium product
-                  quality, and diverse multi-specialty healthcare offerings.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <div className="h-full rounded-3xl border border-slate-100 bg-white p-8 shadow-soft">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 text-white shadow-md shadow-accent-500/25">
-                  <Target className="h-6 w-6" />
-                </span>
-                <h2 className="mt-5 font-display text-2xl font-bold text-primary-900">
-                  Our Mission
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  To continuously expand our therapeutic reach by introducing
-                  scientifically backed formulations across various medical
-                  disciplines, ensuring that healthcare professionals have
-                  access to the best possible treatments for their patients.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Commitment to Standards */}
-      <section className="bg-muted py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Quality & Trust"
-            title="Our Commitment to Standards"
-            subtitle="Simple, dependable standards — from the way we source, to the way we supply."
-          />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {commitment.map((c, i) => (
-              <Reveal key={c.title} delay={i * 0.07}>
-                <div className="h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
-                    <c.icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-4 font-display text-base font-bold text-primary-900">
-                    {c.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {c.text}
-                  </p>
+            <section className="py-20">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="grid gap-6 lg:grid-cols-2">
+                  <Reveal>
+                    <div className="h-full rounded-3xl border border-slate-100 bg-white p-8 shadow-soft">
+                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
+                        <Eye className="h-6 w-6" />
+                      </span>
+                      <h2 className="mt-5 font-display text-2xl font-bold text-primary-900">
+                        Our Vision
+                      </h2>
+                      <p className="mt-3 prose-body text-slate-600">
+                        To be a trusted and leading name in the Indian pharmaceutical
+                        sector, recognized for our ethical standards, premium product
+                        quality, and diverse multi-specialty healthcare offerings.
+                      </p>
+                    </div>
+                  </Reveal>
+                  <Reveal delay={0.08}>
+                    <div className="h-full rounded-3xl border border-slate-100 bg-white p-8 shadow-soft">
+                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 text-white shadow-md shadow-accent-500/25">
+                        <Target className="h-6 w-6" />
+                      </span>
+                      <h2 className="mt-5 font-display text-2xl font-bold text-primary-900">
+                        Our Mission
+                      </h2>
+                      <p className="mt-3 prose-body text-slate-600">
+                        To continuously expand our therapeutic reach by introducing
+                        scientifically backed formulations across various medical
+                        disciplines, ensuring that healthcare professionals have
+                        access to the best possible treatments for their patients.
+                      </p>
+                    </div>
+                  </Reveal>
                 </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+              </div>
+            </section>
+
+            {/* Our Commitment to Standards */}
+            <section className="bg-muted py-20">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <SectionHeading
+                  eyebrow="Quality & Trust"
+                  title="Our Commitment to Standards"
+                  subtitle="Simple, dependable standards — from the way we source, to the way we supply."
+                />
+                <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                  {commitment.map((c, i) => (
+                    <Reveal key={c.title} delay={i * 0.07}>
+                      <div className="h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float">
+                        <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
+                          <c.icon className="h-5 w-5" />
+                        </span>
+                        <h3 className="mt-4 font-display text-base font-bold text-primary-900">
+                          {c.title}
+                        </h3>
+                        <p className="mt-2 prose-body text-slate-600">
+                          {c.text}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            </section>
 
       {/* CTA */}
       <section className="mesh-dark py-16">

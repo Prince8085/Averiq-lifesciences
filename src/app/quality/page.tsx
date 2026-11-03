@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getBlurPlaceholder } from "@/lib/blur-placeholders";
 import {
   ShieldCheck,
   FileCheck2,
@@ -62,29 +63,46 @@ const documents = [
 export default function QualityPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="mesh-hero pb-16 pt-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
-              Quality & Assurance
-            </p>
-            <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
-              Advance Verified Quality:{" "}
-              <span className="gradient-text">Our Ultimate Benchmark</span>
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Averiq Lifesciences is a strictly ethical pharmaceutical company.
-              As a premium brand owner, our focus goes beyond simply bringing
-              products to market; we are dedicated to delivering a standard of
-              quality that doctors and healthcare professionals can trust
-              without hesitation. &ldquo;Advance Verified Quality&rdquo; is not
-              just our tagline — it is the foundational promise behind every
-              formulation that carries the Averiq name.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      {/* Hero with Skincare Portrait */}
+            <section className="mesh-hero pb-16 pt-28 relative">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:items-center">
+                  <Reveal>
+                                      <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
+                                        Quality & Assurance
+                                      </p>
+                                      <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-primary-900 sm:text-4xl lg:text-5xl">
+                                        Advance Verified Quality:{" "}
+                                        <span className="gradient-text">Our Ultimate Benchmark</span>
+                                      </h1>
+                                      <p className="mt-5 max-w-2xl prose-body-lg text-slate-600">
+                                        Averiq Lifesciences is a strictly ethical pharmaceutical company.
+                                        As a premium brand owner, our focus goes beyond simply bringing
+                                        products to market; we are dedicated to delivering a standard of
+                                        quality that doctors and healthcare professionals can trust
+                                        without hesitation. &ldquo;Advance Verified Quality&rdquo; is not
+                                        just our tagline &mdash; it is the foundational promise behind every
+                                        formulation that carries the Averiq name.
+                                      </p>
+                                    </Reveal>
+                  <Reveal delay={0.1}>
+                    <div className="mt-10 lg:mt-0 relative aspect-[4/5] max-w-md mx-auto lg:max-w-none rounded-3xl overflow-hidden shadow-float">
+                      <Image
+                        src="/optimized/about/skincare-portrait-1280w.webp"
+                        alt="Averiq Lifesciences — Ethical pharmaceutical team"
+                        fill
+                        priority={false}
+                        placeholder="blur"
+                        blurDataURL={getBlurPlaceholder("clinical")}
+                        sizes="(max-width: 1023px) 100vw, 50vw"
+                        className="object-cover"
+                        quality={90}
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </section>
 
       {/* The Four Pillars */}
       <section className="py-20">
@@ -95,177 +113,152 @@ export default function QualityPage() {
             subtitle="Operating as a brand-building entity rather than a direct manufacturer requires exceptional oversight. Our selection and monitoring processes are among the most rigorous in the industry. No product enters the Averiq portfolio until it clears these four critical steps:"
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {process.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.07}>
-                <div className="relative h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float">
-                  <span className="absolute -top-3 left-6 rounded-full bg-primary-600 px-3 py-1 text-[11px] font-extrabold text-white">
-                    Step {i + 1}
-                  </span>
-                  <span className="mt-2 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
-                    <p.icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-4 font-display text-base font-bold text-primary-900">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {p.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Complete Clinical Transparency */}
-            <section className="bg-muted py-20">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid items-start gap-12 lg:grid-cols-2">
-                  <Reveal>
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
-                      Clinical Transparency
-                    </p>
-                    <h2 className="mt-3 font-display text-2xl font-bold text-primary-900 sm:text-3xl">
-                      Complete Clinical Transparency
-                    </h2>
-                    <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
-                      We believe in empowering healthcare professionals with the
-                      precise, honest documentation they need to prescribe with
-                      absolute confidence. Our clinical transparency model includes:
-                    </p>
-                    <div className="mt-8 space-y-5">
-                      {documents.map((d) => (
-                        <div key={d.title} className="flex items-start gap-3">
-                          <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent-600" />
-                          <div>
-                            <p className="text-sm font-bold text-primary-900">
-                              {d.title}
+                      {process.map((p, i) => (
+                        <Reveal key={p.title} delay={i * 0.07}>
+                          <div className="relative h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float">
+                            <span className="absolute -top-3 left-6 rounded-full bg-primary-600 px-3 py-1 text-[11px] font-extrabold text-white">
+                              Step {i + 1}
+                            </span>
+                            <span className="mt-2 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
+                              <p.icon className="h-5 w-5" />
+                            </span>
+                            <h3 className="mt-4 font-display text-base font-bold text-primary-900">
+                              {p.title}
+                            </h3>
+                            <p className="mt-2 prose-body text-slate-600">
+                              {p.text}
                             </p>
-                            <p className="text-sm text-slate-600">{d.text}</p>
                           </div>
-                        </div>
+                        </Reveal>
                       ))}
                     </div>
-                  </Reveal>
-                  <Reveal delay={0.1}>
-                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-float">
-                      <Image
-                        src="/optimized/quality/dermatologist-exam-1280w.webp"
-                        alt="Dermatologist examining patient skin — Clinical verification"
-                        fill
-                        priority={false}
-                        placeholder="blur"
-                        blurDataURL="/optimized/quality/dermatologist-exam-blur.webp"
-                        sizes="(max-width: 1023px) 100vw, 50vw"
-                        className="object-cover"
-                        quality={90}
-                      />
-                      {/* Overlay badge */}
-                      <div className="absolute bottom-6 left-6 right-6">
-                        <div className="glass rounded-2xl p-4 text-center">
-                          <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
-                            Real Doctors. Real Verification.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Reveal>
-                </div>
-              </div>
-            </section>
+                  </div>
+                </section>
+
+                {/* Complete Clinical Transparency */}
+                            <section className="bg-muted py-20">
+                              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                                <Reveal>
+                                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">
+                                    Clinical Transparency
+                                  </p>
+                                  <h2 className="mt-3 font-display text-2xl font-bold text-primary-900 sm:text-3xl">
+                                    Complete Clinical Transparency
+                                  </h2>
+                                  <p className="mt-4 max-w-xl prose-body text-slate-600">
+                                    We believe in empowering healthcare professionals with the
+                                    precise, honest documentation they need to prescribe with
+                                    absolute confidence. Our clinical transparency model includes:
+                                  </p>
+                                  <div className="mt-8 space-y-5">
+                                    {documents.map((d) => (
+                                      <div key={d.title} className="flex items-start gap-3">
+                                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent-600" />
+                                        <div>
+                                          <p className="text-sm font-bold text-primary-900">
+                                            {d.title}
+                                          </p>
+                                          <p className="prose-body text-slate-600">{d.text}</p>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </Reveal>
+                              </div>
+                            </section>
 
             {/* Quality Pledge with Lab Background */}
-            <section className="py-20 relative">
-              {/* Lab Research background at 10% opacity */}
-              <div className="absolute inset-0 -z-10">
-                <Image
-                  src="/optimized/quality/lab-research-1920w.webp"
-                  alt="Skincare research laboratory"
-                  fill
-                  priority={false}
-                  placeholder="blur"
-                  blurDataURL="/optimized/quality/lab-research-blur.webp"
-                  className="object-cover opacity-10"
-                  quality={85}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-              </div>
+                        <section className="py-20 relative">
+                          {/* Lab Research background - visible at 25% opacity with subtle gradient */}
+                          <div className="absolute inset-0 -z-10">
+                            <Image
+                              src="/optimized/quality/lab-research-1920w.webp"
+                              alt="Skincare research laboratory"
+                              fill
+                              priority={false}
+                              placeholder="blur"
+                              blurDataURL={getBlurPlaceholder("green")}
+                              className="object-cover opacity-25"
+                              quality={85}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent" />
+                          </div>
 
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-                <Reveal delay={0.1}>
-                  <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-float">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                      Our Quality Pledge
-                    </p>
-                    <div className="mt-5 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 p-6 text-sm">
-                      <p className="font-display font-bold text-white">
-                        Our Quality Pledge
-                      </p>
-                      <p className="mt-3 italic leading-relaxed text-primary-100">
-                        &ldquo;For us, quality is not a choice; it is a fundamental
-                        responsibility. We are committed to supplying only safe,
-                        highly effective, and strictly compliant products to the
-                        healthcare professionals who prescribe them. At Averiq
-                        Lifesciences, patient safety and clinical integrity will
-                        always take precedence over business.&rdquo;
-                      </p>
-                    </div>
-                    <div className="mt-6 space-y-4">
-                      <div className="flex items-start gap-3">
-                        <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary-600" />
-                        <div>
-                          <p className="text-sm font-bold text-primary-900">
-                            What Our Commitment Covers
-                          </p>
-                          <ul className="mt-2 space-y-2">
-                            {[
-                              "Sourced from trusted, WHO-GMP-certified manufacturing partners",
-                              "Compositions aligned with Indian regulatory requirements",
-                              "Rx and OTC status clearly declared on every product",
-                              "Batch documentation available with each consignment",
-                            ].map((c) => (
-                              <li
-                                key={c}
-                                className="flex items-start gap-2 text-sm text-slate-700"
-                              >
-                                <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
-                                {c}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              </div>
-            </section>
+                          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+                                                      <Reveal delay={0.1}>
+                                                        <div className="rounded-3xl border border-slate-100 bg-white/95 p-8 shadow-float backdrop-blur-sm">
+                                              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                                                Our Quality Pledge
+                                              </p>
+                                              <div className="mt-5 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-700 p-6 text-sm">
+                                                <p className="font-display font-bold text-white">
+                                                  Our Quality Pledge
+                                                </p>
+                                                <p className="mt-3 italic prose-body text-primary-100">
+                                                  &ldquo;For us, quality is not a choice; it is a fundamental
+                                                  responsibility. We are committed to supplying only safe,
+                                                  highly effective, and strictly compliant products to the
+                                                  healthcare professionals who prescribe them. At Averiq
+                                                  Lifesciences, patient safety and clinical integrity will
+                                                  always take precedence over business.&rdquo;
+                                                </p>
+                                              </div>
+                                              <div className="mt-6 space-y-4">
+                                                <div className="flex items-start gap-3">
+                                                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary-600" />
+                                                  <div>
+                                                    <p className="text-sm font-bold text-primary-900">
+                                                      What Our Commitment Covers
+                                                    </p>
+                                                    <ul className="mt-2 space-y-2">
+                                                      {[
+                                                        "Sourced from trusted, WHO-GMP-certified manufacturing partners",
+                                                        "Compositions aligned with Indian regulatory requirements",
+                                                        "Rx and OTC status clearly declared on every product",
+                                                        "Batch documentation available with each consignment",
+                                                      ].map((c) => (
+                                                        <li
+                                                          key={c}
+                                                          className="flex items-start gap-2 prose-body text-slate-700"
+                                                        >
+                                                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" />
+                                                          {c}
+                                                        </li>
+                                                      ))}
+                                                    </ul>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </Reveal>
+                                        </div>
+                                      </section>
 
-      {/* Responsive Clinical Support */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="flex flex-col items-start gap-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-soft sm:flex-row sm:items-center sm:p-10">
-              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-500 to-accent-600 text-white shadow-lg shadow-accent-500/25">
-                <BellRing className="h-7 w-7" />
-              </span>
-              <div className="flex-1">
-                <h2 className="font-display text-2xl font-bold text-primary-900">
-                  Responsive Clinical Support
-                </h2>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-                  We stand completely behind the quality of every Averiq
-                  product. If healthcare professionals or patients have any
-                  queries regarding our product documentation, ingredient
-                  formulation, or overall quality, our support team is always
-                  accessible. We are committed to addressing all product-related
-                  feedback promptly to maintain the highest standards of clinical
-                  trust.
-                </p>
-              </div>
-              <a
-                href="mailto:careers@averiqlifesciences.com"
-                className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-primary-600 px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-700"
+                                {/* Responsive Clinical Support */}
+                                <section className="py-20">
+                                  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                                    <Reveal>
+                                      <div className="flex flex-col items-start gap-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-soft sm:flex-row sm:items-center sm:p-10">
+                                        <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-500 to-accent-600 text-white shadow-lg shadow-accent-500/25">
+                                          <BellRing className="h-7 w-7" />
+                                        </span>
+                                        <div className="flex-1">
+                                          <h2 className="font-display text-2xl font-bold text-primary-900">
+                                            Responsive Clinical Support
+                                          </h2>
+                                          <p className="mt-2 max-w-2xl prose-body text-slate-600">
+                                            We stand completely behind the quality of every Averiq
+                                            product. If healthcare professionals or patients have any
+                                            queries regarding our product documentation, ingredient
+                                            formulation, or overall quality, our support team is always
+                                            accessible. We are committed to addressing all product-related
+                                            feedback promptly to maintain the highest standards of clinical
+                                            trust.
+                                          </p>
+                                        </div>
+                                        <a
+                                          href="mailto:careers@averiqlifesciences.com"
+                                          className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-primary-600 px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-700"
               >
                 <BellRing className="h-4 w-4" />
                 Contact Our Team

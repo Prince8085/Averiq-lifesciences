@@ -1,40 +1,59 @@
+"use client";
+
 import type { Form } from "@/data/products";
 
-/**
- * Lightweight SVG "packshots" — one clean illustration per dosage form,
- * tinted with each product's brand gradient. Keeps the catalog visual
- * without requiring photography assets.
- */
-
-export function ProductVisual({
-  form,
-  name,
-  from,
-  to,
-  text = "#ffffff",
-  className,
-}: {
+interface ProductVisualProps {
   form: Form;
   name: string;
+  slug: string;
   from: string;
   to: string;
   text?: string;
   className?: string;
-}) {
+  /** Display size variant */
+  size?: "hero" | "card" | "marquee";
+}
+
+/**
+ * Product visual — SVG illustration fallback only.
+ * Real product packshots are handled by ProductImage component via public/products/<slug>.jpg
+ * Lifestyle photos are reserved for Hero, Trichology card, About, Quality sections only.
+ */
+export function ProductVisual({
+  form,
+  name,
+  slug,
+  from,
+  to,
+  text = "#ffffff",
+  className,
+  size = "card",
+}: ProductVisualProps) {
   const label = name.toUpperCase();
+
+  // Size configurations
+  const sizeConfig = {
+    hero: { width: 400, height: 400, fontSize: 16 },
+    card: { width: 200, height: 200, fontSize: 13 },
+    marquee: { width: 160, height: 160, fontSize: 11 },
+  }[size];
+
+  // SVG Illustration fallback only
   return (
     <svg
       viewBox="0 0 200 200"
+      width={sizeConfig.width}
+      height={sizeConfig.height}
       className={className}
       role="img"
       aria-label={`${name} — ${form} packshot`}
     >
       <defs>
-        <linearGradient id={`pv-${form}`} x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id={`pv-${form}-${slug}`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor={from} />
           <stop offset="1" stopColor={to} />
         </linearGradient>
-        <linearGradient id={`pv-bg-${form}`} x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id={`pv-bg-${form}-${slug}`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#ffffff" />
           <stop offset="1" stopColor="#eef4fb" />
         </linearGradient>
@@ -56,7 +75,7 @@ export function ProductVisual({
         x="100"
         y="120"
         textAnchor="middle"
-        fontSize="13"
+        fontSize={size === "marquee" ? "10" : "13"}
         fontWeight="700"
         fontFamily="Plus Jakarta Sans, sans-serif"
         fill={text}

@@ -103,7 +103,7 @@ export default function CareerPage() {
               Build the future of healthcare{" "}
               <span className="gradient-text">with us</span>
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mt-5 max-w-2xl prose-body-lg text-slate-600">
               At Averiq Lifesciences, we&apos;re building a team that takes
               healthcare personally. If you care about quality, science and
               doing right by the people who use what we make — we&apos;d love to
@@ -148,7 +148,7 @@ export default function CareerPage() {
                   <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
                     {w.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  <p className="mt-2 prose-body text-slate-600">
                     {w.text}
                   </p>
                 </div>
@@ -177,7 +177,7 @@ export default function CareerPage() {
                     <h3 className="font-display text-base font-bold text-primary-900">
                       {a.title}
                     </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+                    <p className="mt-1.5 prose-body text-slate-600">
                       {a.text}
                     </p>
                   </div>
@@ -206,7 +206,7 @@ export default function CareerPage() {
                   <h3 className="mt-3 font-display text-base font-bold text-primary-900">
                     {s.t}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  <p className="mt-2 prose-body text-slate-600">
                     {s.d}
                   </p>
                 </div>
@@ -337,7 +337,7 @@ export default function CareerPage() {
                   <h3 className="mt-4 font-display text-base font-bold text-primary-900">
                     What We Look For
                   </h3>
-                  <ul className="mt-3 space-y-2.5 text-sm text-slate-600">
+                  <ul className="mt-3 space-y-2.5 prose-body text-slate-600">
                     {[
                       "Integrity — doing the right thing when no one is watching",
                       "Curiosity and a genuine interest in healthcare",

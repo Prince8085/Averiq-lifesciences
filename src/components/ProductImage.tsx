@@ -6,8 +6,9 @@ import type { Product } from "@/data/products";
 import { ProductVisual } from "@/components/ProductVisual";
 
 /**
- * Product photo — loads the main product photo from `public/products/<slug>.jpg`.
- * Falls back to a branded SVG packshot if no photo exists.
+ * Product photo — uses actual product packshot from public/products/,
+ * falls back to branded SVG packshot.
+ * Lifestyle photos are reserved for hero/verticals/about/quality sections only.
  */
 export function ProductImage({
   product,
@@ -21,9 +22,9 @@ export function ProductImage({
   eager?: boolean;
 }) {
   const [photo, setPhoto] = useState<string | null>(null);
-
   const path = `/products/${product.slug}.jpg`;
 
+  // Try to load from public/products folder first (actual product packshots)
   useEffect(() => {
     let alive = true;
     const probe = new Image();
@@ -43,14 +44,17 @@ export function ProductImage({
         alt={product.name}
         loading={eager ? "eager" : "lazy"}
         className={cn(className ?? imgClassName, "object-contain")}
+        data-testid="product-packshot"
       />
     );
   }
 
+  // Final fallback: SVG packshot
   return (
     <ProductVisual
       form={product.form}
       name={product.name}
+      slug={product.slug}
       from={product.color.from}
       to={product.color.to}
       className={className}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
@@ -20,7 +21,7 @@ import { Reveal } from "@/components/Reveal";
 import { ProductMarquee } from "@/components/ProductMarquee";
 import { ProductCatalogSearch } from "@/components/ProductCatalogSearch";
 import { JsonLd } from "@/components/JsonLd";
-import { HeroImage } from "@/components/HeroImage";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { TrichologyFeatureCard } from "@/components/TrichologyFeatureCard";
 import { cn } from "@/lib/utils";
 
@@ -98,162 +99,125 @@ export default function Home() {
       <JsonLd data={homeJsonLd} />
 
       {/* ============ HERO ============ */}
-            <section className="mesh-hero relative overflow-hidden pb-20 pt-32 sm:pt-36">
-              {/* Hero Background Images */}
-              <HeroImage
-                mobileSrc="/optimized/hero/face-wash-ritual-1920w.webp"
-                desktopSrc="/optimized/hero/sunscreen-glow-1920w.webp"
-                blurSrc="/optimized/hero/face-wash-ritual-blur.webp"
+            <section className="mesh-hero relative overflow-hidden min-h-screen">
+              {/* Hero Carousel - 3 rotating images with exact approved design */}
+              <HeroCarousel
+                slides={[
+                  {
+                    src: "/optimized/hero/radiant-skincare-glow-with-medical-icons-1920w.webp",
+                    alt: "Female model washing her face with cleansing foam",
+                    blurCategory: "warm",
+                    objectPosition: "center 35%",
+                    gradientOverlay: "bg-gradient-to-t from-primary-950/70 via-primary-950/30 to-transparent",
+                  },
+                  {
+                    src: "/optimized/hero/radiant-beauty-with-neon-wellness-icons-1920w.webp",
+                    alt: "Smiling brunette woman with beautiful wavy hair",
+                    blurCategory: "clinical",
+                    objectPosition: "center 40%",
+                    gradientOverlay: "bg-gradient-to-t from-primary-950/75 via-primary-950/25 to-transparent",
+                  },
+                  {
+                    src: "/optimized/hero/cheerful-sunscreen-skincare-banner-1920w.webp",
+                    alt: "Happy child wearing pink sunglasses and pink sun hat with sunscreen",
+                    blurCategory: "green",
+                    objectPosition: "center center",
+                    gradientOverlay: "bg-gradient-to-t from-primary-950/65 via-primary-950/20 to-transparent",
+                  },
+                ]}
+                interval={6000}
                 alt="Averiq Lifesciences — Advancing Healthcare Ethically"
                 priority
               />
-
-              <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 relative z-10">
-          <Reveal delay={0.08}>
-            <h1 className="font-display text-4xl font-extrabold leading-[1.12] tracking-tight text-primary-900 sm:text-5xl lg:text-[3.4rem]">
-              Advancing Healthcare,{" "}
-              <span className="gradient-text">Ethically.</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Delivering premium, research-driven pharmaceutical solutions
-              backed by our promise of Advanced • Verified • Quality — where
-              trust meets scientific excellence.
-            </p>
-          </Reveal>
-
-          {/* Action Button */}
-          <Reveal delay={0.2}>
-            <div className="mt-8 flex justify-center">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2.5 rounded-xl bg-primary-600 px-8 py-3.5 text-sm font-bold text-white shadow-md shadow-primary-600/25 transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-lg"
-              >
-                Discover Averiq
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </Reveal>
-
-          {/* Our Vision / Our Mission — reveal on hover */}
-          <Reveal delay={0.24}>
-            <div className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-2">
-              {heroPanels.map((p) => {
-                const Icon = p.icon;
-                return (
-                  <div
-                    key={p.label}
-                    tabIndex={0}
-                    className="group rounded-2xl border border-slate-200/70 bg-white/70 p-5 text-left shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float focus:outline-none"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span
-                        className={cn(
-                          "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md",
-                          p.tile
-                        )}
-                      >
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <span className="font-display text-base font-bold text-primary-900">
-                        {p.label}
-                      </span>
-                      <ChevronDown className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:rotate-180" />
-                    </div>
-                    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
-                      <p className="overflow-hidden text-sm leading-relaxed text-slate-600">
-                        <span className="block pt-3">{p.text}</span>
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </Reveal>
-        </div>
-      </section>
+            </section>
 
       {/* ============ WELCOME ============ */}
-      <section className="border-y border-slate-100 bg-white py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Introduction"
-            title="Welcome to Averiq Lifesciences"
-            subtitle="An ethical, quality-driven pharmaceutical company built for long-term therapeutic partnerships."
-          />
-          <Reveal delay={0.08}>
-            <div className="mx-auto mt-8 max-w-3xl space-y-5 text-center text-sm leading-relaxed text-slate-600 sm:text-base">
-              <p>
-                At Averiq Lifesciences Private Limited, we are committed to
-                elevating patient care through a specialized and diverse
-                healthcare portfolio. As an ethical pharmaceutical company, we
-                partner closely with medical professionals to provide highly
-                effective, compliant, and quality-assured treatments.
-              </p>
-              <p>
-                Driven by our core philosophy of Advanced • Verified • Quality,
-                our journey begins with cutting-edge dermatological and
-                cosmeceutical therapies, with a strong, steadfast vision to
-                expand into comprehensive multi-specialty medicine. Whether it
-                is our current specialized ranges or our upcoming therapeutic
-                divisions, our focus remains unchanged: improving lives through
-                science.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ THERAPEUTIC VERTICALS ============ */}
-            <section className="py-20 sm:py-24">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <SectionHeading
-                  eyebrow="Therapeutic Verticals"
-                  title="Specialized Care, Clearly Segmented"
-                  subtitle="Explicit therapeutic divisions so doctors and patients find exactly what they need."
+            <section className="relative overflow-hidden border-y border-slate-100 pt-8 pb-20 sm:pt-8 sm:pb-24">
+              {/* Background Image - Scientist in Lab */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src="/optimized/about/lab-scientist-background-1920w.webp"
+                  alt="Averiq Lifesciences — Pharmaceutical Research Laboratory"
+                  fill
+                  priority={false}
+                  placeholder="blur"
+                  blurDataURL="data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAABwAQCdASoKAAoABUB8JZwC7AF1AAD+8CkFHAAA"
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  className="object-cover object-right"
+                  quality={90}
                 />
-                <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                  {therapeuticVerticals.map((v, i) => {
-                    // Trichology gets the special asymmetric feature card
-                    if (v.slug === "Trichology") {
-                      return (
-                        <TrichologyFeatureCard
-                          key={v.slug}
-                          delay={i * 0.07}
-                          imageSrc="/optimized/verticals/scalp-serum-rituals-1920w.webp"
-                          blurSrc="/optimized/verticals/scalp-serum-rituals-blur.webp"
-                          alt="ROOTRIQ PRO Hair Serum — Advanced hair growth formulation"
-                        />
-                      );
-                    }
-                    const Icon = verticalIcons[v.slug];
-                    return (
-                      <Reveal key={v.slug} delay={i * 0.07}>
-                        <Link
-                          href="/#products"
-                          className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
-                        >
-                          <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
-                            <Icon className="h-6 w-6" />
-                          </span>
-                          <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
-                            {v.title}
-                          </h3>
-                          <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
-                            {v.blurb}
-                          </p>
-                          <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent-600">
-                            View range
-                            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                          </span>
-                        </Link>
-                      </Reveal>
-                    );
-                  })}
-                </div>
+                {/* Subtle gradient overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-950/70 via-primary-950/30 to-transparent" />
+                {/* Bottom wave/gradient accent */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-900/40 to-transparent" />
+              </div>
+
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <SectionHeading
+                  eyebrow="Introduction"
+                  title="Welcome to Averiq Lifesciences"
+                  subtitle="An ethical, quality-driven pharmaceutical company built for long-term therapeutic partnerships."
+                />
+                <Reveal delay={0.08}>
+                                  <div className="mx-auto mt-12 max-w-2xl space-y-5 text-left prose-body text-slate-600">
+                    <p>
+                      At Averiq Lifesciences Private Limited, we are committed to
+                      elevating patient care through a specialized and diverse
+                      healthcare portfolio. As an ethical pharmaceutical company, we
+                      partner closely with medical professionals to provide highly
+                      effective, compliant, and quality-assured treatments.
+                    </p>
+                    <p>
+                      Driven by our core philosophy of Advanced • Verified • Quality,
+                      our journey begins with cutting-edge dermatological and
+                      cosmeceutical therapies, with a strong, steadfast vision to
+                      expand into comprehensive multi-specialty medicine. Whether it
+                      is our current specialized ranges or our upcoming therapeutic
+                      divisions, our focus remains unchanged: improving lives through
+                      science.
+                    </p>
+                  </div>
+                </Reveal>
               </div>
             </section>
+
+      {/* ============ THERAPEUTIC VERTICALS ============ */}
+                  <section className="py-20 sm:py-24">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                      <SectionHeading
+                        eyebrow="Therapeutic Verticals"
+                        title="Specialized Care, Clearly Segmented"
+                        subtitle="Explicit therapeutic divisions so doctors and patients find exactly what they need."
+                      />
+                      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        {therapeuticVerticals.map((v, i) => {
+                          const Icon = verticalIcons[v.slug];
+                          return (
+                            <Reveal key={v.slug} delay={i * 0.07}>
+                              <Link
+                                href="/#products"
+                                className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
+                              >
+                                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
+                                  <Icon className="h-6 w-6" />
+                                </span>
+                                <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
+                                  {v.title}
+                                </h3>
+                                <p className="mt-2 flex-1 prose-body text-slate-600">
+                                                              {v.blurb}
+                                                            </p>
+                                <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent-600">
+                                  View range
+                                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                                </span>
+                              </Link>
+                            </Reveal>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </section>
 
       {/* ============ STAR FORMULATIONS (horizontal marquee & search catalog) ============ */}
       <section id="products" className="scroll-mt-20 bg-muted py-20 sm:py-24">
@@ -273,63 +237,80 @@ export default function Home() {
       </section>
 
       {/* ============ WHY CHOOSE AVERIQ ============ */}
-      <section className="py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="The Averiq Difference"
-            title="Why Choose Averiq"
-            subtitle="What sets Averiq apart as an ethical, quality-driven pharmaceutical company."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {whyUs.map((w, i) => (
-              <Reveal key={w.title} delay={i * 0.08}>
-                <div className="h-full rounded-2xl border border-slate-100 bg-white p-8 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-float">
-                  <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-500 to-accent-600 text-white shadow-lg shadow-accent-500/25">
-                    <w.icon className="h-7 w-7" />
-                  </span>
-                  <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
-                    {w.title}
-                  </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
-                    {w.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+            <section className="relative w-full">
+              {/* Desktop: Full-width image */}
+              <div className="hidden lg:block relative w-full" style={{ aspectRatio: "1866 / 843" }}>
+                <Image
+                  src="/optimized/why-choose/the-averiq-difference-ethical-healthcare-innovation-1866w.webp"
+                  alt="The Averiq Difference — Ethical Healthcare Innovation"
+                  fill
+                  priority={false}
+                  placeholder="blur"
+                  blurDataURL="data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAABwAQCdASoKAAoABUB8JZwC7AF1AAD+8CkFHAAA"
+                  sizes="(max-width: 1200px) 90vw, 80vw"
+                  className="object-cover object-center"
+                  quality={90}
+                />
+              </div>
 
-      {/* ============ FINAL CTA ============ */}
-      <section className="mesh-dark border-t border-slate-800 py-16 text-slate-300">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 sm:px-6 lg:flex-row lg:px-8">
-          <div className="text-center lg:text-left">
-            <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-              Get in Touch with Averiq Lifesciences
-            </h2>
-            <p className="mt-2 text-sm text-slate-400">
-              Connect with our desk for product inquiries, institutional supply, or general information.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Averiq Lifesciences — I would like to inquire about your product range.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-accent-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-600/25 transition-all hover:-translate-y-0.5 hover:bg-accent-500"
-            >
-              <MessagesSquare className="h-4 w-4" />
-              Request Product Information
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
-            >
-              Contact Our Desk
-            </Link>
-          </div>
-        </div>
-      </section>
+              {/* Mobile/Tablet: Responsive card grid */}
+              <div className="lg:hidden py-16 px-4">
+                <div className="mx-auto max-w-7xl">
+                  <div className="text-center mb-12">
+                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">The Averiq Difference</p>
+                    <h2 className="mt-3 font-display text-2xl sm:text-3xl font-bold text-primary-900">Why Choose Averiq</h2>
+                  </div>
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    {whyUs.map((item, idx) => (
+                      <Reveal key={item.title} delay={idx * 0.08}>
+                        <div className="h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft">
+                          <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
+                            <item.icon className="h-6 w-6" />
+                          </span>
+                          <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
+                            {item.title}
+                          </h3>
+                          <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                            {item.text}
+                          </p>
+                        </div>
+                      </Reveal>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* ============ FINAL CTA ============ */}
+                              <section className="mesh-dark border-t border-slate-800 py-16 text-slate-300">
+                                <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 sm:px-6 lg:flex-row lg:px-8">
+                                  <div className="text-center lg:text-left">
+                                    <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+                                      Get in Touch with Averiq Lifesciences
+                                    </h2>
+                                    <p className="mt-2 prose-body text-slate-200">
+                                      Connect with our desk for product inquiries, institutional supply, or general information.
+                                    </p>
+                                  </div>
+                                  <div className="flex flex-wrap justify-center gap-3">
+                                    <a
+                                      href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hi Averiq Lifesciences — I would like to inquire about your product range.")}`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-2 rounded-lg bg-accent-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-accent-600/25 transition-all hover:-translate-y-0.5 hover:bg-accent-500"
+                                    >
+                                      <MessagesSquare className="h-4 w-4" />
+                                      Request Product Information
+                                    </a>
+                                    <Link
+                                      href="/contact"
+                                      className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+                                    >
+                                      Contact Our Desk
+                                    </Link>
+                                  </div>
+                                </div>
+                              </section>
     </>
   );
 }
