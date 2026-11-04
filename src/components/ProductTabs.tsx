@@ -31,7 +31,7 @@ export function ProductTabs({ product }: { product: Product }) {
 
   return (
     <div className="mt-12">
-      <div className="flex flex-wrap gap-2 border-b border-slate-200">
+      <div className="-mx-4 flex gap-2 overflow-x-auto border-b border-slate-200 px-4 pb-px [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
         {tabs.map((t) => {
           const Icon = t.icon;
           return (
@@ -39,7 +39,7 @@ export function ProductTabs({ product }: { product: Product }) {
               key={t.key}
               onClick={() => setActive(t.key)}
               className={cn(
-                "inline-flex items-center gap-2 rounded-t-xl border-b-2 px-4 py-3 text-sm font-bold transition-colors",
+                "inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-t-xl border-b-2 px-3 py-2.5 text-sm font-bold transition-colors sm:px-4 sm:py-3",
                 active === t.key
                   ? "border-primary-600 bg-primary-50/60 text-primary-700"
                   : "border-transparent text-slate-500 hover:text-primary-700"

@@ -24,6 +24,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { TrichologyFeatureCard } from "@/components/TrichologyFeatureCard";
 import { cn } from "@/lib/utils";
+import { products } from "@/data/products";
+import CircularGallery from "@/components/CircularGallery";
+import { hasProductPhoto, productPhotoSrc } from "@/lib/product-media";
 
 const verticalIcons = {
   Dermatology: Sparkles,
@@ -93,6 +96,15 @@ const homeJsonLd = {
   founder: site.directors.map((d) => ({ "@type": "Person", name: d })),
 };
 
+const galleryItems = products
+  .filter((p) => hasProductPhoto(p.slug))
+  .map((p) => ({
+    image: productPhotoSrc(p.slug) as string,
+    text: p.name,
+    description: `${p.generic} · ${p.form}`,
+    alt: `${p.name} — ${p.form} packshot`,
+  }));
+
 export default function Home() {
   return (
     <>
@@ -108,21 +120,21 @@ export default function Home() {
                     alt: "Female model washing her face with cleansing foam",
                     blurCategory: "warm",
                     objectPosition: "center 35%",
-                    gradientOverlay: "bg-gradient-to-t from-primary-950/70 via-primary-950/30 to-transparent",
+                    gradientOverlay: "bg-gradient-to-r from-white via-white/85 to-white/70 sm:to-transparent",
                   },
                   {
                     src: "/optimized/hero/radiant-beauty-with-neon-wellness-icons-1920w.webp",
                     alt: "Smiling brunette woman with beautiful wavy hair",
                     blurCategory: "clinical",
                     objectPosition: "center 40%",
-                    gradientOverlay: "bg-gradient-to-t from-primary-950/75 via-primary-950/25 to-transparent",
+                    gradientOverlay: "bg-gradient-to-r from-white via-white/85 to-white/70 sm:to-transparent",
                   },
                   {
                     src: "/optimized/hero/cheerful-sunscreen-skincare-banner-1920w.webp",
                     alt: "Happy child wearing pink sunglasses and pink sun hat with sunscreen",
                     blurCategory: "green",
                     objectPosition: "center center",
-                    gradientOverlay: "bg-gradient-to-t from-primary-950/65 via-primary-950/20 to-transparent",
+                    gradientOverlay: "bg-gradient-to-r from-white via-white/85 to-white/70 sm:to-transparent",
                   },
                 ]}
                 interval={6000}
@@ -147,7 +159,7 @@ export default function Home() {
                   quality={90}
                 />
                 {/* Subtle gradient overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-950/70 via-primary-950/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/40 sm:from-white sm:via-white/80 sm:to-transparent" />
                 {/* Bottom wave/gradient accent */}
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary-900/40 to-transparent" />
               </div>
@@ -237,58 +249,70 @@ export default function Home() {
       </section>
 
       {/* ============ WHY CHOOSE AVERIQ ============ */}
-            <section className="relative w-full">
-              {/* Desktop: Full-width image */}
-              <div className="hidden lg:block relative w-full" style={{ aspectRatio: "1866 / 843" }}>
-                <Image
-                  src="/optimized/why-choose/the-averiq-difference-ethical-healthcare-innovation-1866w.webp"
-                  alt="The Averiq Difference — Ethical Healthcare Innovation"
-                  fill
-                  priority={false}
-                  placeholder="blur"
-                  blurDataURL="data:image/webp;base64,UklGRigAAABXRUJQVlA4IBwAAABwAQCdASoKAAoABUB8JZwC7AF1AAD+8CkFHAAA"
-                  sizes="(max-width: 1200px) 90vw, 80vw"
-                  className="object-cover object-center"
-                  quality={90}
-                />
-              </div>
-
-              {/* Mobile/Tablet: Responsive card grid */}
-              <div className="lg:hidden py-16 px-4">
-                <div className="mx-auto max-w-7xl">
-                  <div className="text-center mb-12">
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary-600">The Averiq Difference</p>
-                    <h2 className="mt-3 font-display text-2xl sm:text-3xl font-bold text-primary-900">Why Choose Averiq</h2>
-                  </div>
-                  <div className="grid gap-6 sm:grid-cols-2">
-                    {whyUs.map((item, idx) => (
-                      <Reveal key={item.title} delay={idx * 0.08}>
-                        <div className="h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft">
-                          <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25">
-                            <item.icon className="h-6 w-6" />
-                          </span>
-                          <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
-                            {item.title}
-                          </h3>
-                          <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                            {item.text}
-                          </p>
-                        </div>
-                      </Reveal>
-                    ))}
-                  </div>
+      <section className="border-t border-slate-100 bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="The Averiq Difference"
+            title="Why Choose Averiq"
+            subtitle="What sets Averiq apart as an ethical, quality-driven pharmaceutical company."
+          />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {whyUs.map((item, idx) => (
+              <Reveal key={item.title} delay={idx * 0.07}>
+                <div className="group relative h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-float">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
+                    <item.icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-5 font-display text-lg font-bold leading-snug text-primary-900">
+                    {item.title}
+                  </h3>
+                  <span className="mt-3 block h-1 w-10 rounded-full bg-gradient-to-r from-accent-500 to-primary-600" />
+                  <p className="mt-4 prose-body text-slate-600">
+                    {item.text}
+                  </p>
                 </div>
-              </div>
-            </section>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* ============ FINAL CTA ============ */}
+            {/* ============ PRODUCT GALLERY ============ */}
+      <section className="border-t border-slate-100 bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Product Gallery"
+            title="Explore Our Formulations"
+            subtitle="Drag, scroll or swipe through the Averiq range — open any packshot to read its composition."
+          />
+        </div>
+        <div className="relative mt-10 h-[440px] sm:h-[560px] lg:h-[620px]">
+          <CircularGallery
+            items={galleryItems}
+            bend={2.6}
+            itemAspect={0.8}
+            gap={0.24}
+            borderRadius={0.06}
+            textColor="#0f172a"
+            font="bold 30px ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+            scrollSpeed={2}
+            scrollEase={0.06}
+            autoScroll={0.25}
+            fadeEdges={0.1}
+            shadow={0.3}
+          />
+        </div>
+      </section>
+
+            
+{/* ============ FINAL CTA ============ */}
                               <section className="mesh-dark border-t border-slate-800 py-16 text-slate-300">
                                 <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 sm:px-6 lg:flex-row lg:px-8">
                                   <div className="text-center lg:text-left">
                                     <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
                                       Get in Touch with Averiq Lifesciences
                                     </h2>
-                                    <p className="mt-2 prose-body text-slate-200">
+                                    <p className="mt-2 text-[17px] font-semibold leading-[1.85] text-slate-200">
                                       Connect with our desk for product inquiries, institutional supply, or general information.
                                     </p>
                                   </div>

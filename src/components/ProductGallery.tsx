@@ -16,7 +16,7 @@ export function ProductGallery({
 }) {
   return (
     <div
-      className="relative flex h-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/70 p-10 shadow-float backdrop-blur sm:p-14"
+      className="relative flex h-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/70 p-6 shadow-float backdrop-blur sm:p-14"
       style={{
         background:
           "radial-gradient(120% 90% at 50% 0%, " +
@@ -29,7 +29,7 @@ export function ProductGallery({
       <ProductImage
         product={product}
         eager
-        className="h-64 w-64 transition-transform duration-500 hover:scale-105 sm:h-80 sm:w-80"
+        className="h-56 w-56 transition-transform duration-500 hover:scale-105 sm:h-80 sm:w-80"
       />
     </div>
   );

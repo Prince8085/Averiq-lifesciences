@@ -200,7 +200,7 @@ function ContactForm() {
             required
             name="name"
             placeholder="Your name"
-            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
           />
         </label>
         <label className="block">
@@ -212,7 +212,7 @@ function ContactForm() {
             type="email"
             name="email"
             placeholder="you@example.com"
-            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+            className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
           />
         </label>
       </div>
@@ -223,7 +223,7 @@ function ContactForm() {
         <select
           name="subject"
           defaultValue="General Enquiry"
-          className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+          className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
         >
           <option>General Enquiry</option>
           <option>Product Information</option>
@@ -240,7 +240,7 @@ function ContactForm() {
           name="message"
           rows={5}
           placeholder="How can we help?"
-          className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+          className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
         />
       </label>
       <button

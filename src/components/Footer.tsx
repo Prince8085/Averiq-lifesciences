@@ -144,7 +144,7 @@ export function Footer() {
             <p>
               © 2026 {site.legalName}. All Rights Reserved. | {site.cin}
             </p>
-            <div className="flex gap-5">
+            <div className="flex flex-wrap gap-x-5 gap-y-2">
               <Link href="/legal#privacy" className="hover:text-accent-400">
                 Privacy Policy
               </Link>

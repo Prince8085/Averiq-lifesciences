@@ -244,7 +244,7 @@ export default function CareerPage() {
                         required
                         name="name"
                         placeholder="Your full name"
-                        className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                        className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
                       />
                     </label>
                     <label className="block">
@@ -256,7 +256,7 @@ export default function CareerPage() {
                         type="email"
                         name="email"
                         placeholder="you@example.com"
-                        className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                        className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
                       />
                     </label>
                   </div>
@@ -269,7 +269,7 @@ export default function CareerPage() {
                       <input
                         name="phone"
                         placeholder="+91 00000 00000"
-                        className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                        className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
                       />
                     </label>
                     <label className="block">
@@ -279,7 +279,7 @@ export default function CareerPage() {
                       <select
                         name="department"
                         defaultValue={departmentOptions[0]}
-                        className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                        className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
                       >
                         {departmentOptions.map((d) => (
                           <option key={d}>{d}</option>
@@ -295,7 +295,7 @@ export default function CareerPage() {
                     <input
                       name="experience"
                       placeholder="e.g. 3 years — Indore, MP"
-                      className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                      className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
                     />
                   </label>
 
@@ -308,7 +308,7 @@ export default function CareerPage() {
                       name="message"
                       rows={5}
                       placeholder="A short note about you and what you'd like to build with us."
-                      className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                      className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2.5 text-base outline-none transition sm:text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
                     />
                   </label>
 

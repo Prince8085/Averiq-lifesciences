@@ -27,6 +27,16 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock background scrolling while the mobile drawer is open
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [mobileOpen]);
+
   const closeMenus = () => {
     setMobileOpen(false);
     setProductsOpen(false);
@@ -42,7 +52,7 @@ export function Header() {
           : "border-transparent bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-18 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="shrink-0" aria-label="Averiq Lifesciences home">
           <Logo />
         </Link>
@@ -175,7 +185,7 @@ export function Header() {
       {/* Mobile menu */}
       {mobileOpen && (
         <nav
-          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-slate-100 bg-white/95 px-4 pb-6 pt-2 backdrop-blur lg:hidden"
+          className="flex h-[calc(100dvh-4rem)] flex-col overflow-y-auto border-t border-slate-100 bg-white/95 px-4 pb-6 pt-2 backdrop-blur lg:hidden"
           aria-label="Mobile"
         >
           {navLinks.map((link) =>
@@ -243,7 +253,7 @@ export function Header() {
               </Link>
             )
           )}
-          <div className="sticky bottom-0 border-t border-slate-100 bg-white/95 px-2 pb-2 pt-3">
+          <div className="sticky bottom-0 mt-auto border-t border-slate-100 bg-white/95 px-2 pb-3 pt-3">
             <div className="flex flex-col gap-2">
               <a
                 href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}`}

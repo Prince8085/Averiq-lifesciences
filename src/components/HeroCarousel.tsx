@@ -4,6 +4,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { getBlurPlaceholder } from "@/lib/blur-placeholders";
+import RotatingText from "./RotatingText";
+import StrokeText from "./StrokeText";
 import {
   ChevronLeft,
   ChevronRight,
@@ -352,12 +354,12 @@ export function HeroCarousel({
 
   return (
     <div
-      className={cn("relative overflow-hidden", className)}
+      className={cn("relative overflow-hidden min-h-[100svh]", className)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      style={{ minHeight: "100vh" }}
+
     >
       {/* Background Slides */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -412,14 +414,14 @@ export function HeroCarousel({
               />
               {/* Per-slide gradient overlay for text readability */}
               {slide.gradientOverlay && (
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-950/70 via-primary-950/30 to-transparent" />
+                <div className={cn("absolute inset-0", slide.gradientOverlay)} />
               )}
             </div>
           );
         })}
 
-        {/* Default fallback gradients */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/60 via-primary-950/20 to-transparent" />
+        {/* Each slide carries its own light wash (see the `gradientOverlay` prop) */}
+
       </div>
 
       {/* Decorative Healthcare Graphics */}
@@ -430,11 +432,11 @@ export function HeroCarousel({
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-20 flex min-h-[calc(100vh-80px)] items-center">
+      <div className="relative z-20 flex items-start pb-6 pt-16 sm:min-h-[calc(100svh-5rem)] sm:items-center sm:pb-0 sm:pt-0">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-12 lg:items-start w-full">
                       {/* Left Content */}
-                                            <div className="flex-1 max-w-2xl mx-auto lg:mx-0 text-left mt-10 lg:mt-14">
+                                            <div className="flex-1 max-w-2xl mx-auto lg:mx-0 text-left mt-0 sm:mt-10 lg:mt-14">
                                     {/* Trust Badge */}
                                     <div
                                       className={cn(
@@ -461,7 +463,23 @@ export function HeroCarousel({
                                 )}
                                 style={{ transitionDelay: animStates.heading1 ? "0ms" : "0ms" }}
                               >
-                                <span className="text-primary-950">Advancing Healthcare,</span>
+                                <StrokeText
+                                  text="Advancing Healthcare,"
+                                  strokeColor="#0868F5"
+                                  fillColor="currentColor"
+                                  strokeWidth={2}
+                                  drawDuration={1.3}
+                                  fillDelay={0.2}
+                                  stagger={0.035}
+                                  ease="power2.out"
+                                  trigger="mount"
+                                  fillMode="wipe"
+                                  wipeFrom="left"
+                                  fontSize={72}
+                                  fontWeight={800}
+                                  letterSpacing={-5}
+                                  className="text-primary-950"
+                                />
                               </div>
                               {/* "Ethically." line with animated gradient */}
                               <div
@@ -491,6 +509,31 @@ export function HeroCarousel({
                               </div>
                             </div>
 
+              {/* Rotating specialty line */}
+              <div
+                className={cn(
+                  "mt-5 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm font-bold text-primary-700 sm:text-base",
+                  animStates.description
+                    ? "animate-fade-in-up opacity-100"
+                    : "opacity-0 translate-y-4"
+                )}
+                style={{ transitionDelay: animStates.description ? "350ms" : "0ms" }}
+              >
+                <span>Specialised in</span>
+                <RotatingText
+                  texts={["Dermatology", "Trichology", "Dental Care", "Women's Health"]}
+                  effect="slide"
+                  direction="up"
+                  highlight
+                  highlightColor="#0868F5"
+                  rotationInterval={2200}
+                  staggerDuration={0.02}
+                  staggerFrom="last"
+                  splitLevelClassName="overflow-hidden pb-0.5"
+                  pauseOnHover
+                />
+              </div>
+
               {/* Description */}
               <p
                 className={cn(
@@ -502,9 +545,9 @@ export function HeroCarousel({
                 style={{ transitionDelay: animStates.description ? "400ms" : "0ms" }}
               >
                 Delivering premium, research-driven pharmaceutical solutions
-                <br />
+                {" "}<br className="hidden sm:inline" />
                 backed by our promise of
-                <strong className="text-primary-900">Advanced • Verified • Quality</strong>{" "}
+                {" "}<strong className="text-primary-900">Advanced • Verified • Quality</strong>{" "}
                 — where trust meets scientific excellence.
               </p>
 
@@ -575,7 +618,7 @@ export function HeroCarousel({
                     </div>
 
                     {/* Carousel Controls */}
-      <div className="absolute inset-0 z-30 pointer-events-none lg:block">
+      <div className="relative z-30 pointer-events-none lg:absolute lg:inset-0">
         {/* Previous Arrow */}
         <button
           onClick={() => {
@@ -604,7 +647,7 @@ export function HeroCarousel({
           }}
           className={cn(
             "absolute left-6 top-1/2 -translate-y-1/2 z-40 pointer-events-auto",
-            "inline-flex h-14 w-14 items-center justify-center rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg text-primary-900 transition-all hover:bg-white hover:shadow-xl hover:scale-105"
+            "hidden h-14 w-14 items-center justify-center rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg text-primary-900 transition-all hover:bg-white hover:shadow-xl hover:scale-105 lg:inline-flex"
           )}
           aria-label="Previous slide"
         >
@@ -639,7 +682,7 @@ export function HeroCarousel({
           }}
           className={cn(
             "absolute right-6 top-1/2 -translate-y-1/2 z-40 pointer-events-auto",
-            "inline-flex h-14 w-14 items-center justify-center rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg text-primary-900 transition-all hover:bg-white hover:shadow-xl hover:scale-105"
+            "hidden h-14 w-14 items-center justify-center rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow-lg text-primary-900 transition-all hover:bg-white hover:shadow-xl hover:scale-105 lg:inline-flex"
           )}
           aria-label="Next slide"
         >
@@ -647,7 +690,7 @@ export function HeroCarousel({
         </button>
 
         {/* Pagination Dots */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-40 pointer-events-auto">
+        <div className="relative mx-auto mb-8 flex justify-center gap-3 pointer-events-auto lg:absolute lg:bottom-8 lg:left-1/2 lg:mx-0 lg:mb-0 lg:-translate-x-1/2">
           {slides.map((_, index) => (
             <button
               key={index}
@@ -656,7 +699,7 @@ export function HeroCarousel({
                 "relative h-2.5 w-2.5 rounded-full transition-all duration-300 pointer-events-auto",
                 index === currentIndex
                   ? "bg-primary-600 w-8 shadow-lg shadow-primary-500/50"
-                  : "bg-white/70 hover:bg-white hover:scale-125"
+                  : "bg-slate-300 hover:bg-slate-400 hover:scale-125"
               )}
               aria-label={`Go to slide ${index + 1}`}
               aria-current={index === currentIndex ? "true" : "false"}

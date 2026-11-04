@@ -194,7 +194,7 @@ export default function QualityPage() {
                                                 <p className="font-display font-bold text-white">
                                                   Our Quality Pledge
                                                 </p>
-                                                <p className="mt-3 italic prose-body text-primary-100">
+                                                <p className="mt-3 italic text-[17px] font-semibold leading-[1.85] text-primary-100">
                                                   &ldquo;For us, quality is not a choice; it is a fundamental
                                                   responsibility. We are committed to supplying only safe,
                                                   highly effective, and strictly compliant products to the

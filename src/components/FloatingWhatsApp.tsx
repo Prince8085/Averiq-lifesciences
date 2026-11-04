@@ -14,7 +14,7 @@ export function FloatingWhatsApp() {
   )}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 print:hidden">
+    <div className="fixed bottom-6 right-6 z-40 flex items-center gap-2 print:hidden">
       {/* Tooltip / Popup pill */}
       <div className="hidden sm:flex items-center gap-2 rounded-full bg-white py-2 pl-4 pr-3 text-xs font-semibold text-slate-800 shadow-float border border-slate-100 animate-fade-in">
         <span className="relative flex h-2 w-2">

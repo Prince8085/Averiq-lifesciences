@@ -42,7 +42,7 @@ export function ProductCatalogSearch() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by brand name, ingredient (e.g. Salicylic, Biotin, Niacinamide)..."
-              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2.5 pl-10 pr-10 text-sm font-medium text-slate-800 placeholder-slate-400 transition-colors focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/10"
+              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2.5 pl-10 pr-10 text-base font-medium text-slate-800 sm:text-sm placeholder-slate-400 transition-colors focus:border-primary-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-primary-500/10"
             />
             {searchQuery && (
               <button
@@ -63,7 +63,7 @@ export function ProductCatalogSearch() {
             <button
               type="button"
               onClick={() => setSelectedCategory("All")}
-              className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
+              className={`rounded-lg px-3 py-2 text-xs font-bold transition-all sm:py-1.5 ${
                 selectedCategory === "All"
                   ? "bg-primary-600 text-white shadow-sm"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -79,7 +79,7 @@ export function ProductCatalogSearch() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
+                  className={`rounded-lg px-3 py-2 text-xs font-bold transition-all sm:py-1.5 ${
                     selectedCategory === cat
                       ? "bg-primary-600 text-white shadow-sm"
                       : "bg-slate-100 text-slate-600 hover:bg-slate-200"
