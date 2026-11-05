@@ -54,6 +54,10 @@ export default async function ProductPage({
   // products without one simply skip the section (no placeholder on the live site).
   const hasFilm = hasProductVideo(product.slug);
   const poster = productPhotoSrc(product.slug);
+  // Sibling products in the same category — may be empty (single-product category).
+  const related = products
+    .filter((p) => p.slug !== product.slug && p.category === product.category)
+    .slice(0, 3);
 
   const schema = {
     "@context": "https://schema.org",
@@ -230,8 +234,12 @@ export default async function ProductPage({
           )}
 
           {/* ===== Mechanism of Action / Scientific Efficacy Visual ===== */}
-          {product.scienceImage && (
-            <SlideInVisual direction="up" delay={0.15} className="mb-14">
+          {(product.scienceImage || product.scienceImageMobile) && (
+            <SlideInVisual
+              direction="up"
+              delay={0.15}
+              className={`mb-14${product.scienceImage ? "" : " sm:hidden"}`}
+            >
               <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-soft sm:p-8">
                 <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
                   <div>
@@ -247,11 +255,16 @@ export default async function ProductPage({
                   </span>
                 </div>
                 <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-900 shadow-md">
-                  <img
-                    src={product.scienceImage}
-                    alt={`${product.name} — Mechanism of Action & Scientific Efficacy`}
-                    className="w-full h-auto block transition-transform duration-700 hover:scale-[1.02]"
-                  />
+                  <picture>
+                    {product.scienceImageMobile && (
+                      <source media="(max-width: 639px)" srcSet={product.scienceImageMobile} />
+                    )}
+                    <img
+                      src={product.scienceImage ?? product.scienceImageMobile}
+                      alt={`${product.name} — Mechanism of Action & Scientific Efficacy`}
+                      className="w-full h-auto block transition-transform duration-700 hover:scale-[1.02]"
+                    />
+                  </picture>
                 </div>
               </div>
             </SlideInVisual>
@@ -279,16 +292,14 @@ export default async function ProductPage({
             </div>
           </div>
 
-          {/* Related products */}
+          {/* Related products — hidden when this is the only product in its category */}
+          {related.length > 0 && (
           <div className="mt-16">
             <h2 className="font-display text-xl font-bold text-primary-900">
               More in {product.category}
             </h2>
             <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {products
-                .filter((p) => p.slug !== product.slug && p.category === product.category)
-                .slice(0, 3)
-                .map((p) => (
+              {related.map((p) => (
                   <Link
                     key={p.slug}
                     href={`/products/${p.slug}`}
@@ -312,6 +323,7 @@ export default async function ProductPage({
                 ))}
             </div>
           </div>
+          )}
         </div>
       </section>
     </>

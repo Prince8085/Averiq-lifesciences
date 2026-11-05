@@ -47,6 +47,8 @@ export interface Product {
   storage: string;
   /** Optional Mechanism of Action / Scientific Visualization Infographic */
   scienceImage?: string;
+  /** Optional portrait variant of the same infographic for small screens */
+  scienceImageMobile?: string;
   /** packshot palette */
   color: { from: string; to: string; text: string };
 }
@@ -128,6 +130,7 @@ export const products: Product[] = [
     storage:
       "Store in a cool, dry place, away from direct sunlight and excessive heat. Keep the container tightly closed.",
     scienceImage: "/media/generated/advanced-microsphere-acne-treatment-infographic.png",
+    scienceImageMobile: "/media/generated/avqlin-ad-gel-science-mobile.png",
     color: { from: "#7c3aed", to: "#0b5cab", text: "#ffffff" },
   },
   {
@@ -230,6 +233,8 @@ export const products: Product[] = [
     ],
     storage:
       "Store in a cool, dry place away from direct sunlight and moisture.",
+    scienceImage: "/media/generated/atariq-25-h1-antihistamine-moa.svg",
+    scienceImageMobile: "/media/generated/atariq-25-science-mobile.png",
     color: { from: "#2563eb", to: "#1e40af", text: "#ffffff" },
   },
   /* ──────────── COSMECEUTICALS ──────────── */
@@ -282,6 +287,7 @@ export const products: Product[] = [
     ],
     why: [],
     indication: "For acne-prone and oily skin, as part of a daily cleansing routine.",
+    scienceImageMobile: "/media/generated/lumiriq-ac-face-wash-science-mobile.png",
     directions: [
       "Wet your face and dispense a small amount of Lumiriq AC Face Wash onto your fingertips.",
       "Gently massage over the face in circular motions, avoiding the eye area.",
@@ -292,7 +298,6 @@ export const products: Product[] = [
       "If irritation or rash occurs, discontinue use and consult a dermatologist.",
     ],
     storage: "Store in a cool, dry place. Keep the container tightly closed.",
-    scienceImage: "/media/generated/micro-hyaluronic-hydration-science.png",
     color: { from: "#0d9488", to: "#065f46", text: "#ffffff" },
   },
   {
@@ -369,6 +374,7 @@ export const products: Product[] = [
     storage:
       "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
     scienceImage: "/media/generated/lumiriq-glow-brightening-skincare-infographic.png",
+    scienceImageMobile: "/media/generated/lumiriq-glow-brightening-science-mobile.png",
     color: { from: "#ec4899", to: "#be185d", text: "#ffffff" },
   },
   {
@@ -438,6 +444,7 @@ export const products: Product[] = [
     storage:
       "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
     scienceImage: "/media/generated/lumiriq-ac-clarifying-serum-infographic.png",
+    scienceImageMobile: "/media/generated/lumiriq-ac-serum-science-mobile.png",
     color: { from: "#0891b2", to: "#0e7490", text: "#ffffff" },
   },
   {
@@ -463,6 +470,10 @@ export const products: Product[] = [
       "Suitable for all skin types",
     ],
     actives: [
+      {
+        name: "Broad-Spectrum UV Filter System",
+        role: "A photostable combination of UVA and UVB filters that delivers SPF 50+ and PA+++ protection.",
+      },
       {
         name: "Niacinamide",
         role: "Helps support the skin barrier and overall skin appearance.",
@@ -490,6 +501,7 @@ export const products: Product[] = [
     storage:
       "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
     scienceImage: "/media/generated/uvriq-spf-50+-sunscreen-shield.png",
+    scienceImageMobile: "/media/generated/uvriq-sunscreen-science-mobile.png",
     color: { from: "#f59e0b", to: "#ea580c", text: "#ffffff" },
   },
   /* ──────────── TRICHOLOGY ──────────── */
@@ -540,6 +552,7 @@ export const products: Product[] = [
     storage:
       "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
     scienceImage: "/media/generated/rootriq-pro-hair-serum-science.png",
+    scienceImageMobile: "/media/generated/rootriq-pro-hair-serum-science-mobile.png",
     color: { from: "#059669", to: "#047857", text: "#ffffff" },
   },
   {
@@ -549,7 +562,7 @@ export const products: Product[] = [
       "Hair Strengthening Shampoo · Redensyl® & AnaGain™ Complex, Hydrolyzed Protein, Caffeine, Zinc PCA & Panthenol",
     category: "Trichology",
     form: "Shampoo",
-    pack: "Hair Strengthening Shampoo",
+    pack: "Shampoo Bottle",
     rx: false,
     tagline: "Strengthen · Nourish · Balance",
     overview:
@@ -573,6 +586,7 @@ export const products: Product[] = [
     why: [],
     indication:
       "For hair fall, weak and fragile hair and an unbalanced scalp.",
+    scienceImageMobile: "/media/generated/rootriq-ahf-shampoo-science-mobile.png",
     directions: [
       "Wet hair thoroughly. Apply an adequate amount of ROOTRIQ AHF to the scalp and hair.",
       "Gently massage into a rich lather and rinse thoroughly. Repeat if required.",
@@ -584,7 +598,6 @@ export const products: Product[] = [
     ],
     storage:
       "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
-    scienceImage: "/media/generated/clinical-hair-serum-infographic-advertisement.png",
     color: { from: "#16a34a", to: "#065f46", text: "#ffffff" },
   },
   /* ──────────── GYNECOLOGY & NUTRACEUTICALS ──────────── */

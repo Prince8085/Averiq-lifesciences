@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="720" viewBox="0 0 1440 720" role="img" aria-label="ATARIQ 25 mechanism of action: hydroxyzine blocks H1 receptors to reduce histamine-driven itching">
+  <defs>
+    <linearGradient id="atariqBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <linearGradient id="atariqHi" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1440" height="720" fill="url(#atariqBg)"/>
+
+  <!-- Brand line -->
+  <text x="1368" y="104" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="4" fill="#94a3b8">AVERIQ LIFESCIENCES</text>
+
+  <!-- Title block -->
+  <rect x="72" y="112" width="56" height="6" rx="3" fill="#2563eb"/>
+  <text x="72" y="168" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="4" fill="#2563eb">MECHANISM OF ACTION</text>
+  <text x="72" y="252" font-family="Segoe UI, Arial, sans-serif" font-size="64" font-weight="800" fill="#0f2f5c">ATARIQ 25</text>
+  <text x="72" y="298" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#475569">Hydroxyzine Hydrochloride Tablets I.P. 25 mg</text>
+
+  <!-- Descriptor pills -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">
+    <rect x="72" y="320" width="196" height="34" rx="17" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="170" y="342" text-anchor="middle" fill="#1d4ed8">H1 antihistamine</text>
+    <rect x="284" y="320" width="184" height="34" rx="17" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="376" y="342" text-anchor="middle" fill="#047857">Anti-pruritic</text>
+    <rect x="484" y="320" width="180" height="34" rx="17" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="574" y="342" text-anchor="middle" fill="#475569">Prescription</text>
+  </g>
+
+  <!-- Step 1 -->
+  <rect x="72" y="392" width="400" height="150" rx="20" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="122" cy="440" r="19" fill="#e0e7ff"/>
+  <text x="122" y="447" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#1d4ed8">1</text>
+  <text x="158" y="447" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#0f2f5c">Histamine release</text>
+  <text x="100" y="490" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#64748b">An allergic or urticarial trigger releases</text>
+  <text x="100" y="515" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#64748b">histamine from mast cells.</text>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M478 467 L500 467" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+  <path d="M494 459 L504 467 L494 475" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Step 2 (highlighted) -->
+  <rect x="520" y="392" width="400" height="150" rx="20" fill="url(#atariqHi)" stroke="#93c5fd" stroke-width="2"/>
+  <circle cx="570" cy="440" r="19" fill="#2563eb"/>
+  <text x="570" y="447" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#ffffff">2</text>
+  <text x="606" y="447" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#1d4ed8">H1 receptor blockade</text>
+  <text x="548" y="490" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#1e40af">Hydroxyzine 25 mg competitively blocks</text>
+  <text x="548" y="515" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#1e40af">histamine H1 receptors.</text>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M926 467 L948 467" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+  <path d="M942 459 L952 467 L942 475" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Step 3 -->
+  <rect x="968" y="392" width="400" height="150" rx="20" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="1018" cy="440" r="19" fill="#d1fae5"/>
+  <text x="1018" y="447" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#047857">3</text>
+  <text x="1054" y="447" font-family="Segoe UI, Arial, sans-serif" font-size="21" font-weight="700" fill="#0f2f5c">Symptom relief</text>
+  <text x="996" y="490" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#64748b">Reduced histamine signalling helps relieve</text>
+  <text x="996" y="515" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#64748b">itching and allergic skin discomfort.</text>
+
+  <!-- Counselling note -->
+  <rect x="72" y="576" width="1296" height="96" rx="18" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="100" y="614" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#9a3412">CNS H1 blockade may cause drowsiness — patients should avoid driving or operating machinery if affected.</text>
+  <text x="100" y="646" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#b45309">Prescription medicine: to be used only under the supervision of a Registered Medical Practitioner.</text>
+</svg>
