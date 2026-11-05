@@ -29,7 +29,7 @@ export const navLinks = [
       { label: "Cosmeceuticals" },
       { label: "Trichology" },
       { label: "Dental & Oral Health" },
-      { label: "Gynecology & Nutraceuticals" },
+      { label: "Gynecology & Nutraceuticals", comingSoon: true },
     ],
   },
   { label: "Quality & Assurance", href: "/quality" },
@@ -60,9 +60,10 @@ export const therapeuticVerticals = [
   },
   {
     slug: "Gynecology & Nutraceuticals",
-    title: "Gynecology & Nutraceuticals",
+    title: "Gynecology & Nutraceuticals — Coming Soon",
     blurb:
-      "Women's health formulations alongside multivitamins, mineral complexes and nutraceutical support.",
+      "Women's health formulations alongside multivitamins, mineral complexes and nutraceutical support — launching soon.",
     icon: "leaf",
+    comingSoon: true,
   },
 ] as const;

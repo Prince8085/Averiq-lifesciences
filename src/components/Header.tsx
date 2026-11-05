@@ -91,47 +91,69 @@ export function Header() {
                   )}
                 >
                   {link.children.map((child) => {
-                    const items = itemsFor(child.label);
-                    const isOpen = activeCategory === child.label;
-                    return (
-                      <div key={child.label}>
-                        <button
-                          type="button"
-                          onClick={() => setActiveCategory(isOpen ? null : child.label)}
-                          onMouseEnter={() => setActiveCategory(child.label)}
-                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-primary-50 hover:text-primary-700"
-                        >
-                          <span>{child.label}</span>
-                          <ChevronDown
-                            className={cn(
-                              "h-3.5 w-3.5 text-slate-400 transition-transform duration-200",
-                              isOpen && "rotate-180"
-                            )}
-                          />
-                        </button>
-                        {isOpen && (
-                          <div className="ml-2 border-l-2 border-primary-100 pb-1 pl-2">
-                            {items.length > 0 ? (
-                              items.map((p) => (
-                                <Link
-                                  key={p.slug}
-                                  href={`/products/${p.slug}`}
-                                  onClick={closeMenus}
-                                  className="block rounded-md px-2.5 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-primary-50 hover:text-primary-600"
-                                >
-                                  {p.name}
-                                </Link>
-                              ))
-                            ) : (
-                              <span className="block px-2.5 py-1.5 text-xs text-slate-400">
-                                Coming soon
-                              </span>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                                      const items = itemsFor(child.label);
+                                      const isOpen = activeCategory === child.label;
+                                      const isComingSoon = "comingSoon" in child && child.comingSoon;
+                                      return (
+                                        <div key={child.label}>
+                                          <button
+                                            type="button"
+                                            onClick={() => setActiveCategory(isOpen ? null : child.label)}
+                                            onMouseEnter={() => setActiveCategory(child.label)}
+                                            className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
+                                              isComingSoon
+                                                ? "text-slate-400 cursor-not-allowed"
+                                                : "text-slate-700 hover:bg-primary-50 hover:text-primary-700"
+                                            }`}
+                                            disabled={isComingSoon}
+                                          >
+                                            <span className="flex items-center gap-2">
+                                              {child.label}
+                                              {isComingSoon && (
+                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-extrabold uppercase tracking-wider">
+                                                  Coming Soon
+                                                </span>
+                                              )}
+                                            </span>
+                                            {!isComingSoon && (
+                                              <ChevronDown
+                                                className={cn(
+                                                  "h-3.5 w-3.5 text-slate-400 transition-transform duration-200",
+                                                  isOpen && "rotate-180"
+                                                )}
+                                              />
+                                            )}
+                                          </button>
+                                          {isOpen && !isComingSoon && (
+                                            <div className="ml-2 border-l-2 border-primary-100 pb-1 pl-2">
+                                              {items.length > 0 ? (
+                                                items.map((p) => (
+                                                  <Link
+                                                    key={p.slug}
+                                                    href={`/products/${p.slug}`}
+                                                    onClick={closeMenus}
+                                                    className="block rounded-md px-2.5 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-primary-50 hover:text-primary-600"
+                                                  >
+                                                    {p.name}
+                                                  </Link>
+                                                ))
+                                              ) : (
+                                                <span className="block px-2.5 py-1.5 text-xs text-slate-400">
+                                                  Coming soon
+                                                </span>
+                                              )}
+                                            </div>
+                                          )}
+                                          {isComingSoon && isOpen && (
+                                            <div className="ml-2 border-l-2 border-slate-200 pb-1 pl-2">
+                                              <span className="block px-2.5 py-1.5 text-xs text-slate-400">
+                                                Launching soon
+                                              </span>
+                                            </div>
+                                          )}
+                                        </div>
+                                      );
+                                    })}
                 </div>
               </div>
             ) : (
@@ -200,46 +222,68 @@ export function Header() {
                 </Link>
                 <div className="mb-1 ml-3 border-l border-slate-200 pl-3">
                   {link.children.map((child) => {
-                    const items = itemsFor(child.label);
-                    const isOpen = activeCategory === child.label;
-                    return (
-                      <div key={child.label}>
-                        <button
-                          type="button"
-                          onClick={() => setActiveCategory(isOpen ? null : child.label)}
-                          className="flex w-full items-center justify-between py-1.5 text-sm font-medium text-slate-600"
-                        >
-                          <span>{child.label}</span>
-                          <ChevronDown
-                            className={cn(
-                              "h-3 w-3 text-slate-400 transition-transform duration-200",
-                              isOpen && "rotate-180"
-                            )}
-                          />
-                        </button>
-                        {isOpen && (
-                          <div className="ml-2 border-l border-primary-100 pb-1 pl-2">
-                            {items.length > 0 ? (
-                              items.map((p) => (
-                                <Link
-                                  key={p.slug}
-                                  href={`/products/${p.slug}`}
-                                  onClick={closeMenus}
-                                  className="block rounded px-2 py-0.5 text-xs text-slate-500 hover:text-primary-600"
-                                >
-                                  {p.name}
-                                </Link>
-                              ))
-                            ) : (
-                              <span className="block px-2 py-0.5 text-xs text-slate-400">
-                                Coming soon
-                              </span>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                                      const items = itemsFor(child.label);
+                                      const isOpen = activeCategory === child.label;
+                                      const isComingSoon = "comingSoon" in child && child.comingSoon;
+                                      return (
+                                        <div key={child.label}>
+                                          <button
+                                            type="button"
+                                            onClick={() => setActiveCategory(isOpen ? null : child.label)}
+                                            className={`flex w-full items-center justify-between py-1.5 text-sm font-medium ${
+                                              isComingSoon
+                                                ? "text-slate-400 cursor-not-allowed"
+                                                : "text-slate-600"
+                                            }`}
+                                            disabled={isComingSoon}
+                                          >
+                                            <span className="flex items-center gap-2">
+                                              {child.label}
+                                              {isComingSoon && (
+                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-extrabold uppercase tracking-wider">
+                                                  Coming Soon
+                                                </span>
+                                              )}
+                                            </span>
+                                            {!isComingSoon && (
+                                              <ChevronDown
+                                                className={cn(
+                                                  "h-3 w-3 text-slate-400 transition-transform duration-200",
+                                                  isOpen && "rotate-180"
+                                                )}
+                                              />
+                                            )}
+                                          </button>
+                                          {isOpen && !isComingSoon && (
+                                            <div className="ml-2 border-l border-primary-100 pb-1 pl-2">
+                                              {items.length > 0 ? (
+                                                items.map((p) => (
+                                                  <Link
+                                                    key={p.slug}
+                                                    href={`/products/${p.slug}`}
+                                                    onClick={closeMenus}
+                                                    className="block rounded px-2 py-0.5 text-xs text-slate-500 hover:text-primary-600"
+                                                  >
+                                                    {p.name}
+                                                  </Link>
+                                                ))
+                                              ) : (
+                                                <span className="block px-2 py-0.5 text-xs text-slate-400">
+                                                  Coming soon
+                                                </span>
+                                              )}
+                                            </div>
+                                          )}
+                                          {isComingSoon && isOpen && (
+                                            <div className="ml-2 border-l border-slate-200 pb-1 pl-2">
+                                              <span className="block px-2 py-0.5 text-xs text-slate-400">
+                                                Launching soon
+                                              </span>
+                                            </div>
+                                          )}
+                                        </div>
+                                      );
+                                    })}
                 </div>
               </div>
             ) : (

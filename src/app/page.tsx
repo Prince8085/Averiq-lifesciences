@@ -194,42 +194,62 @@ export default function Home() {
             </section>
 
       {/* ============ THERAPEUTIC VERTICALS ============ */}
-                  <section className="py-20 sm:py-24">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                      <SectionHeading
-                        eyebrow="Therapeutic Verticals"
-                        title="Specialized Care, Clearly Segmented"
-                        subtitle="Explicit therapeutic divisions so doctors and patients find exactly what they need."
-                      />
-                      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        {therapeuticVerticals.map((v, i) => {
-                          const Icon = verticalIcons[v.slug];
-                          return (
-                            <Reveal key={v.slug} delay={i * 0.07}>
-                              <Link
-                                href="/#products"
-                                className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
-                              >
-                                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
-                                  <Icon className="h-6 w-6" />
-                                </span>
-                                <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
-                                  {v.title}
-                                </h3>
-                                <p className="mt-2 flex-1 prose-body text-slate-600">
-                                                              {v.blurb}
-                                                            </p>
-                                <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent-600">
-                                  View range
-                                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                                </span>
-                              </Link>
-                            </Reveal>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </section>
+                        <section className="py-20 sm:py-24">
+                          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                            <SectionHeading
+                              eyebrow="Therapeutic Verticals"
+                              title="Specialized Care, Clearly Segmented"
+                              subtitle="Explicit therapeutic divisions so doctors and patients find exactly what they need."
+                            />
+                            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                              {therapeuticVerticals.map((v, i) => {
+                                const Icon = verticalIcons[v.slug];
+                                const isComingSoon = "comingSoon" in v && v.comingSoon;
+                                return (
+                                  <Reveal key={v.slug} delay={i * 0.07}>
+                                    {isComingSoon ? (
+                                      <div className="group flex h-full flex-col rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-6 shadow-soft transition-all duration-300">
+                                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-slate-200 text-slate-400 shadow-sm">
+                                          <Icon className="h-6 w-6" />
+                                        </span>
+                                        <h3 className="mt-5 font-display text-lg font-bold text-slate-500">
+                                          {v.title}
+                                        </h3>
+                                        <p className="mt-2 flex-1 prose-body text-slate-400">
+                                          {v.blurb}
+                                        </p>
+                                        <span className="mt-4 inline-flex items-center gap-1.5">
+                                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-wider">
+                                            Coming Soon
+                                          </span>
+                                        </span>
+                                      </div>
+                                    ) : (
+                                      <Link
+                                        href="/#products"
+                                        className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-float"
+                                      >
+                                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white shadow-md shadow-primary-600/25 transition-transform duration-300 group-hover:scale-110">
+                                          <Icon className="h-6 w-6" />
+                                        </span>
+                                        <h3 className="mt-5 font-display text-lg font-bold text-primary-900">
+                                          {v.title}
+                                        </h3>
+                                        <p className="mt-2 flex-1 prose-body text-slate-600">
+                                                                      {v.blurb}
+                                                                    </p>
+                                        <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent-600">
+                                          View range
+                                          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                                        </span>
+                                      </Link>
+                                    )}
+                                  </Reveal>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </section>
 
       {/* ============ STAR FORMULATIONS (horizontal marquee & search catalog) ============ */}
       <section id="products" className="scroll-mt-20 bg-muted py-20 sm:py-24">

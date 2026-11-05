@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Search, ArrowRight, Filter, X } from "lucide-react";
+import { Search, ArrowRight, Filter, X, Clock } from "lucide-react";
 import { products, categories } from "@/data/products";
 import { ProductImage } from "@/components/ProductImage";
 
@@ -28,6 +28,9 @@ export function ProductCatalogSearch() {
       return matchesCategory && matchesSearch;
     });
   }, [selectedCategory, searchQuery]);
+
+  // Total product count for "All" filter
+  const totalProducts = products.length;
 
   return (
     <div className="w-full">
@@ -69,7 +72,7 @@ export function ProductCatalogSearch() {
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               }`}
             >
-              All (10)
+              All ({totalProducts})
             </button>
             {categories.map((cat) => {
               const count = products.filter((p) => p.category === cat).length;
@@ -89,6 +92,19 @@ export function ProductCatalogSearch() {
                 </button>
               );
             })}
+            {/* Coming Soon Category */}
+            <button
+              type="button"
+              disabled
+              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold text-slate-400 bg-slate-50 border border-dashed border-slate-200 cursor-not-allowed"
+              title="Coming Soon"
+            >
+              <Clock className="h-3.5 w-3.5" />
+              Gynecology & Nutraceuticals
+              <span className="ml-1.5 px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 bg-amber-50 rounded-full">
+                Coming Soon
+              </span>
+            </button>
           </div>
         </div>
       </div>

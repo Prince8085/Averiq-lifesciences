@@ -58,7 +58,7 @@ export const categories: Category[] = [
   "Cosmeceuticals",
   "Trichology",
   "Dental & Oral Health",
-  "Gynecology & Nutraceuticals",
+  // "Gynecology & Nutraceuticals" — Coming Soon
 ];
 
 export const forms: Form[] = [
@@ -597,59 +597,61 @@ export const products: Product[] = [
       "If irritation or rash occurs, discontinue use and consult a dermatologist.",
     ],
     storage:
-      "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
-    color: { from: "#16a34a", to: "#065f46", text: "#ffffff" },
-  },
-  /* ──────────── GYNECOLOGY & NUTRACEUTICALS ──────────── */
-  {
-    slug: "rootriq-h-tablets",
-    name: "ROOTRIQ-H Tablets",
-    generic:
-      "Therapeutic-Dose Hair Nutrition Formula · D-Biotin, N-Acetyl L-Cysteine, Calcium Pantothenate, Selenium, Copper, Zinc, Manganese & Folic Acid",
-    category: "Gynecology & Nutraceuticals",
-    form: "Tablet",
-    pack: "10 Tablets",
-    rx: false,
-    featured: true,
-    tagline: "Therapeutic-dose nutritional support for healthy hair",
-    overview:
-      "ROOTRIQ-H is a therapeutic-dose nutritional formula combining Biotin, N-Acetyl L-Cysteine, Calcium Pantothenate, Selenium, Copper, Zinc, Manganese and Folic Acid. It is designed to provide targeted nutritional support for healthy hair growth, stronger hair roots and overall hair wellness.",
-    benefits: [
-      "Supports healthy hair growth",
-      "Helps provide targeted hair nutrition",
-      "Supports stronger hair roots",
-      "Supports healthy hair structure",
-      "Helps maintain overall hair and scalp wellness",
-    ],
-    actives: [
-      { name: "D-Biotin", role: "Supports healthy hair growth and stronger-looking hair." },
-      { name: "N-Acetyl L-Cysteine", role: "Provides cysteine support for healthy keratin formation." },
-      { name: "Calcium Pantothenate", role: "Supports nutritional requirements for healthy hair maintenance." },
-      { name: "Selenium", role: "Provides antioxidant nutritional support for hair and scalp." },
-      { name: "Zinc", role: "Supports normal hair and scalp health." },
-      { name: "Copper", role: "Supports normal hair pigmentation and connective tissue health." },
-      { name: "Manganese", role: "Provides essential nutritional support for connective tissue and hair health." },
-      { name: "Folic Acid", role: "Supports normal cell growth and renewal." },
-    ],
-    why: [
-      {
-        title: "Therapeutic-Dose Formula",
-        text: "A carefully formulated combination of essential vitamins, minerals and amino-acid support designed to provide targeted nutritional support for hair health.",
+          "Store in a cool, dry place away from direct sunlight. Keep the container tightly closed.",
+        color: { from: "#16a34a", to: "#065f46", text: "#ffffff" },
       },
-    ],
-    indication:
-      "Targeted nutritional support for healthy hair growth and stronger hair roots.",
-    directions: ["Take as directed by the physician."],
-    safety: [
-      "Use under medical guidance.",
-      "Keep out of reach of children.",
-    ],
-    storage:
-      "Store in a cool, dry and dark place. Protect from direct sunlight and moisture.",
-    scienceImage: "/media/generated/rootriq-h-advanced-hair-nutrition-infographic.png",
-    color: { from: "#16a34a", to: "#15803d", text: "#ffffff" },
-  },
-];
+      {
+        slug: "rootriq-h-tablets",
+        name: "ROOTRIQ-H Tablets",
+        generic:
+          "Therapeutic-Dose Hair Nutrition Formula · D-Biotin, N-Acetyl L-Cysteine, Calcium Pantothenate, Selenium, Copper, Zinc, Manganese & Folic Acid",
+        category: "Trichology",
+        form: "Tablet",
+        pack: "10 Tablets",
+        rx: false,
+        featured: true,
+        tagline: "Therapeutic-dose nutritional support for healthy hair",
+        overview:
+          "ROOTRIQ-H is a therapeutic-dose nutritional formula combining Biotin, N-Acetyl L-Cysteine, Calcium Pantothenate, Selenium, Copper, Zinc, Manganese and Folic Acid. It is designed to provide targeted nutritional support for healthy hair growth, stronger hair roots and overall hair wellness.",
+        benefits: [
+          "Supports healthy hair growth",
+          "Helps provide targeted hair nutrition",
+          "Supports stronger hair roots",
+          "Supports healthy hair structure",
+          "Helps maintain overall hair and scalp wellness",
+        ],
+        actives: [
+          { name: "D-Biotin", role: "Supports healthy hair growth and stronger-looking hair." },
+          { name: "N-Acetyl L-Cysteine", role: "Provides cysteine support for healthy keratin formation." },
+          { name: "Calcium Pantothenate", role: "Supports nutritional requirements for healthy hair maintenance." },
+          { name: "Selenium", role: "Provides antioxidant nutritional support for hair and scalp." },
+          { name: "Zinc", role: "Supports normal hair and scalp health." },
+          { name: "Copper", role: "Supports normal hair pigmentation and connective tissue health." },
+          { name: "Manganese", role: "Provides essential nutritional support for connective tissue and hair health." },
+          { name: "Folic Acid", role: "Supports normal cell growth and renewal." },
+        ],
+        why: [
+          {
+            title: "Therapeutic-Dose Formula",
+            text: "A carefully formulated combination of essential vitamins, minerals and amino-acid support designed to provide targeted nutritional support for hair health.",
+          },
+        ],
+        indication:
+          "Targeted nutritional support for healthy hair growth and stronger hair roots.",
+        directions: ["Take as directed by the physician."],
+        safety: [
+          "Use under medical guidance.",
+          "Keep out of reach of children.",
+        ],
+        storage:
+          "Store in a cool, dry and dark place. Protect from direct sunlight and moisture.",
+        scienceImage: "/media/generated/rootriq-h-advanced-hair-nutrition-infographic.png",
+        color: { from: "#16a34a", to: "#15803d", text: "#ffffff" },
+      },
+      /* ──────────── GYNECOLOGY & NUTRACEUTICALS ──────────── */
+      // Gynecology & Nutraceuticals category is currently "Coming Soon"
+      // Products previously in this category have been moved to appropriate active categories.
+    ];
 
 export function getProduct(slug: string) {
   return products.find((p) => p.slug === slug);
