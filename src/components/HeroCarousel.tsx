@@ -452,7 +452,7 @@ export function HeroCarousel({
                                       Trusted Healthcare Partner
                                     </div>
                                     <Image
-                                      src="/media/hero/radiant-skincare-glow-portrait.png"
+                                      src="/media/hero/woman-applying-cream-transparent.webp"
                                       alt="Woman applying cream to her cheek"
                                       width={599}
                                       height={656}
