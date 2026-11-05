@@ -125,9 +125,9 @@ export function ProductCatalogSearch() {
                 }}
               >
                 <ProductImage
-                  product={p}
-                  className="h-36 w-36 object-contain transition-transform duration-500 group-hover:scale-105"
-                />
+                                  product={p}
+                                  className="h-40 w-40 object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
                 <span className="absolute top-3 right-3 rounded-full bg-white/90 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-600 shadow-sm border border-slate-100">
                   {p.form}
                 </span>

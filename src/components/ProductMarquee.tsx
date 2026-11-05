@@ -56,9 +56,9 @@ export function ProductMarquee({
               }}
             >
               <ProductImage
-                product={p}
-                className="h-28 w-28 transition-transform duration-500 group-hover/card:scale-105"
-              />
+                              product={p}
+                              className="h-32 w-32 transition-transform duration-500 group-hover/card:scale-105"
+                            />
             </div>
             <p className="mt-3 truncate font-display text-sm font-bold text-primary-900">
               {p.name}
