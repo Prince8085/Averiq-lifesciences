@@ -111,32 +111,18 @@ export default function Home() {
       <JsonLd data={homeJsonLd} />
 
       {/* ============ HERO ============ */}
-            <section className="mesh-hero relative overflow-hidden min-h-screen">
-              {/* Hero Carousel - 3 rotating images with exact approved design */}
+            <section className="relative overflow-hidden min-h-screen bg-[#f8faf6]">
+              <Image
+                src="/media/hero/radiant-skincare-botanical.webp"
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className="hidden object-cover object-center sm:block"
+              />
+              {/* Keep the existing hero content while removing the rotating background carousel. */}
               <HeroCarousel
-                slides={[
-                  {
-                    src: "/optimized/hero/radiant-skincare-glow-with-medical-icons-1920w.webp",
-                    alt: "Female model washing her face with cleansing foam",
-                    blurCategory: "warm",
-                    objectPosition: "center 35%",
-                    gradientOverlay: "bg-gradient-to-r from-white via-white/85 to-white/70 sm:to-transparent",
-                  },
-                  {
-                    src: "/optimized/hero/radiant-beauty-with-neon-wellness-icons-1920w.webp",
-                    alt: "Smiling brunette woman with beautiful wavy hair",
-                    blurCategory: "clinical",
-                    objectPosition: "center 40%",
-                    gradientOverlay: "bg-gradient-to-r from-white via-white/85 to-white/70 sm:to-transparent",
-                  },
-                  {
-                    src: "/optimized/hero/cheerful-sunscreen-skincare-banner-1920w.webp",
-                    alt: "Happy child wearing pink sunglasses and pink sun hat with sunscreen",
-                    blurCategory: "green",
-                    objectPosition: "center center",
-                    gradientOverlay: "bg-gradient-to-r from-white via-white/85 to-white/70 sm:to-transparent",
-                  },
-                ]}
+                slides={[]}
                 interval={6000}
                 alt="Averiq Lifesciences — Advancing Healthcare Ethically"
                 priority

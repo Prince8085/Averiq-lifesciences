@@ -104,6 +104,7 @@ export function HeroCarousel({
   priority = true,
   className,
 }: HeroCarouselProps) {
+  const staticHero = slides.length === 0;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -180,7 +181,7 @@ export function HeroCarousel({
       }, 300);
     };
 
-    intervalRef.current = setInterval(rotate, interval);
+    if (!staticHero) intervalRef.current = setInterval(rotate, interval);
 
     return () => {
       isMountedRef.current = false;
@@ -188,7 +189,7 @@ export function HeroCarousel({
         clearInterval(intervalRef.current);
       }
     };
-  }, [slides.length, interval, triggerAnimations]);
+  }, [slides.length, interval, triggerAnimations, staticHero]);
 
   // Trigger initial animations
   useEffect(() => {
@@ -362,8 +363,8 @@ export function HeroCarousel({
 
     >
       {/* Background Slides */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {slides.map((slide, index) => {
+      <div className={cn("absolute inset-0 z-0 overflow-hidden", staticHero && "hidden")}>
+              {slides.map((slide, index) => {
           const isActive = index === currentIndex;
           const isPrev = index === (currentIndex - 1 + slides.length) % slides.length;
           const isNext = index === (currentIndex + 1) % slides.length;
@@ -432,7 +433,7 @@ export function HeroCarousel({
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-20 flex items-start pb-6 pt-16 sm:min-h-[calc(100svh-5rem)] sm:items-center sm:pb-0 sm:pt-0">
+      <div className={cn("relative z-20 flex items-start pb-6 pt-16 sm:min-h-[calc(100svh-5rem)] sm:items-center sm:pb-0 sm:pt-0", staticHero && "min-h-[100svh]", staticHero && "pt-16")}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-12 lg:items-start w-full">
                       {/* Left Content */}
@@ -450,6 +451,15 @@ export function HeroCarousel({
                                       <span className="text-lg">🛡</span>
                                       Trusted Healthcare Partner
                                     </div>
+                                    <Image
+                                      src="/media/hero/woman-applying-cream-transparent.webp"
+                                      alt="Woman applying cream to her cheek"
+                                      width={599}
+                                      height={656}
+                                      priority
+                                      sizes="(max-width: 639px) 85vw, 1px"
+                className="mx-auto mt-3 h-auto w-[min(85vw,22rem)] object-contain sm:hidden"
+                                    />
 
               {/* Heading */}
                             <div className="mt-6">
@@ -618,7 +628,7 @@ export function HeroCarousel({
                     </div>
 
                     {/* Carousel Controls */}
-      <div className="relative z-30 pointer-events-none lg:absolute lg:inset-0">
+      {slides.length > 1 && <div className="relative z-30 pointer-events-none lg:absolute lg:inset-0">
         {/* Previous Arrow */}
         <button
           onClick={() => {
@@ -706,7 +716,7 @@ export function HeroCarousel({
             />
           ))}
         </div>
-      </div>
+      </div>}
     </div>
   );
 }
