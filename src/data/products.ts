@@ -653,6 +653,12 @@ export const products: Product[] = [
       // Products previously in this category have been moved to appropriate active categories.
     ];
 
+export const fullPackshotSlugs = new Set([
+  "avqlin-ad-gel",
+  "isotriq-20",
+  "atariq-25",
+]);
+
 export const productDisplayOrder = [
   "lumiriq-ac-face-wash",
   ...products.map((product) => product.slug).filter((slug) => slug !== "lumiriq-ac-face-wash"),

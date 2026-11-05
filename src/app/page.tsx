@@ -24,7 +24,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { TrichologyFeatureCard } from "@/components/TrichologyFeatureCard";
 import { cn } from "@/lib/utils";
-import { productsInDisplayOrder } from "@/data/products";
+import { fullPackshotSlugs, productsInDisplayOrder } from "@/data/products";
 import CircularGallery from "@/components/CircularGallery";
 import { hasProductPhoto, productPhotoSrc } from "@/lib/product-media";
 
@@ -96,13 +96,15 @@ const homeJsonLd = {
   founder: site.directors.map((d) => ({ "@type": "Person", name: d })),
 };
 
-const galleryItems = productsInDisplayOrder
+const galleryItems = [...productsInDisplayOrder]
+  .sort((a, b) => Number(fullPackshotSlugs.has(a.slug)) - Number(fullPackshotSlugs.has(b.slug)))
   .filter((p) => hasProductPhoto(p.slug))
   .map((p) => ({
     image: productPhotoSrc(p.slug) as string,
     text: p.name,
     description: `${p.generic} · ${p.form}`,
     alt: `${p.name} — ${p.form} packshot`,
+    fit: fullPackshotSlugs.has(p.slug),
   }));
 
 export default function Home() {

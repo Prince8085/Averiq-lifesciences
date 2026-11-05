@@ -29,6 +29,8 @@ const STEPS: Record<string, number> = {
 
 export type GalleryItem = {
   image: string;
+  /** Show the entire image rather than cropping it to the card frame. */
+  fit?: boolean;
   text?: string;
   description?: string;
   alt?: string;
@@ -614,6 +616,7 @@ export default function CircularGallery({
         const entry = card.entry;
         gl.bindTexture(gl.TEXTURE_2D, entry.texture || blank);
         gl.uniform1f(u.uImageAspect, entry.aspect);
+        gl.uniform1f(u.uFit, card.item.fit ? 1 : 0);
         gl.uniform1f(u.uReady, entry.ready);
         gl.uniform1f(u.uGray, card.gray);
         gl.uniform1f(u.uDim, card.dim);
@@ -1165,6 +1168,7 @@ uniform vec2 uResolution;
 uniform vec2 uSize;
 uniform float uRadius;
 uniform float uImageAspect;
+uniform float uFit;
 uniform float uReady;
 uniform vec3 uPlaceholder;
 uniform float uGray;
@@ -1210,9 +1214,10 @@ void main() {
   float cover = clamp(0.5 - d / pixel, 0.0, 1.0);
   vec2 uv = vLocal / uSize + 0.5;
   float aspect = uSize.x / uSize.y;
-  vec2 fit = aspect > uImageAspect ? vec2(aspect / uImageAspect, 1.0) : vec2(1.0, uImageAspect / aspect);
-  vec2 imageUv = (uv - 0.5) * fit + 0.5;
-  float visible = step(0.0, imageUv.x) * step(imageUv.x, 1.0) * step(0.0, imageUv.y) * step(imageUv.y, 1.0);
+  vec2 coverCrop = aspect > uImageAspect ? vec2(1.0, uImageAspect / aspect) : vec2(aspect / uImageAspect, 1.0);
+  vec2 containFit = aspect > uImageAspect ? vec2(aspect / uImageAspect, 1.0) : vec2(1.0, uImageAspect / aspect);
+  vec2 imageUv = (uv - 0.5) * mix(coverCrop, containFit, uFit) + 0.5;
+  float visible = mix(1.0, step(0.0, imageUv.x) * step(imageUv.x, 1.0) * step(0.0, imageUv.y) * step(imageUv.y, 1.0), uFit);
   vec3 image = texture(uTexture, clamp(imageUv, 0.0, 1.0)).rgb;
   vec3 color = mix(uPlaceholder, mix(vec3(1.0), image, visible), uReady);
   float luma = dot(color, vec3(0.2126, 0.7152, 0.0722));

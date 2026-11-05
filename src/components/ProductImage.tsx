@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import type { Product } from "@/data/products";
+import { fullPackshotSlugs, type Product } from "@/data/products";
 import { ProductVisual } from "@/components/ProductVisual";
 
 /**
@@ -43,7 +43,10 @@ export function ProductImage({
         src={photo}
         alt={product.name}
         loading={eager ? "eager" : "lazy"}
-        className={cn(className ?? imgClassName, "object-contain")}
+        className={cn(
+          className ?? imgClassName,
+          fullPackshotSlugs.has(product.slug) ? "object-contain" : "object-cover",
+        )}
         data-testid="product-packshot"
       />
     );
