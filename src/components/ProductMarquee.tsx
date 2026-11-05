@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { products } from "@/data/products";
+import { productsInDisplayOrder } from "@/data/products";
 import { ProductImage } from "@/components/ProductImage";
 
 /**
@@ -15,11 +15,11 @@ import { ProductImage } from "@/components/ProductImage";
  */
 export function ProductMarquee({
   speed = "32s",
-  items = products,
+  items = productsInDisplayOrder,
   fadeClass = "from-[#fafcff]",
 }: {
   speed?: string;
-  items?: typeof products;
+  items?: typeof productsInDisplayOrder;
   /** Tailwind `from-*` colour for the edge fade masks (match the section bg) */
   fadeClass?: string;
 }) {

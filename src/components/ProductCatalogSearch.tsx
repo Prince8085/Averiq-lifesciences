@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Search, ArrowRight, Filter, X, Clock } from "lucide-react";
-import { products, categories } from "@/data/products";
+import { productsInDisplayOrder, categories } from "@/data/products";
 import { ProductImage } from "@/components/ProductImage";
 
 export function ProductCatalogSearch() {
@@ -11,7 +11,7 @@ export function ProductCatalogSearch() {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filteredProducts = useMemo(() => {
-    return products.filter((p) => {
+    return productsInDisplayOrder.filter((p) => {
       const matchesCategory =
         selectedCategory === "All" || p.category === selectedCategory;
 
@@ -30,7 +30,7 @@ export function ProductCatalogSearch() {
   }, [selectedCategory, searchQuery]);
 
   // Total product count for "All" filter
-  const totalProducts = products.length;
+  const totalProducts = productsInDisplayOrder.length;
 
   return (
     <div className="w-full">
@@ -75,7 +75,7 @@ export function ProductCatalogSearch() {
               All ({totalProducts})
             </button>
             {categories.map((cat) => {
-              const count = products.filter((p) => p.category === cat).length;
+              const count = productsInDisplayOrder.filter((p) => p.category === cat).length;
               if (count === 0) return null;
               return (
                 <button
@@ -126,7 +126,7 @@ export function ProductCatalogSearch() {
               >
                 <ProductImage
                                   product={p}
-                                  className="h-40 w-40 object-cover transition-transform duration-500 group-hover:scale-105"
+                                  className="h-40 w-40 transition-transform duration-500 group-hover:scale-105"
                                 />
                 <span className="absolute top-3 right-3 rounded-full bg-white/90 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-600 shadow-sm border border-slate-100">
                   {p.form}

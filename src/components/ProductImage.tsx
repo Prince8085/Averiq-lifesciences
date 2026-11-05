@@ -43,7 +43,7 @@ export function ProductImage({
         src={photo}
         alt={product.name}
         loading={eager ? "eager" : "lazy"}
-        className={cn(className ?? imgClassName, "object-cover")}
+        className={cn(className ?? imgClassName, "object-contain")}
         data-testid="product-packshot"
       />
     );

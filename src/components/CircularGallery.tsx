@@ -1210,9 +1210,11 @@ void main() {
   float cover = clamp(0.5 - d / pixel, 0.0, 1.0);
   vec2 uv = vLocal / uSize + 0.5;
   float aspect = uSize.x / uSize.y;
-  vec2 crop = aspect > uImageAspect ? vec2(1.0, uImageAspect / aspect) : vec2(aspect / uImageAspect, 1.0);
-  vec3 image = texture(uTexture, (uv - 0.5) * crop + 0.5).rgb;
-  vec3 color = mix(uPlaceholder, image, uReady);
+  vec2 fit = aspect > uImageAspect ? vec2(aspect / uImageAspect, 1.0) : vec2(1.0, uImageAspect / aspect);
+  vec2 imageUv = (uv - 0.5) * fit + 0.5;
+  float visible = step(0.0, imageUv.x) * step(imageUv.x, 1.0) * step(0.0, imageUv.y) * step(imageUv.y, 1.0);
+  vec3 image = texture(uTexture, clamp(imageUv, 0.0, 1.0)).rgb;
+  vec3 color = mix(uPlaceholder, mix(vec3(1.0), image, visible), uReady);
   float luma = dot(color, vec3(0.2126, 0.7152, 0.0722));
   color = mix(color, vec3(luma), uGray) * (1.0 - uDim);
   float body = cover * mix(0.08, 1.0, uReady);

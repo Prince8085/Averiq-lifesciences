@@ -653,6 +653,15 @@ export const products: Product[] = [
       // Products previously in this category have been moved to appropriate active categories.
     ];
 
+export const productDisplayOrder = [
+  "lumiriq-ac-face-wash",
+  ...products.map((product) => product.slug).filter((slug) => slug !== "lumiriq-ac-face-wash"),
+];
+
+export const productsInDisplayOrder = productDisplayOrder.map(
+  (slug) => products.find((product) => product.slug === slug)!,
+);
+
 export function getProduct(slug: string) {
   return products.find((p) => p.slug === slug);
 }
